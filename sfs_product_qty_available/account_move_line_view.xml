@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	 <record model="ir.ui.view" id="view_vendor_receipt_form_view_inh">
+            <field name="name">account.voucher.receipt.form.inh</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_receipt_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='credit']" position="after">
+            		<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_move_line_form_view_inh">
+            <field name="name">account.move.line.form.inh</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='credit']" position="after">
+            		<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_move_line_tree_view_inh">
+            <field name="name">account.move.line.tree.inh</field>
+            <field name="model">account.move.line</field>
+            <field name="inherit_id" ref="account.view_move_line_tree"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='credit']" position="after">
+            		<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_move_form_view_inh">
+            <field name="name">account.move.form.inh</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//notebook/page[@string='Journal Items']/field[@name='line_id']/tree/field[@name='credit']" position="after">
+            		<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_voucher_form_view_inh">
+            <field name="name">account.voucher.form.inh</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//field[@name='credit']" position="after">            		
+					<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_vendor_payment_form_view_inh">
+            <field name="name">account.voucher.payment.form.inh</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_vendor_payment_form"/>
+            <field name="arch" type="xml">
+				<xpath expr="//field[@name='credit']" position="after">            		
+					<field name="tot_balance"/>
+            	</xpath>
+            </field>
+        </record>
+        
+       
+    </data>
+</openerp>

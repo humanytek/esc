@@ -1,0 +1,7 @@
+V1.0 By Subhin P.V
+On 27th February 2014
+	*Created module sfs_account_voucher. Adds a boolean field "reconcile" in form view of account.voucher.form
+	
+V1.1 By geena
+On 4th march 2014
+	* made the voucher_id field in account_voucher_line model as required=Fasle

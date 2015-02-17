@@ -1,0 +1,12 @@
+V 1.0 By SUbhin P.V
+On January 9th 2014
+* Created a new Group "Allow force availablity". Users that are members of This group only can Use
+  the button "Force availablity" in stock.picking.out
+
+V 1.1 By SUbhin P.V
+On January 9th 2014
+* Extended the reach of the group to Force availabity buttons in stock.picking and stock.move
+
+V 1.3 By Subhin P.V
+ON January 22nd 2014
+* bug #1271221 removed. (Problem in context checking) 

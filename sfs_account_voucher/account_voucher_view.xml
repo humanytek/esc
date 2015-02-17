@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	 <record model="ir.ui.view" id="view_voucher_line_form_view_inh">
+            <field name="name">account.voucher.line.form.inh</field>
+            <field name="model">account.voucher.line</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_line_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='amount']" position="after">
+            		<field name="reconcile"/>
+            	</xpath>
+            </field>
+        </record>
+       
+       <record model="ir.ui.view" id="sfs_account_voucher_inherit">
+            <field name="name">sfs.account.voucher.inherit</field>
+            <field name="model">account.voucher</field>
+            <field name="inherit_id" ref="account_voucher.view_voucher_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number']" position="after">
+                    <field name="partner_salesman_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

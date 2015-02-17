@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <function model="product.product" name="set_qty_available_function"/>
+    </data>
+</openerp>

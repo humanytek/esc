@@ -1,0 +1,161 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* sfs_account_sale_margin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-23 13:14+0000\n"
+"PO-Revision-Date: 2014-01-23 13:14+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+msgid "Product category"
+msgstr "Categoria de producto"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,standard_price:0
+msgid "Unit Cost"
+msgstr "Costo Unitario"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,price_unit:0
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#. module: sfs_account_sale_margin
+#: field:date.wizard,start_date:0
+msgid "Initial date"
+msgstr "Fecha Inicial"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,product_name:0
+msgid "Product name"
+msgstr "Nombre de producto"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,margin_percent:0
+msgid "Margin Percent"
+msgstr "Porcentaje de Margen"
+
+#. module: sfs_account_sale_margin
+#: view:date.wizard:0
+msgid "Enter Dates"
+msgstr "Introduzca Fecha"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,categ_id:0
+msgid "Product Category"
+msgstr "Categoria de producto"
+
+#. module: sfs_account_sale_margin
+#: model:ir.model,name:sfs_account_sale_margin.model_date_wizard
+msgid "date.wizard"
+msgstr "date.wizard"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+msgid "Invoice Date"
+msgstr "Fecha Factura"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,user_id:0
+msgid "Salesperson"
+msgstr "Vendedor"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,uom:0
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,partner_id:0
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,cost_ammount:0
+msgid "Cost Amount"
+msgstr "Costo Monto"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,date_invoice:0
+msgid "Invoice date"
+msgstr "Fecha Factura"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,invoice_number:0
+msgid "Invoice number"
+msgstr "Factura Numero"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+msgid "Invoice sale margin Analysis"
+msgstr "Análisis margen de venta de facturas"
+
+#. module: sfs_account_sale_margin
+#: field:sale.margin_product,margin:0
+msgid "Margin"
+msgstr "Margen"
+
+#. module: sfs_account_sale_margin
+#: code:addons/sfs_account_sale_margin/wizard/date_wizard.py:55
+#: view:sale.margin_product:0
+#, python-format
+msgid "Sale Margin Analysis"
+msgstr "Análisis del margen de ventas"
+
+#. module: sfs_account_sale_margin
+#: model:ir.actions.act_window,name:sfs_account_sale_margin.view_account_sale_margin_action1
+#: model:ir.actions.act_window,name:sfs_account_sale_margin.view_date_wizard_action
+#: model:ir.model,name:sfs_account_sale_margin.model_account_sale_margin
+#: model:ir.model,name:sfs_account_sale_margin.model_sale_margin_product
+#: model:ir.ui.menu,name:sfs_account_sale_margin.menu_view_date_wizard_sub
+#: model:ir.ui.menu,name:sfs_account_sale_margin.menu_view_date_wizard_sub1
+#: view:sale.margin_product:0
+msgid "Sale Margin"
+msgstr "margen sobre ventas"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,quantity:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: sfs_account_sale_margin
+#: view:date.wizard:0
+msgid "View Report"
+msgstr "Ver informe"
+
+#. module: sfs_account_sale_margin
+#: view:sale.margin_product:0
+#: field:sale.margin_product,price_subtotal:0
+msgid "Product Amount"
+msgstr "Monto del producto"
+
+#. module: sfs_account_sale_margin
+#: field:date.wizard,end_date:0
+msgid "Final date"
+msgstr "Fecha Final"
+
+#. module: sfs_account_sale_margin
+#: view:date.wizard:0
+msgid "Close"
+msgstr "cerca"
+

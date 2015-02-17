@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+    	<record id="group_customer_security" context="{'noadmin':'True'}" model="res.groups">
+     	   <field name="name">Seguridad de clientes</field>
+     	   <field name="users" eval="[(4, ref('base.user_root'))]"/>
+     	   <field name="category_id" ref="base.module_category_hidden"/>
+   		</record>
+   		
+   		<record model="ir.rule" id="ir_values_customer_sequrity_rule">
+       		<field name="name">Customer Security rule</field>
+        	<field name="model_id" ref="base.model_res_partner"/>
+        	<field name="domain_force">[('user_id','=',user.id)]</field>
+        	<field name="groups" eval="[(4, ref('sfs_customer_security.group_customer_security'))]"/>
+        	<field name="perm_read" eval="True"/>
+        	<field name="perm_write" eval="True"/>
+        	<field name="perm_unlink" eval="True"/>
+        	<field name="perm_create" eval="True"/>
+    	</record>
+   		
+	</data>
+</openerp>
+    
