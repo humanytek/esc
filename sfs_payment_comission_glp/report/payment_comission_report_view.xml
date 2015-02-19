@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_payment_comission_report_tree" model="ir.ui.view">
+            <field name="name">payment.comission.report.tree</field>
+            <field name="model">payment.comission.report</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Commission Report" version="7.0">
+                    <field name = "partner_id"/>
+                    <field name = "payment_term_id"/>
+                    <field name = "journal_id"/>
+                    <field name="account_move_line_id"/>
+                    <field name = "due_date"/>
+                    <field name = "invoice_amount" sum="Invoice Amount"/>
+                    <field name = "payment_date"/>
+                    <field name = "payment_amount"/>
+                    <field name = "user_id"/>
+                    <field name = "due_days"/>
+                    <field name = "comission_percent"/>
+                    <field name = "penalization_amount" sum="Penalization Amount"/>
+                    <field name = "penalization_percent"/>
+                    <field name = "comission" sum="Commission"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_payment_comission_report_search" model="ir.ui.view">
+            <field name="name">payment.comission.report.search</field>
+            <field name="model">payment.comission.report</field>
+            <field name="arch" type="xml">
+                <search string="Payment Commission Report" version="7.0">
+                    <field name = "partner_id"/>
+                    <field name = "payment_term_id"/>
+                    <field name = "journal_id"/>
+                    <field name = "due_date"/>
+                    <field name = "payment_date"/>
+                    <field name = "user_id"/>
+                    <group expand="1" string="Group By...">
+                        <filter string="Salesperson" icon="terp-personal" name="User" context="{'group_by':'user_id'}"/>
+                        <filter string="Partner" icon="terp-partner"  name="Customer" context="{'group_by':'partner_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</openerp>

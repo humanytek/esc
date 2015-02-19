@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_margin_product_user,sale.margin.product.user,model_sale_margin_product,account.group_account_user,1,1,1,0
+access_sale_margin_product_manager,sale.margin.product.manager,model_sale_margin_product,account.group_account_manager,1,1,1,0
+access_sale_margin_product_invoice,sale.margin.product.invoice,model_sale_margin_product,account.group_account_invoice,1,1,0,0
+access_date_wizard_user,date.wizard.user,model_date_wizard,account.group_account_user,1,1,1,0
+access_date_wizard_manager,date.wizard.manager,model_date_wizard,account.group_account_manager,1,1,1,0
+access_date_wizard_invoice,date.wizard.invoice,model_date_wizard,account.group_account_invoice,1,1,0,0

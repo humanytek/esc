@@ -1,0 +1,2 @@
+v 1.0.1 by geena on march 11 th 2014
+	* added tot_balance field in account.move.line model

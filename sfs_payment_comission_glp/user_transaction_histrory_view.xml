@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <menuitem id="menu_user_transaction_root" name="User Invoice Transaction Histroy" parent="account.menu_finance" sequence="5"/>
+        
+        <record id="view_user_transaction_history_form" model="ir.ui.view">
+            <field name="name">user.transaction.history.form</field>
+            <field name="model">user.transaction.history</field>
+            <field name="arch" type="xml">
+                <form string="User Transaction History" version="7.0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="transaction_date"/>
+                            <field name="invoice_id" context="{'form_view_ref': 'account.invoice_form'}"/>
+                            <field name="move_line_id"/>
+                        </group>
+                        <group>
+                            <field name="transaction_type"/>
+                            <field name="payment_id" context="{'form_view_ref': 'account_voucher.view_vendor_receipt_form'}"/>
+                            <field name="amount"/>
+                        </group>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_user_transaction_history_tree" model="ir.ui.view">
+            <field name="name">user.transaction.history.tree</field>
+            <field name="model">user.transaction.history</field>
+            <field name="arch" type="xml">
+                <tree string="User Transaction History" version="7.0">
+                    <field name="user_id"/>
+                    <field name="transaction_date"/>
+                    <field name="transaction_type"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_user_transaction_history_search" model="ir.ui.view">
+            <field name="name">user.transaction.history.search</field>
+            <field name="model">user.transaction.history</field>
+            <field name="arch" type="xml">
+                <search string="User Transaction History" version="7.0">
+                    <field name="transaction_date"/>
+                    <field name="invoice_id"/>
+                    <field name="move_line_id"/>
+                    <field name="transaction_type"/>
+                    <field name="payment_id"/>
+                </search>
+            </field>
+        </record>
+        
+        <record id="action_user_transaction_history" model="ir.actions.act_window">
+            <field name="name">Transaction History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">user.transaction.history</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_user_transaction_history_tree"/>
+        </record>
+        
+        <menuitem id="menu_user_transaction" name="User Transaction Histroy" parent="menu_user_transaction_root" action="action_user_transaction_history" sequence="2"/>
+    </data>
+</openerp>

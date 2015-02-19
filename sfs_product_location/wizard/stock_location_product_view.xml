@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="sfs_stock_location_product_inherit" model="ir.ui.view">
+            <field name="name">sfs.stock.location.product.inherit</field>
+            <field name="model">stock.location.product</field>
+            <field name="inherit_id" ref="stock.view_stock_location_product"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="location_id" required="True"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

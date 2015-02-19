@@ -1,0 +1,335 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* product_import_cert
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-11 13:50+0000\n"
+"PO-Revision-Date: 2014-12-11 13:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,line_state:0
+msgid "Blue"
+msgstr "Blue"
+
+#. module: product_import_cert
+#: model:ir.model,name:product_import_cert.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea pedido de compra"
+
+#. module: product_import_cert
+#: field:product.import.certificate,raw_material_imported:0
+msgid "Raw material to be imported"
+msgstr "Materia prima a importar"
+
+#. module: product_import_cert
+#: field:purchase.order.line,certificate_id:0
+#: field:res.country,certificate_id:0
+msgid "Certificate"
+msgstr "Certificado"
+
+#. module: product_import_cert
+#: model:res.groups,name:product_import_cert.group_product_certificate_admin
+msgid "Certificate Administrator"
+msgstr "Certificado Administrador"
+
+#. module: product_import_cert
+#: code:addons/product_import_cert/import_product_certificate.py:38
+#, python-format
+msgid "You cannot do any operation in the record which is not extendable."
+msgstr "No se puede hacer ninguna operación que no es extensible."
+
+#. module: product_import_cert
+#: code:addons/product_import_cert/import_product_certificate.py:40
+#, python-format
+msgid "For deleting the record, the state should be in New."
+msgstr "Para borrar un registro , el Estado debe estar en nuevas."
+
+#. module: product_import_cert
+#: field:product.import.certificate,custom:0
+msgid "Custom"
+msgstr "Aduana"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+msgid "Group By..."
+msgstr "Group By..."
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+msgid "State"
+msgstr "State"
+
+#. module: product_import_cert
+#: field:product.import.certificate,message_follower_ids:0
+msgid "Followers"
+msgstr "Followers"
+
+#. module: product_import_cert
+#: field:product.import.certificate,fraction_id:0
+msgid "Fraction"
+msgstr "Fraccion arancelaria"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "New"
+msgstr "Nuevo"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: view:product.product:0
+#: field:product.product,certificate_ids:0
+msgid "Certificates"
+msgstr "Certificados"
+
+#. module: product_import_cert
+#: field:product.import.certificate,import_certificate:0
+#: field:stock.move,import_certificate:0
+msgid "Import_Certificate"
+msgstr "Import_Certificate"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,line_state:0
+msgid "Red"
+msgstr "Red"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "Renovated"
+msgstr "Renovado"
+
+#. module: product_import_cert
+#: field:product.import.certificate,message_ids:0
+msgid "Messages"
+msgstr "Messages"
+
+#. module: product_import_cert
+#: model:ir.model,name:product_import_cert.model_product_product
+#: view:product.import.certificate:0
+#: field:product.import.certificate,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "In Renovation"
+msgstr "En renovación"
+
+#. module: product_import_cert
+#: field:product.import.certificate,qty:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: product_import_cert
+#: field:product.import.certificate,message_unread:0
+msgid "Unread Messages"
+msgstr "Unread Messages"
+
+#. module: product_import_cert
+#: field:product.import.certificate,move_qty:0
+msgid "Stock Qty"
+msgstr "Stock Qty"
+
+#. module: product_import_cert
+#: help:product.import.certificate,message_ids:0
+msgid "Messages and communication history"
+msgstr "Messages and communication history"
+
+#. module: product_import_cert
+#: field:product.import.certificate,certificate_number:0
+msgid "Certificate Number"
+msgstr "Numero de Permiso"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "Not Extendable"
+msgstr "No renovable"
+
+#. module: product_import_cert
+#: field:product.import.certificate,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Is a Follower"
+
+#. module: product_import_cert
+#: field:product.import.certificate,uom_id:0
+msgid "UOM"
+msgstr "Unidad de Medida"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "Active"
+msgstr "Activo"
+
+#. module: product_import_cert
+#: field:product.import.certificate,diff_days:0
+msgid "Difference"
+msgstr "Difference"
+
+#. module: product_import_cert
+#: field:product.import.certificate,renewable:0
+msgid "Renewable"
+msgstr "Prorrogable"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: field:product.import.certificate,manufacturer_id:0
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: field:product.import.certificate,state:0
+msgid "Status"
+msgstr "estado"
+
+#. module: product_import_cert
+#: field:product.import.certificate,qty_uom:0
+msgid "Qtty/UOM"
+msgstr "Cantidad/Unidades"
+
+#. module: product_import_cert
+#: view:stock.move:0
+#: field:stock.move,certificate_id:0
+msgid "Product Import Certificate"
+msgstr "Product Import Certificate"
+
+#. module: product_import_cert
+#: field:product.import.certificate,name:0
+msgid "Name"
+msgstr "Nombre"
+
+#. module: product_import_cert
+#: model:ir.model,name:product_import_cert.model_res_country
+msgid "Country"
+msgstr "País"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: field:product.import.certificate,notes:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: product_import_cert
+#: field:product.import.certificate,line_state:0
+msgid "Line state"
+msgstr "Line state"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: field:product.import.certificate,background_country_ids:0
+msgid "Backgrounds"
+msgstr "Procedencias"
+
+#. module: product_import_cert
+#: selection:product.import.certificate,state:0
+msgid "Spent"
+msgstr "Agotado"
+
+#. module: product_import_cert
+#: field:product.import.certificate,message_summary:0
+msgid "Summary"
+msgstr "Summary"
+
+#. module: product_import_cert
+#: model:ir.actions.act_window,help:product_import_cert.action_import_product_certificate
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a new product import certificate.\n"
+"              </p>\n"
+"            "
+msgstr "<p class=\"oe_view_nocontent_create\">\n"
+"                Click to create a new product import certificate.\n"
+"              </p>\n"
+"            "
+
+#. module: product_import_cert
+#: model:res.groups,name:product_import_cert.group_product_certificate_user
+msgid "Certificate User"
+msgstr "Certificado de Usuario"
+
+#. module: product_import_cert
+#: model:ir.model,name:product_import_cert.model_product_import_certificate
+msgid "product.import.certificate"
+msgstr "product.import.certificate"
+
+#. module: product_import_cert
+#: model:ir.module.category,name:product_import_cert.product_import_certificate
+#: view:product.import.certificate:0
+msgid "Product Certificates"
+msgstr "Certificado de Producto"
+
+#. module: product_import_cert
+#: help:product.import.certificate,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "If checked new messages require your attention."
+
+#. module: product_import_cert
+#: field:product.import.certificate,end_term:0
+msgid "End Term"
+msgstr "Vigencia final"
+
+#. module: product_import_cert
+#: field:product.import.certificate,certificate_date:0
+msgid "Date of Certificate"
+msgstr "Fecha del permiso"
+
+#. module: product_import_cert
+#: field:product.product,import_certificate:0
+msgid "Require Import Certificate"
+msgstr "Requiere certificado de importación"
+
+#. module: product_import_cert
+#: field:product.import.certificate,qty_imported:0
+msgid "Quantity Imported"
+msgstr "Saldo por importar"
+
+#. module: product_import_cert
+#: field:product.import.certificate,source:0
+msgid "Source"
+msgstr "Origen"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+msgid "Product Certificate"
+msgstr "Certificado de Producto"
+
+#. module: product_import_cert
+#: help:product.import.certificate,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+
+#. module: product_import_cert
+#: code:addons/product_import_cert/import_product_certificate.py:38
+#: code:addons/product_import_cert/import_product_certificate.py:40
+#, python-format
+msgid "Warning!"
+msgstr "¡Advertencia!"
+
+#. module: product_import_cert
+#: model:ir.actions.act_window,name:product_import_cert.action_import_product_certificate
+#: model:ir.ui.menu,name:product_import_cert.menu_import_certificate
+msgid "Import Certificates"
+msgstr "Certificados de importación"
+
+#. module: product_import_cert
+#: model:ir.model,name:product_import_cert.model_stock_move
+msgid "Stock Move"
+msgstr "Moviemiento de stock"
+
+#. module: product_import_cert
+#: field:product.import.certificate,initial_term:0
+msgid "Initial Term"
+msgstr "Vigencia inicial"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+msgid "Previous"
+msgstr "Previous"
+

@@ -1,0 +1,552 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* hmtk_crm_claim_customization
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-17 14:41+0000\n"
+"PO-Revision-Date: 2015-02-17 14:41+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Equipo de Seguimiento"
+msgstr "Equipo de Seguimiento"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{description}"
+msgstr "$F{description}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{m2o}"
+msgstr "$F{m2o}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Related Document"
+msgstr "Related Document"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{batch_type}"
+msgstr "$F{batch_type}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{corrective_actions_permanent}"
+msgstr "$F{corrective_actions_permanent}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{invoice_reference}"
+msgstr "$F{invoice_reference}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "sistema de calidad"
+msgstr "sistema de calidad"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Acciones correctivas inmediatas"
+msgstr "Acciones correctivas inmediatas"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "fecha"
+msgstr "fecha"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "FO-18, REV 02"
+msgstr "FO-18, REV 02"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "source"
+msgstr "source"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "resultados de las acciones tomadas"
+msgstr "resultados de las acciones tomadas"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Evaluation of the root cause"
+msgstr "Evaluation of the root cause"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "Batch"
+msgstr "Lote"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Reviews"
+msgstr "Reviews"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "cause"
+msgstr "cause"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{date_closed}"
+msgstr "$F{date_closed}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{type_action}"
+msgstr "$F{type_action}"
+
+#. module: hmtk_crm_claim_customization
+#: selection:crm.claim,source:0
+msgid "Auditing"
+msgstr "Auditing"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{create_date}"
+msgstr "$F{create_date}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "Folio"
+msgstr "Folio"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "corrective_actions_permanent"
+msgstr "corrective_actions_permanent"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "create_date"
+msgstr "create_date"
+
+#. module: hmtk_crm_claim_customization
+#: model:ir.actions.report.xml,name:hmtk_crm_claim_customization.report_crm_claim_report_spanish
+msgid "Claim Report "
+msgstr "Claim Report "
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{resolution}"
+msgstr "$F{resolution}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "factura"
+msgstr "factura"
+
+#. module: hmtk_crm_claim_customization
+#: field:crm.claim,source:0
+#: report:crm_claim_report:0
+msgid "Source"
+msgstr "Source"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Origen"
+msgstr "Origen"
+
+#. module: hmtk_crm_claim_customization
+#: view:crm.claim:0
+msgid "Print"
+msgstr "impresión"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Solicitante"
+msgstr "Solicitante"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Ref"
+msgstr "Ref"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "description"
+msgstr "descripción"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "claim_no"
+msgstr "claim_no"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "firma"
+msgstr "firma"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Quality System"
+msgstr "Quality System"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "m2o"
+msgstr "m2o"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "comité directivo"
+msgstr "comité directivo"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "CORRECTIVE ACTION REQUEST AND / OR PREVENTIVE"
+msgstr "CORRECTIVE ACTION REQUEST AND / OR PREVENTIVE"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$P{SUBREPORT_DIR} + \"../images/esc_image.jpg\""
+msgstr "$P{SUBREPORT_DIR} + \"../images/esc_image.jpg\""
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Applicant"
+msgstr "Applicant"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Insumo"
+msgstr "Insumo"
+
+#. module: hmtk_crm_claim_customization
+#: selection:crm.claim,source:0
+msgid "Reception"
+msgstr "Reception"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Signature"
+msgstr "Firma"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "user_fault"
+msgstr "user_fault"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "SOLICITUD DE ACCION CORRECTIVA Y/O PREVENTIVA"
+msgstr "SOLICITUD DE ACCION CORRECTIVA Y/O PREVENTIVA"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Opening Date"
+msgstr "Opening Date"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{user_fault}"
+msgstr "$F{user_fault}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Effected"
+msgstr "efectuado"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Results of actions taken"
+msgstr "resultados de las acciones tomadas"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{claim_no}"
+msgstr "$F{claim_no}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{write_date}"
+msgstr "$F{write_date}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Acciones Correctivas Permanentes"
+msgstr "Acciones Correctivas Permanentes"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "fecha tope"
+msgstr "fecha tope"
+
+#. module: hmtk_crm_claim_customization
+#: selection:crm.claim,source:0
+msgid "Customer Notification"
+msgstr "Customer Notificacioón"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Input"
+msgstr "Insumo"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "auditoría"
+msgstr "auditoría"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "type_action"
+msgstr "type_action"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "documento relacionado"
+msgstr "documento relacionado"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Immediate corrective action"
+msgstr "Immediate corrective action"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Description of the Nonconformity"
+msgstr "Description of the Nonconformity"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Date"
+msgstr "Fecha"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Descripción de la no conformidad"
+msgstr "Descripción de la no conformidad"
+
+#. module: hmtk_crm_claim_customization
+#: view:crm.claim:0
+#: field:crm.claim,corrective_actions_permanent:0
+#: report:crm_claim_report:0
+msgid "Corrective Actions Permanent"
+msgstr "Acciones Correctivas Permanentes"
+
+#. module: hmtk_crm_claim_customization
+#: view:crm.claim:0
+#: field:crm.claim,results_taken_consequences:0
+msgid "Results Taken Consequences"
+msgstr "Resultados de Consecuencias Tomadas"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Monitoring Equipment"
+msgstr "Equipo de Seguimiento"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Revisa"
+msgstr "Revisa"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{source}"
+msgstr "$F{source}"
+
+#. module: hmtk_crm_claim_customization
+#: field:crm.claim,claim_no:0
+#: model:ir.model,name:hmtk_crm_claim_customization.model_crm_claim
+msgid "Claim"
+msgstr "Reclamación"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "Code"
+msgstr "Code"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{sales_team}"
+msgstr "$F{sales_team}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Steering Commitee"
+msgstr "Steering Commitee"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "descripción"
+msgstr "descripción"
+
+#. module: hmtk_crm_claim_customization
+#: model:ir.actions.report.xml,name:hmtk_crm_claim_customization.report_crm_claim_report
+msgid "Claim Report"
+msgstr "Solicitud de acción correctiva"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "batch_type"
+msgstr "batch_type"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Invoice"
+msgstr "Invoice"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "date_closed"
+msgstr "date_closed"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Referencia"
+msgstr "Referencia"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "partner"
+msgstr "partner"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Closing date"
+msgstr "Closing date"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Description"
+msgstr "Description"
+
+#. module: hmtk_crm_claim_customization
+#: field:crm.claim,batch_type:0
+msgid "Batch Type"
+msgstr "Lote"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{partner}"
+msgstr "$F{partner}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "nombre"
+msgstr "nombre"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Audit"
+msgstr "Audit"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{cause}"
+msgstr "$F{cause}"
+
+#. module: hmtk_crm_claim_customization
+#: field:crm.claim,invoice_reference:0
+msgid "Invoice Reference"
+msgstr "referencia de factura"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+msgid "Name"
+msgstr "Name"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "efectuado"
+msgstr "efectuado"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "fecha de apertura"
+msgstr "fecha de apertura"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "user"
+msgstr "user"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "write_date"
+msgstr "write_date"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "$F{user}"
+msgstr "$F{user}"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "\"/home/user/workspace/sfs_7/openerp-7.0-20130819-231103/openerp/addons/hmtk_crm_claim_customization/report/\""
+msgstr "\"/home/user/workspace/sfs_7/openerp-7.0-20130819-231103/openerp/addons/hmtk_crm_claim_customization/report/\""
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report_spanish:0
+msgid "Evaluación de la causa de la raíz"
+msgstr "Evaluación de la causa de la raíz"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "invoice_reference"
+msgstr "invoice_reference"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "resolution"
+msgstr "resolution"
+
+#. module: hmtk_crm_claim_customization
+#: report:crm_claim_report:0
+#: report:crm_claim_report_spanish:0
+msgid "sales_team"
+msgstr "sales_team"
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 19/02/2015 (felix) Crear form para registro de aduanas -->
+        <record id="view_form_aduana" model="ir.ui.view">
+            <field name="name">view.form.aduana</field>
+            <field name="model">import.info.custom</field>
+            <field name="arch" type="xml">
+                <form string="Aduana" version="7.0">
+                    <group cols="2">
+                        <group>
+                            <field name="custom_number" string="Número de aduana"/>
+                            <field name="custom_name" string="Nombre de aduana"/>
+                            <field name="description" string="Descripción de aduana"/>
+                        </group>
+                        <group />
+                    </group>
+                </form>                
+            </field>
+        </record>
+        
+    </data>
+</openerp>

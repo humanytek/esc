@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+        <!-- Product attributes : Category -->
+        <record model="ir.module.category" id="product_import_certificate">
+            <field name="name">Product Certificates</field>
+        </record>
+        <!-- Product attributes : User groups -->
+		<record id="group_product_certificate_admin" model="res.groups">
+	        <field name="name">Certificate Administrator</field>
+	        <field name="category_id" ref="product_import_certificate"/>
+    	</record>
+    	
+		<record id="group_product_certificate_user" model="res.groups">
+	        <field name="name">Certificate User</field>
+	        <field name="category_id" ref="product_import_certificate"/>
+    	</record>
+    </data>
+</openerp>

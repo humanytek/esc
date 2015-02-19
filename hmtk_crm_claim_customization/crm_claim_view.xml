@@ -1,0 +1,45 @@
+<openerp>
+	<data>
+		<record id="hmtk_view_crm_claim_inherit" model="ir.ui.view">
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//form/header" position="after">
+                	<h1>
+                		<field name="claim_no" attrs="{ 'invisible':[('id', '=', False)]}" readonly="1"/>
+                		<field name="id" invisible="1"/> 
+                	</h1>
+                    
+                </xpath>
+            	<xpath expr="//form/header/button[@name='case_close']" position="before">
+					<button name="print_claim" type="object" class="oe_highlight" string="Print"/>                   
+                </xpath>
+                <xpath expr="//form/sheet/group/field[@name='date_deadline']" position="after">
+					<field name="batch_type"/>
+					<field name="invoice_reference"/>                    
+                </xpath>
+                <xpath expr="//form/sheet/group[@groups='base.group_user']/field[@name='state']" position="after">
+					<field name="source"/>
+                </xpath>
+                <xpath expr="//form/sheet/group/notebook/page[@string='Follow Up']/group[2]" position="after">
+					<group string="Corrective Actions Permanent">
+						<field name="corrective_actions_permanent" nolabel="1"/>
+					</group>
+					<group string="Results Taken Consequences">
+						<field name="results_taken_consequences" nolabel="1"/>
+					</group>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="hmtk_view_crm_claim_tree_inherit" model="ir.ui.view">
+            <field name="model">crm.claim</field>
+            <field name="inherit_id" ref="crm_claim.crm_case_claims_tree_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//tree/field[@name='name']" position="before">
+            		<field name="claim_no"/>
+                </xpath>
+            </field>
+        </record>
+	</data>
+</openerp>
