@@ -29,10 +29,24 @@
     'author': 'Humanytek',
     'website': 'http://humanytek.com',
     'depends': [
+        'base',
+        'stock',
+        'esc_almacen_configuracion',
         'esc_almacen_trazabilidad'
     ],
     'data': [
-        ''
+        # Seguridad y grupos
+        
+        # Data
+        
+        # View y menu
+        'view/albaranes_stock_move_view.xml', # Para Albaranes: Entrada, Internos y Salida
+        'view/albaranes_entrada.xml',
+        
+        # Reportes
+        'report/albaranes_entrada.xml'
+        
+        
     ],
     'demo_xml': [],
     'installable': True,

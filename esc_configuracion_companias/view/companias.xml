@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- 23/02/2015 (felix) Modificaciones en vista form de Compañías -->
+        <record id="company_form_fit_inherit_1" model="ir.ui.view">
+            <field name="name">company.form.fit.inherit.1</field>
+            <field name="model">res.company</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="asti_eaccounting_mx_base_70.company_form_fit"/>
+            <field name="arch" type="xml">
+		        
+		        <!-- 23/02/2015 (felix) (+) Cambiar etiqueta "Additional" por "Información adicional" -->
+                <xpath expr="//field[@name='license_key']" position="replace">
+                    <field name="license_key" modifiers="{}" invisible="1"/>
+		        </xpath>                
+                
+            </field>
+        </record>
+    
+    </data>
+</openerp>

@@ -6,13 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
 "POT-Creation-Date: 2015-02-17 14:41+0000\n"
 "PO-Revision-Date: 2015-02-17 14:41+0000\n"
-=======
 "POT-Creation-Date: 2015-01-12 09:55+0000\n"
 "PO-Revision-Date: 2015-01-12 09:55+0000\n"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,15 +18,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: hmtk_crm_claim_customization
-<<<<<<< HEAD
 #: report:crm_claim_report_spanish:0
 msgid "Equipo de Seguimiento"
 msgstr "Equipo de Seguimiento"
-=======
+
 #: report:crm_claim_report:0
 msgid "Effected"
 msgstr "efectuado"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
@@ -40,7 +35,6 @@ msgstr "$F{description}"
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{m2o}"
 msgstr "$F{m2o}"
 
@@ -48,7 +42,7 @@ msgstr "$F{m2o}"
 #: report:crm_claim_report:0
 msgid "Related Document"
 msgstr "Related Document"
-=======
+
 msgid "Folio"
 msgstr "Folio"
 
@@ -57,12 +51,10 @@ msgstr "Folio"
 #: report:crm_claim_report_spanish:0
 msgid "$F{m2o}"
 msgstr "$F{m2o}"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{batch_type}"
 msgstr "$F{batch_type}"
 
@@ -98,7 +90,7 @@ msgstr "fecha"
 #: report:crm_claim_report_spanish:0
 msgid "FO-18, REV 02"
 msgstr "FO-18, REV 02"
-=======
+
 msgid "create_date"
 msgstr "create_date"
 
@@ -133,15 +125,13 @@ msgstr "$F{resolution}"
 #: report:crm_claim_report_spanish:0
 msgid "factura"
 msgstr "factura"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "source"
 msgstr "source"
-=======
+
 msgid "$F{write_date}"
 msgstr "$F{write_date}"
 
@@ -149,7 +139,6 @@ msgstr "$F{write_date}"
 #: view:crm.claim:0
 msgid "Print"
 msgstr "impresión"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report_spanish:0
@@ -157,7 +146,6 @@ msgid "resultados de las acciones tomadas"
 msgstr "resultados de las acciones tomadas"
 
 #. module: hmtk_crm_claim_customization
-<<<<<<< HEAD
 #: report:crm_claim_report:0
 msgid "Evaluation of the root cause"
 msgstr "Evaluation of the root cause"
@@ -178,7 +166,7 @@ msgstr "Reviews"
 #: report:crm_claim_report_spanish:0
 msgid "cause"
 msgstr "cause"
-=======
+
 #: report:crm_claim_report_spanish:0
 msgid "Origen"
 msgstr "Origen"
@@ -197,12 +185,10 @@ msgstr "Insumo"
 #: report:crm_claim_report:0
 msgid "Customer Notification"
 msgstr "Customer Notification"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{date_closed}"
 msgstr "$F{date_closed}"
 
@@ -216,7 +202,7 @@ msgstr "$F{type_action}"
 #: selection:crm.claim,source:0
 msgid "Auditing"
 msgstr "Auditing"
-=======
+
 msgid "$F{batch_type}"
 msgstr "$F{batch_type}"
 
@@ -229,12 +215,10 @@ msgstr "Solicitante"
 #: report:crm_claim_report:0
 msgid "Quality System"
 msgstr "Quality System"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{create_date}"
 msgstr "$F{create_date}"
 
@@ -249,7 +233,7 @@ msgstr "Folio"
 #: report:crm_claim_report_spanish:0
 msgid "corrective_actions_permanent"
 msgstr "corrective_actions_permanent"
-=======
+
 msgid "type_action"
 msgstr "type_action"
 
@@ -262,12 +246,10 @@ msgstr "Closing date"
 #: report:crm_claim_report:0
 msgid "Opening Date"
 msgstr "Opening Date"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "create_date"
 msgstr "create_date"
 
@@ -275,7 +257,7 @@ msgstr "create_date"
 #: model:ir.actions.report.xml,name:hmtk_crm_claim_customization.report_crm_claim_report_spanish
 msgid "Claim Report "
 msgstr "Claim Report "
-=======
+
 msgid "date_closed"
 msgstr "date_closed"
 
@@ -283,12 +265,10 @@ msgstr "date_closed"
 #: report:crm_claim_report_spanish:0
 msgid "sistema de calidad"
 msgstr "sistema de calidad"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{resolution}"
 msgstr "$F{resolution}"
 
@@ -328,7 +308,7 @@ msgstr "Ref"
 #: report:crm_claim_report_spanish:0
 msgid "description"
 msgstr "descripción"
-=======
+
 msgid "Description"
 msgstr "Description"
 
@@ -357,12 +337,10 @@ msgstr "Description of the Nonconformity"
 #: report:crm_claim_report_spanish:0
 msgid "auditoría"
 msgstr "auditoría"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "claim_no"
 msgstr "claim_no"
 
@@ -375,7 +353,7 @@ msgstr "firma"
 #: report:crm_claim_report:0
 msgid "Quality System"
 msgstr "Quality System"
-=======
+
 msgid "$F{invoice_reference}"
 msgstr "$F{invoice_reference}"
 
@@ -383,7 +361,6 @@ msgstr "$F{invoice_reference}"
 #: report:crm_claim_report_spanish:0
 msgid "Solicitud de acción correctiva"
 msgstr "Solicitud de acción correctiva"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
@@ -392,7 +369,6 @@ msgid "m2o"
 msgstr "m2o"
 
 #. module: hmtk_crm_claim_customization
-<<<<<<< HEAD
 #: report:crm_claim_report_spanish:0
 msgid "comité directivo"
 msgstr "comité directivo"
@@ -459,7 +435,7 @@ msgstr "efectuado"
 #: report:crm_claim_report:0
 msgid "Results of actions taken"
 msgstr "resultados de las acciones tomadas"
-=======
+
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
 msgid "$F{partner}"
@@ -525,12 +501,10 @@ msgstr "Evaluation of the root cause"
 #: report:crm_claim_report:0
 msgid "Applicant"
 msgstr "Applicant"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{claim_no}"
 msgstr "$F{claim_no}"
 
@@ -564,7 +538,7 @@ msgstr "Insumo"
 #: report:crm_claim_report_spanish:0
 msgid "auditoría"
 msgstr "auditoría"
-=======
+
 msgid "Batch"
 msgstr "Lote"
 
@@ -587,12 +561,10 @@ msgstr "Acciones correctivas permanentes"
 #: report:crm_claim_report_spanish:0
 msgid "Insumo"
 msgstr "Insumo"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "type_action"
 msgstr "type_action"
 
@@ -643,7 +615,7 @@ msgstr "Equipo de Seguimiento"
 #: report:crm_claim_report_spanish:0
 msgid "Revisa"
 msgstr "Revisa"
-=======
+
 msgid "user"
 msgstr "user"
 
@@ -684,23 +656,20 @@ msgstr "Comentarios"
 #: report:crm_claim_report_spanish:0
 msgid "\"/home/user/workspace/sfs_7/openerp-7.0-20130819-231103/openerp/addons/hmtk_crm_claim_customization/report/\""
 msgstr "\"/home/user/workspace/sfs_7/openerp-7.0-20130819-231103/openerp/addons/hmtk_crm_claim_customization/report/\""
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
+
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{source}"
 msgstr "$F{source}"
 
 #. module: hmtk_crm_claim_customization
 #: field:crm.claim,claim_no:0
-=======
 msgid "description"
 msgstr "descripción"
 
 #. module: hmtk_crm_claim_customization
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 #: model:ir.model,name:hmtk_crm_claim_customization.model_crm_claim
 msgid "Claim"
 msgstr "Reclamación"
@@ -714,7 +683,6 @@ msgstr "Code"
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{sales_team}"
 msgstr "$F{sales_team}"
 
@@ -754,7 +722,7 @@ msgstr "date_closed"
 #: report:crm_claim_report_spanish:0
 msgid "Referencia"
 msgstr "Referencia"
-=======
+
 msgid "write_date"
 msgstr "write_date"
 
@@ -777,12 +745,10 @@ msgstr "efectuado"
 #: report:crm_claim_report_spanish:0
 msgid "Evaluación de la causa de la raíz"
 msgstr "Evaluación de la causa de la raíz"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "partner"
 msgstr "partner"
 
@@ -816,7 +782,7 @@ msgstr "nombre"
 #: report:crm_claim_report:0
 msgid "Audit"
 msgstr "Audit"
-=======
+
 msgid "resolution"
 msgstr "resolution"
 
@@ -829,12 +795,10 @@ msgstr "Steering Commitee"
 #: report:crm_claim_report_spanish:0
 msgid "fecha tope"
 msgstr "fecha tope"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{cause}"
 msgstr "$F{cause}"
 
@@ -857,7 +821,7 @@ msgstr "efectuado"
 #: report:crm_claim_report_spanish:0
 msgid "fecha de apertura"
 msgstr "fecha de apertura"
-=======
+
 msgid "$F{date_closed}"
 msgstr "$F{date_closed}"
 
@@ -871,34 +835,28 @@ msgstr "$F{type_action}"
 #: report:crm_claim_report_spanish:0
 msgid "firma"
 msgstr "firma"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "user"
 msgstr "user"
-=======
+
 msgid "invoice_reference"
 msgstr "invoice_reference"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "write_date"
 msgstr "write_date"
-=======
+
 msgid "cause"
 msgstr "cause"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "$F{user}"
 msgstr "$F{user}"
 
@@ -912,7 +870,7 @@ msgstr "\"/home/user/workspace/sfs_7/openerp-7.0-20130819-231103/openerp/addons/
 #: report:crm_claim_report_spanish:0
 msgid "Evaluación de la causa de la raíz"
 msgstr "Evaluación de la causa de la raíz"
-=======
+
 msgid "batch_type"
 msgstr "batch_type"
 
@@ -926,12 +884,10 @@ msgstr "Invoice"
 #: report:crm_claim_report_spanish:0
 msgid "$F{user_fault}"
 msgstr "$F{user_fault}"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
 msgid "invoice_reference"
 msgstr "invoice_reference"
 
@@ -940,7 +896,7 @@ msgstr "invoice_reference"
 #: report:crm_claim_report_spanish:0
 msgid "resolution"
 msgstr "resolution"
-=======
+
 msgid "partner"
 msgstr "partner"
 
@@ -948,16 +904,16 @@ msgstr "partner"
 #: report:crm_claim_report_spanish:0
 msgid "fecha"
 msgstr "fecha"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
+
 
 #. module: hmtk_crm_claim_customization
 #: report:crm_claim_report:0
 #: report:crm_claim_report_spanish:0
-<<<<<<< HEAD
+
 msgid "sales_team"
 msgstr "sales_team"
-=======
+
 msgid "$F{create_date}"
 msgstr "$F{create_date}"
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
+
 

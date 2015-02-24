@@ -52,14 +52,11 @@ class crm_claim_report(JasperDataParser.JasperDataParser):
         result = []
         claim_obj = self.pool.get('crm.claim')
         user_pool = self.pool.get('res.users')
-<<<<<<< HEAD
         source = {
             'reception': 'Reception',
             'customer_notification': 'Customer Notification',
             'auditing': 'Auditing',
             }
-=======
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
 #         if context['lang'] != 'en_US':
 #             data.update({'report_name': 'crm_claim_report_spanish'})
         
@@ -72,10 +69,7 @@ class crm_claim_report(JasperDataParser.JasperDataParser):
             data = {
                 'name': claim.name or '',
                 'claim_no': claim.claim_no or '',
-<<<<<<< HEAD
                 'source': claim.source and source[claim.source] or '',
-=======
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
                 'date': claim.date and datetime.strptime(claim.date, '%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y') or '',
                 'responsible':  claim.user_id and claim.user_id.name or '',
                 'priority': claim.priority or '',
@@ -101,12 +95,7 @@ class crm_claim_report(JasperDataParser.JasperDataParser):
                 'write_date': claim.write_date and datetime.strptime(claim.write_date, '%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y') or '',
                 'date_closed': claim.date_closed and datetime.strptime(claim.date_closed, '%Y-%m-%d %H:%M:%S').strftime('%d-%m-%Y') or '',
                 'user': user_name,
-<<<<<<< HEAD
                 'corrective_actions_permanent': claim.corrective_actions_permanent,
-=======
-                
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
-                
                 }
             result.append(data)
         result = sorted(result, key=itemgetter('name'))

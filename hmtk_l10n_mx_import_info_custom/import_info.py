@@ -34,8 +34,4 @@ class import_info(osv.Model):
         'customs': fields.many2one('import.info.custom', 'Customs')
         }
 import_info()
-<<<<<<< HEAD
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-=======
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558

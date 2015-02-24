@@ -18,7 +18,6 @@
 					<field name="batch_type"/>
 					<field name="invoice_reference"/>                    
                 </xpath>
-<<<<<<< HEAD
                 <xpath expr="//form/sheet/group[@groups='base.group_user']/field[@name='state']" position="after">
 					<field name="source"/>
                 </xpath>
@@ -30,8 +29,6 @@
 						<field name="results_taken_consequences" nolabel="1"/>
 					</group>
                 </xpath>
-=======
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
             </field>
         </record>
         

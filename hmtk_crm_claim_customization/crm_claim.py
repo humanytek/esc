@@ -31,12 +31,9 @@ class crm_claim(base_stage, osv.osv):
         'batch_type': fields.char('Batch Type', size=64),
         'invoice_reference': fields.char('Invoice Reference', size=64),
         'claim_no': fields.char('Claim', size=128),
-<<<<<<< HEAD
         'corrective_actions_permanent': fields.text('Corrective Actions Permanent'),
         'results_taken_consequences': fields.text('Results Taken Consequences'),
         'source': fields.selection([('reception', 'Reception'), ('customer_notification', 'Customer Notification'), ('auditing', 'Auditing')], 'Source'),
-=======
->>>>>>> cb4962fad3142e8e0b527bc62ab8e02abcbec558
         }
     def print_claim(self, cr, uid, ids, context=None):
         data = self.read(cr, uid, ids[0], context=context)

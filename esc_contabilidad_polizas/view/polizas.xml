@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- 23/02/2015 (felix) Modificaciones en vista form de Albaranes de entrada -->
+        <record id="view_picking_in_form_inherit_1" model="ir.ui.view">
+            <field name="name">stock.picking.in.form.inherit.1</field>
+            <field name="model">stock.picking.in</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+            <field name="arch" type="xml">
+		        
+		        <!-- 23/02/2015 (felix) (+) Cambiar etiqueta "Additional" por "Información adicional" -->
+                <xpath expr="//notebook/page[@string='Additional Info']" position="replace">
+                    
+		        </xpath>                
+                
+            </field>
+        </record>
+    
+    </data>
+</openerp>

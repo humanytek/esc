@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- 20/02/2015 (felix) Modificaciones en vista form de Albaranes de entrada -->
+        <record id="view_picking_in_form_inherit_1" model="ir.ui.view">
+            <field name="name">stock.picking.in.form.inherit.1</field>
+            <field name="model">stock.picking.in</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 20/02/2015 (felix) Page Productos
+                    (+) Cambiar etiqueta "Products" por "Productos"
+                    (+) Clase css para extender la vista con scroll
+                    (+) Cambiar etiqueta de placeholder en campo "note"
+                -->
+                <xpath expr="//notebook/page[@string='Products']" position="replace">
+                    <page string="Productos">
+				        <field name="move_lines" string="Movimientos en almacén" class="oe_list oe_view" context="{'address_in_id': partner_id, 'picking_type': 'in', 'form_view_ref':'stock.view_move_picking_form', 'tree_view_ref':'stock.view_move_picking_tree'}" options="{'reload_on_button': true}" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+				        <field name="note" placeholder="Información adicional..." class="oe_inline" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+			        </page>
+		        </xpath>
+		        
+		        <!-- 20/02/2015 (felix) Page Información adicional
+                    (+) Cambiar etiqueta "Additional" por "Información adicional"
+                -->
+                <xpath expr="//notebook/page[@string='Additional Info']" position="replace">
+                    <page string="Información adicional">
+				        <group>
+					        <group>
+						        <field name="invoice_type_id" modifiers="{'readonly': true}"/>
+						        <field name="move_type" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]], 'required': true}"/>
+						        <field name="type" invisible="1" modifiers="{'invisible': true, 'required': true}"/>
+						        <field name="auto_picking" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+					        </group>
+					        <group>
+						        <field name="company_id" widget="selection" invisible="1" modifiers="{'invisible': true, 'readonly': [['state', 'in', ['cancel', 'done']]], 'required': true}"/>
+						        <field name="warehouse_id" modifiers="{'readonly': true}"/>
+						        <field name="date_done" string="Fecha de recepción" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+					        </group>
+				        </group>
+			        </page>
+		        </xpath>                
+                
+            </field>
+        </record>
+    
+    </data>
+</openerp>

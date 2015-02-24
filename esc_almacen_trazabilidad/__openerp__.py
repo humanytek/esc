@@ -30,21 +30,19 @@
     'website': 'http://humanytek.com',
     'depends': [
         'base',
+        'stock',
         'l10n_mx_import_info',
         'hmtk_l10n_mx_import_info_custom',
-        'stock'
+        'esc_almacen_configuracion'
     ],
     'data': [
         # Seguridad y grupos
-        'security/aduana_group.xml',
     
         # Data
-        'data/aduana_data.xml',
         
         # Vistas
         'view/numeros_lote.xml',
-        'view/control_pedimentos.xml',
-        'view/aduana_view.xml',
+        'view/control_pedimentos.xml'
     ],
     'demo_xml': [],
     'installable': True,

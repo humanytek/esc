@@ -58,6 +58,11 @@
                     <field name="alert_date" string="Fecha de retest" required="1"/>
                 </xpath>
                 
+                <!-- 20/02/2015 (felix) (+) Cambiar etiqueta de "Creation Date" por "Fecha de creación" -->
+                <xpath expr="//field[@name='date']" position="replace">
+                    <field name="date" string="Fecha de fabricación" modifiers="{'required': true}"/>
+                </xpath>
+                
             </field>
         </record>
         
