@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 03/03/2015 (felix) Menú: Compras -> Configuración -> Compra -->
+        <menuitem id="mn_compra_config" name="Compra" parent="purchase.menu_purchase_config_purchase" sequence="15"/>
+            
+    </data>
+</openerp>

@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
+    
+        <!-- 26/02/2015 (felix) Modificaciones en action de Albaranes de entrada -->
+        <record id="stock.action_picking_tree4" model="ir.actions.act_window">
+            <field name="name">Albaranes de entrada</field>
+            <field name="res_model">stock.picking.in</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[('type','=','in')]</field>
+            <field name="context">{'contact_display': 'partner_address', 'default_type': 'in'}</field>
+            <field name="search_view_id" ref="stock.view_picking_in_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create an incoming shipment. 
+              </p><p>
+                The Incoming Shipments is the list of all orders you will
+                receive from your suppliers. An incoming shipment contains a
+                list of products to be received according to the original
+                purchase order.
+              </p>
+            </field>
+        </record>
         
         <!-- 20/02/2015 (felix) Modificaciones en vista form de Albaranes de entrada -->
         <record id="view_picking_in_form_inherit_1" model="ir.ui.view">
             <field name="name">stock.picking.in.form.inherit.1</field>
             <field name="model">stock.picking.in</field>
-            <field name="priority" eval="500"/>
+            <field name="priority" eval="450"/>
             <field name="inherit_id" ref="stock.view_picking_in_form"/>
             <field name="arch" type="xml">
             
@@ -41,10 +63,10 @@
 					        </group>
 				        </group>
 			        </page>
-		        </xpath>                
-                
-            </field>
+		        </xpath>
+		        		        		        
+	        </field>
         </record>
-    
+            
     </data>
 </openerp>

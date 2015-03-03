@@ -39,5 +39,6 @@ for suffix in ['', '.in', '.out']:
     report_sxw.report_sxw('report.albaranes.entrada' + suffix,
                           'stock.picking' + suffix,
                           'esc_almacen_albaranes/report/albaranes_entrada.rml',
-                          parser=albaranes_entrada)
+                          parser=albaranes_entrada,
+                          header='internal landscape')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

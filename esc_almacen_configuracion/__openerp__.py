@@ -19,10 +19,10 @@
 #
 ##############################################################################
 {
-    'name': 'HMTK Customs Configuration Customization',
+    'name': 'HMTK Stock Configuration Customization',
     'version': '0.1',
     'sequence': 1,
-    'category': 'Custom',
+    'category': 'Stock',
     'complexity': "easy",
     'description': """ This module is used to add some field and report for 
     Import Information Packing original package""",
@@ -31,6 +31,7 @@
     'depends': [
         'base',
         'stock',
+        'l10n_mx_import_info',
         'hmtk_l10n_mx_import_info_custom'
     ],
     'data': [

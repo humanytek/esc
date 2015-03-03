@@ -17,24 +17,24 @@ msgstr ""
 "X-Generator: Launchpad (build 17196)\n"
 
 #. module: stock
-#: view:stock.picking.in:0
-#: field:stock.picking.in,partner_id:0
-msgid "Supplier"
-msgstr "Proveedor"
+#: view:stock.picking.out:0
+#: field:stock.picking.out,partner_id:0
+msgid "Customer"
+msgstr "Cliente"
 
 #: field:stock.picking.in,purchase_id:0
 msgid "Purchase Order"
 msgstr "Orden de compra"
 
-#: field:stock.picking.in,date:0
+#: field:stock.picking.out,date:0
 msgid "Creation Date"
 msgstr "Fecha de creación"
 
-#: field:stock.picking.in,origin:0
+#: field:stock.picking.out,origin:0
 msgid "Source Document"
 msgstr "Documento de origen"
 
-#: field:stock.picking.in,move_type:0
+#: field:stock.picking.out,move_type:0
 msgid "Delivery Method"
 msgstr "Método de entrega"
 

@@ -19,7 +19,7 @@
 #
 ##############################################################################
 {
-    'name': 'HMTK Stock Customization',
+    'name': 'HMTK Journal Account Customization',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
@@ -30,8 +30,10 @@
     'website': 'http://humanytek.com',
     'depends': [
         'base',
-        'stock',
-        'esc_almacen_trazabilidad'
+        'account',
+        'account_cancel',
+        'hesatec_mx_accounting_reports_v7',
+        'asti_eaccounting_mx_base_70'        
     ],
     'data': [
         # Seguridad y grupos
@@ -40,6 +42,8 @@
         
         # View y menu
         'view/polizas.xml',
+        #'view/asientos.xml',
+        'view/asientos_line.xml',
         
         # Reportes        
         

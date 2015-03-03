@@ -53,10 +53,10 @@
 			                    </tr>
 			                    <tr>
 			                        <td> <label for="rfc" string="R.F.C. origen"/> </td>
-			                        <td> <field name="rfc" on_change="onchange_rfc(payee_id,rfc,context)"
+			                        <td> <field name="rfc" on_change="onchange_rfc(rfc)"
 				                    	    attrs="{'readonly' : [('type_key', 'in', ['foreign', 'payment'])], 'required' : [('type_key', 'in', ['cfdi','check','transfer','other'])]}"/> </td>
 			                        <td> <label for="rfc2" string="R.F.C. destino"/> </td>
-			                        <td> <field name="rfc2" on_change="onchange_rfc(payee_id,rfc2,context)"
+			                        <td> <field name="rfc2" on_change="onchange_rfc(rfc2)"
 				                    	    attrs="{'readonly' : [('type_key', '=', 'foreign')], 'required' : [('type_key', 'in', ['cfdi','check','transfer','payment','other'])]}"/> <td/> </td>
 			                        <td> <label string="sergsrgfsegfserserihfoisehbgoseht" style="padding-left:10px;color:#ffffff"/></td>
 			                    </tr>

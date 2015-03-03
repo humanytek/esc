@@ -20,5 +20,7 @@
 ##############################################################################
 
 import albaranes_entrada
+import albaranes_internos
+import albaranes_salida
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

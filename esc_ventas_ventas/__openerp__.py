@@ -38,7 +38,7 @@
         # Data
         
         # Vistas
-        #'view/cotizaciones.xml',
+        'view/cotizaciones.xml',
     ],
     'demo_xml': [],
     'installable': True,

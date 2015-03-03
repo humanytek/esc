@@ -24,8 +24,8 @@
                     <sheet>
                         <group cols="2">
                             <group>
-                                <field name="custom_number" string="Número de aduana"/>
-                                <field name="custom_name" string="Nombre de aduana"/>
+                                <field name="custom_number" string="Número de aduana" required="1"/>
+                                <field name="custom_name" string="Nombre de aduana" required="1"/>
                                 <field name="description" string="Descripción de aduana"/>
                             </group>
                             <group />

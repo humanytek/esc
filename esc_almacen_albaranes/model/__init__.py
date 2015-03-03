@@ -19,4 +19,6 @@
 #
 ##############################################################################
 import stock_move
+import stock_picking_in
+import import_info
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

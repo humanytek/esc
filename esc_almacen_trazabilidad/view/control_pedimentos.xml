@@ -12,14 +12,40 @@
             <field name="domain">[]</field>
             <field name="help">Here you are seeing the basical information need to track the packages aroun you importing information, it is used on Mexico and Latinamerica for put this information on every legal transport and transaction document (invoices, pickings, etc.)</field>
         </record>
+        
+        <!-- 25/02/2015 (felix) Modificación de vista tree -->
+        <record id="view_import_info_tree_inherit_1" model="ir.ui.view">
+            <field name="name">import.info.tree.inherit.1</field>
+            <field name="model">import.info</field>
+            <field name="inherit_id" ref="l10n_mx_import_info.view_import_info_tree"/>
+            <field name="arch" type="xml">
+                
+                <!-- 25/02/2015 (felix) Cambio de etiqueta "Numero de Operacion" por "Número de pedimento" -->
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" string="Número de pedimento"/>
+                </xpath>
+                
+                <!-- 25/02/2015 (felix) Cambio de etiqueta "Fecha" por "Fecha de pedimento" -->
+                <xpath expr="//field[@name='date']" position="replace">
+                    <field name="date" string="Fecha de pedimento"/>
+                </xpath>
+                
+                <!-- 25/02/2015 (felix) Cambio de etiqueta "Personalizados" por "Aduana" -->
+                <xpath expr="//field[@name='customs']" position="replace">
+                    <field name="customs" string="Aduana"/>
+                </xpath>
+            
+            </field>            
+        </record>
     
+        <!--  18/02/2015 (felix) Modificación de formulario para registro de pedimentos -->
         <record id="view_import_info_form_inherit_1" model="ir.ui.view">
             <field name="name">import.info.form.inherit.1</field>
             <field name="model">import.info</field>
             <field name="inherit_id" ref="l10n_mx_import_info.view_import_info_form"/>
             <field name="arch" type="xml">
             
-                <!-- 18/02/2015 (felix) Modificación de formulario para registro de pedimentos 
+                <!-- 18/02/2015 (felix)
                     (+) Agregar un sheet en el form
                     (+) Cambiar etiqueta de "Fecha" por "Fecha de pedimento"
                     (+) Ocultar campo "Proveedor" y quitar domain

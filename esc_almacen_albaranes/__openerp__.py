@@ -40,13 +40,16 @@
         # Data
         
         # View y menu
-        'view/albaranes_stock_move_view.xml', # Para Albaranes: Entrada, Internos y Salida
+        'view/albaranes_stock_move_view.xml',   # Para: Entrada, Internos y Salida
+        'view/albaranes.xml',                   # Para: Entrada, Internos y Salida
         'view/albaranes_entrada.xml',
+        'view/albaranes_internos.xml',
+        'view/albaranes_salida.xml',
         
         # Reportes
-        'report/albaranes_entrada.xml'
-        
-        
+        'report/albaranes_entrada.xml',
+        'report/albaranes_internos.xml',
+        'report/albaranes_salida.xml'
     ],
     'demo_xml': [],
     'installable': True,

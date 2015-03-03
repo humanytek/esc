@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- 25/02/2015 (felix) Modificación del form estándar de Albaranes -->
+        <record id="view_picking_form_inherit_1" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit.1</field>
+            <field name="model">stock.picking</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+		        
+		        <!-- 25/02/2015 (felix) (+) Agregar campo "Control de pedimento" -->
+		        <xpath expr="//field[@name='partner_id']" position="after">
+		            <field name="pedimento_id" string="Control de pedimento" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+	            </xpath>		        
+                
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -17,13 +17,8 @@
                     <field name="rfc"/>
                 </label>
                 <field name="street2" position="after">
-                    <div>
-                        <field name="ext_num" placeholder="Num. int." style="width: 49%%"/>
-                    	<field name="int_num" placeholder="Num. ext." style="width: 49%%"/>                        
-                    </div>
                     <field name="block" placeholder="Colonia" style="width: 64%%"/>
                     <field name="zip" placeholder="ZIP" style="width: 34%%"/>
-                    <field name="locality" placeholder="Localidad"/>
                     <field name="city" placeholder="Municipio"/>
                     <field name="state_id" placeholder="State"/>
                 </field>

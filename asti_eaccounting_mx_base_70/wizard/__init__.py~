@@ -1,9 +1,0 @@
-# 2015.02.19 19:23:55 CST
-import files_generator
-import overall_config
-import movelines_info_manager
-import xsdvalidation_handler
-
-+++ okay decompyling __init__.pyc 
-# decompiled 1 files: 1 okay, 0 failed, 0 verify failed
-# 2015.02.19 19:23:55 CST

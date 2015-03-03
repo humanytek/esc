@@ -2,18 +2,24 @@
 <openerp>
     <data>
         
-        <!-- 23/02/2015 (felix) Modificaciones en vista form de Albaranes de entrada -->
-        <record id="view_picking_in_form_inherit_1" model="ir.ui.view">
-            <field name="name">stock.picking.in.form.inherit.1</field>
-            <field name="model">stock.picking.in</field>
-            <field name="priority" eval="500"/>
-            <field name="inherit_id" ref="stock.view_picking_in_form"/>
+        <!-- 23/02/2015 (felix) Modificaciones en vista form de Pólizas -->
+        <record id="view_move_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.move.form.inherit.1</field>
+            <field name="model">account.move</field>
+            <field name="priority" eval="45"/>
+            <field name="inherit_id" ref="account.view_move_form"/>
             <field name="arch" type="xml">
 		        
+		        <!-- 23/02/2015 (felix) (+) Cambiar etiqueta "Journal Items" por "Items de diario" -->
+                <xpath expr="//notebook/page[@string='Journal Items']" position="attributes">
+                    <attribute name="class">oe_view oe_list</attribute>
+                    <attribute name="string">Items de diario</attribute>
+		        </xpath>
+		        
 		        <!-- 23/02/2015 (felix) (+) Cambiar etiqueta "Additional" por "Información adicional" -->
-                <xpath expr="//notebook/page[@string='Additional Info']" position="replace">
-                    
-		        </xpath>                
+		        <xpath expr="//notebook/page[@string='Items de diario']/field[@name='narration']" position="replace">
+		            <field name="narration" colspan="4" placeholder="Agregar notas adicionales..." nolabel="1" height="50" modifiers="{}"/>
+	            </xpath>
                 
             </field>
         </record>

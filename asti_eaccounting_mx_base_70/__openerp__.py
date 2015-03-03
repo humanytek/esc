@@ -1,24 +1,3 @@
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution    
-#    Copyright (C) 2010-2015 Humanytek SAPI de CV (<http://www.humanytek.com>). 
-#    All Rights Reserved
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
-
 {
     'name' : 'Contabilidad electrónica para México',
     'description' : """Adecuación para cumplir con los requisitos de la Contabilidad Electrónica
@@ -38,8 +17,8 @@
          * Cuentas bancarias para los registros de compañía.
          """,
     'version' : '1.0',
-    'author' : 'Humanytek',
-    'website' : 'http://www.humanytek.com',
+    'author' : 'ASTI Services',
+    'website' : 'http://www.astiservices.com',
     'license' : 'GPL-3',
     'category' : 'Accounting',
     'depends' : ['base', 'account', 'account_cancel', 'hesatec_mx_accounting_reports_v7'],
@@ -69,3 +48,5 @@
     'installable' : 'True',
     'auto_install' : False
 }
+# Revision: 1.6
+# Release: 1.1
