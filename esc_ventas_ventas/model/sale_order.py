@@ -36,4 +36,26 @@ class sale_order_esc(osv.Model):
             ('desarrollo','Operaciones de desarrollo')], 'Operacion'),
     }
     
+    # 18/06/2015 (felix) Modificado metodo original para discriminar el order_line
+    def copy(self, cr, uid, id, default=None, context=None):
+        if not default:
+            default = {}
+        _logger.warn('Valor de id %s', id)
+        _logger.warn('Valor de default %s', default)
+        _logger.warn('Valor de context %s', context)
+        
+        for i in self.browse(cr, uid, id, context):
+            _logger.warn('Valor de order_line %s', i.order_line)
+        '''
+        default.update({
+            'date_order': fields.date.context_today(self, cr, uid, context=context),
+            'state': 'draft',
+            'invoice_ids': [],
+            'date_confirm': False,
+            'client_order_ref': '',
+            'name': self.pool.get('ir.sequence').get(cr, uid, 'sale.order'),
+        })
+        return super(sale_order_esc, self).copy(cr, uid, id, default, context=context)
+        '''
+    
 sale_order_esc()
