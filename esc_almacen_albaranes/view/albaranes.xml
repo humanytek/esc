@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        
+        <!-- 25/02/2015 (felix) Modificación del form estándar de Albaranes -->
+        <!--
+        <record id="view_picking_form_inherit_1" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit.1</field>
+            <field name="model">stock.picking</field>
+            <field name="priority" eval="5"/>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+	    -->    
+		        <!-- 25/02/2015 (felix) (+) Agregar campo "Control de pedimento" 
+		            17/04/2015 (felix) comentado, aqui no lo quieren
+		        -->
+		        <!--
+		        <xpath expr="//field[@name='partner_id']" position="after">
+		            <field name="pedimento_id" string="Control de pedimento" 
+		                modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+	            </xpath>
+	            -->
+        <!--
+            </field>
+        </record>
+        -->
+        
+        <!-- 25/02/2015 (felix) Modificación del form estándar de Albaranes -->
+        <record id="view_move_picking_tree_inherit_1" model="ir.ui.view">
+            <field name="name">stock.move.tree.inherit.1</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="4"/>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+            
+                <!-- 07/04/2015 (felix) Agregar campo "product_desglose" para resaltar producto -->
+                <xpath expr="//tree/field[@name='product_id']" position="before">
+                    <field name="product_desglose" invisible="1"/>
+                </xpath>
+            
+                <!-- 07/04/2015 (felix) Agregar atributo color para resaltar desglose de productos -->
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="colors">blue: product_desglose == True</attribute>
+                </xpath>
+                
+                <!-- 16/04/2015 (felix) Cambio de etiqueta "N° Serial" por "Lote" -->
+		        <xpath expr="//tree/field[@name='prodlot_id']" position="replace">
+                    <field name="prodlot_id" string="Lote" groups="stock.group_production_lot"/>
+		        </xpath>
+            
+            </field>
+        </record>
+        
+        <!-- 16/04/2015 (felix) Cambios en vista de formulario para albaranes -->
+        <record id="view_move_picking_form_inherit_1" model="ir.ui.view">
+            <field name="name">stock.move.picking.form.inherit.1</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- 17/04/2015 (felix) Agregar Número de pedimento 
+                    movido de la vista superior a la vista line por producto
+                -->
+                <xpath expr="//group/group[@string='Traceability']" position="after">
+                    <field name="product_desglose" invisible="1"/>
+                    <group string="Pedimento">
+                        <field name="pedimento_id" string="Control de pedimento" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+                    </group>
+                </xpath>
+                
+            </field>
+        </record>
+               
+    </data>
+</openerp>

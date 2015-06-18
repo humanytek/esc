@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 17/03/2015 (felix) Menú: Contabilidad/Clientes/Facturas de cliente -->
+        <record id="account_invoice_form_inherit_1" model="ir.ui.view">
+            <field name="name">account.invoice.form.inherit.1</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- 17/03/2015 (felix) 
+                    (+) Agregar campo "Código y nombre de producto" según el cliente
+                -->
+                <xpath expr="//form/sheet/notebook/page[@string='Invoice Lines']/field[@name='invoice_line']/tree/field[@name='name']" position="after">
+                    <field name="cod_name_prod" string="Código y nombre de producto" help="Código y nombre del producto según el cliente"/>
+                    <field name="caducidad_min" invisible="1"/>
+                    <field name="condicion" invisible="1"/>
+                    <field name="especificacion" invisible="1"/>
+                </xpath>
+                            
+            </field>            
+        </record>
+        
+    </data>
+</openerp>

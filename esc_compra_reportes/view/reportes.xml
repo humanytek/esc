@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 14/04/2015 (felix) Menú para compras/Reportes -->
+        <menuitem id="mn_reportes_compra" name="Reportes" parent="base.menu_purchase_root" sequence="3"/>
+    
+        <!-- 14/04/2015 (felix) Form para Reportes de compra -->
+        <record id="view_reportes_compras_tree" model="ir.ui.view">
+            <field name="name">view.reportes.compras.tree</field>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Order Lines" colors="gray: state == 'done'; blue: state == 'confirmed'; red: state == 'cancel'" edit="false">
+                    <field name="product_id" on_change="onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,False,price_unit,context)"/>
+                    <field name="order_id" string="Orden de compra"/>
+                    <field name="date_planned"/>
+                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="product_qty" on_change="onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                    <field name="product_uom" groups="product.group_uom" on_change="onchange_product_uom(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                    <field name="price_unit"/>
+                    <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+                    <field name="price_subtotal" sum="Subtotal"/>
+                    <field name="state" invisible="1"/>
+                    <field name="tipo_venta" invisible="1"/>
+                    <field name="operaciones" invisible="1"/>
+                    <field name="linea" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 14/04/2015 (felix) Search para Reportes de compra -->
+        <record id="search_purchase_order_line" model="ir.ui.view">
+            <field name="name">purchase.order.line.search</field>
+            <field name="model">purchase.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Lista de productos comprados">
+                    <field name="name" string="Lista de productos comprados" filter_domain="['|',('name','ilike', self)]"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Producto" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Orden de compra" domain="[]" context="{'group_by':'order_id'}"/>
+                        <filter string="Fecha planificada" domain="[]" context="{'group_by':'date_planned'}"/>
+                        <separator />
+                        <filter string="Tipo de venta" domain="[]" context="{'group_by':'tipo_venta'}"/>
+                        <filter string="Operación" domain="[]" context="{'group_by':'operaciones'}"/>
+                        <filter string="Línea" domain="[]" context="{'group_by':'linea'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+        <!-- 14/04/2015 (felix) Action para Reportes de compra -->
+        <record id="action_reportes_compras" model="ir.actions.act_window">
+            <field name="name">Reportes de compra</field>
+            <field name="view_id" ref="view_reportes_compras_tree"/>
+            <field name="res_model">purchase.order.line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('state', 'in', ['done','confirmed','cancel'])]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="search_purchase_order_line"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create"></p>
+            </field>
+        </record>
+        
+        <!-- 14/04/2015 (felix) Menú compras/Reportes/Reportes de compra -->
+        <menuitem id="smn_reportes_compras" name="Reportes de compras" parent="mn_reportes_compra" action="action_reportes_compras" sequence="1"/>
+            
+    </data>
+</openerp>

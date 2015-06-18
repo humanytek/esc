@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 10/04/2015 (felix) Form para Certificado de análisis -->
+        <record id="view_cert_analisis_tree" model="ir.ui.view">
+            <field name="name">view.cert.analisis.tree</field>
+            <field name="model">cert.analisis</field>
+            <field name="arch" type="xml">
+                <tree string="Certificado de análisis" colors="red: fecha_caducidad &lt; current_date">
+                    <field name="name" string="Certificado de análisis / Analysis certificate"/>
+                    <field name="product_id" string="Producto / Product"/>
+                    <field name="lote" string="Lote / Lot"/>
+                    <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date"/>
+                    <field name="fecha_reanalisis" string="Fecha de reanálisis / Reanalysis date"/>
+                    <field name="fecha_caducidad" string="Fecha de caducidad / Due date"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 10/04/2015 (felix) Form para Certificado de análisis -->
+        <record id="view_cert_analisis_form" model="ir.ui.view">
+            <field name="name">view.cert.analisis.form</field>
+            <field name="model">cert.analisis</field>
+            <field name="arch" type="xml">
+                <form string="Albarán de analisis-entrada" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                        <label for="name" string="Certificado de análisis / Analysis certificate" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group>
+                                <field name="product_id" string="Producto / Product" required="1"/>
+                                <field name="lote" string="Lote / Lot"/>
+                                <!-- 22/04/2015 (felix) Ocultar campo
+                                <field name="certificado" string="Certificado"/>
+                                -->
+                            </group>
+                            <group>
+                                <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date" required="1"/>
+                                <field name="fecha_reanalisis" string="Fecha de reanálisis / Renalysis date" required="1"/>
+                                <field name="fecha_caducidad" string="Fecha de caducidad / Due date" required="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Pruebas">
+                                <field name="cert_line_ids" string="Pruebas" class="oe_list oe_view">
+                                    <tree string="Pruebas" editable="1">
+                                        <field name="name" string="Prueba / Test" required="1" on_change="on_change_prueba(name)"/>
+                                        <field name="especificacion" string="Especificación / Epecification"/>
+                                        <field name="resultado" string="Resultado / Result"/>
+                                    </tree>
+                                </field>
+                                <separator />
+                                <field name="informacion" placeholder="Información adicional / Additional information"/>
+                                <field name="informacion_1" placeholder="Información adicional / Additional information"/>
+                                <group col="2">
+                                    <group>
+                                        <field name="firma" string="Persona firmante / Sign"/>
+                                        <field name="resp_sanitario" string="Resp. sanitario / Sanitary responsable"/>
+                                    </group>
+                                    <group>
+                                        <field name="cod_product" string="Código de producto / Product code"/>
+                                        <field name="pedido_compra" string="Pedido de compra / Order purchase"/>
+                                    </group>                                    
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 10/04/2015 (felix) Search para Certificado de análisis -->
+        <record id="search_cert_analisis" model="ir.ui.view">
+            <field name="name">cert.analisis.search</field>
+            <field name="model">cert.analisis</field>
+            <field name="arch" type="xml">
+                <search string="Lista certificados de análisis">
+                    <field name="name" string="Lista certificados de análisis / Analysis certificate list" filter_domain="['|',('name','ilike', self)]"/>
+                    <group expand="0" string="Agrupar por / Group by:">
+                        <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Lote" domain="[]" context="{'group_by':'lote'}"/>
+                        <separator />
+                        <filter string="Fecha de fabricación / Manufacturing date" domain="[]" context="{'group_by':'fecha_fabricacion'}"/>
+                        <filter string="Fecha de reanálisis / Reanalysis date" domain="[]" context="{'group_by':'fecha_reanalisis'}"/>
+                        <filter string="Fecha de caducidad / Due date" domain="[]" context="{'group_by':'fecha_caducidad'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+        <!-- 10/04/2015 (felix) Action para Certificado de análisis -->
+        <record id="action_cert_analisis" model="ir.actions.act_window">
+            <field name="name">Certificado de análisis</field>
+            <field name="res_model">cert.analisis</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="search_cert_analisis"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click para crear una analisis-entrada de almacén. 
+              </p>
+            </field>
+        </record>
+        
+        <!-- 10/04/2015 (felix) Menú para Certificado de análisis -->
+        <menuitem id="mn_cert_analisis" name="Certificado de análisis" parent="stock.menu_traceability" action="action_cert_analisis" sequence="12"/>
+            
+    </data>
+</openerp>

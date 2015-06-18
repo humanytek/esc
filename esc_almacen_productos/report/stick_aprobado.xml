@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report id="report_stick_aprobado" model="stick.aprobado" name="report.stick.aprobado" 
+            string="Etiquetas de aprobado" rml="esc_almacen_productos/report/stick_aprobado.rml"/>
+        
+    </data>
+</openerp>

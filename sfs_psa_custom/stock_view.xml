@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="sfs_stock_move_tree_inherit" model="ir.ui.view">
+            <field name="name">sfs.stock.move.tree.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_qty']" position="after">
+						<field name="brand_id" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    	
+    	<record id="sfs_stock_move_form_inherit" model="ir.ui.view">
+            <field name="name">sfs.stock.move.form.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+						<field name="brand_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="sfs_stock_move_search_inherit" model="ir.ui.view">
+            <field name="name">sfs.stock.move.search.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@string='Product']" position="after">
+                        <filter string="Brand" name="by_brand" icon="terp-accessories-archiver" domain="[]"  context="{'group_by':'brand_id'}"/>
+                </xpath>
+            </field>
+        </record>
+        
+     </data>
+</openerp>

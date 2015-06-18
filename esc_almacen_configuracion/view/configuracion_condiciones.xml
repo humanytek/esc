@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 08/04/2015 (felix) Crear tree para registro de aduanas -->
+        <record id="tree_condicion_entrada_pre" model="ir.ui.view">
+            <field name="name">tree.condicion.entrada.pre</field>
+            <field name="model">stock.picking.pre.condicion</field>
+            <field name="arch" type="xml">
+                <tree string="Condiciones albarán de pre-entrada">
+                    <field name="name" string="Condición de pre-entrada"/>
+                    <field name="check_sel" string="Tiene comentario u observación"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 08/04/2015 (felix) Crear form para registro de aduanas -->
+        <record id="form_condicion_entrada_pre" model="ir.ui.view">
+            <field name="name">form.condicion.entrada.pre</field>
+            <field name="model">stock.picking.pre.condicion</field>
+            <field name="arch" type="xml">
+                <form string="Condición albarán de pre-entrada" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Condición de pre-entrada" required="1"/>
+                            <field name="check_sel" string="Tiene comentario u observación"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- 08/04/2015 (felix) Crear action para registro de aduanas -->
+        <record id="action_condicion_entrada_pre" model="ir.actions.act_window">
+            <field name="name">Condición albarán de pre-entrada</field>
+            <field name="res_model">stock.picking.pre.condicion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help">Registro y configuración de condiciones para albarán de pre-entrada</field>
+        </record>
+        
+        <!-- 08/04/2015 (felix) Crear menu para registro de aduanas -->
+        <menuitem id="mn_entrada_pre_cfg" name="Condiciones albarán de pre-entrada" action="action_condicion_entrada_pre" sequence="7" 
+            parent="stock.menu_stock_configuration"/>
+        
+    </data>
+</openerp>

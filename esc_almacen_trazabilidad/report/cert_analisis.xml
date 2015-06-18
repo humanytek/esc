@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report id="report_cert_analisis" model="cert.analisis" name="cert.analisis.report" 
+            string="Certificado de análisis / Analysis certificate" rml="esc_almacen_trazabilidad/report/cert_analisis.rml"/>
+        
+    </data>
+</openerp>

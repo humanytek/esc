@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	<record id="view_account_sale_margin_tree" model="ir.ui.view">
+    		<field name="name">sale.margin_product.tree</field>
+            <field name="model">sale.margin_product</field>
+            <field name="arch" type="xml">
+            	<tree string="Sale Margin Analysis" create="false">
+            		<field name="invoice_number"/>
+            		<field name="date_invoice"/>
+            		<field name="partner_id"/>
+            		<field name="user_id"/>
+            		<field name="categ_id"/>
+            		<field name="product_name"/>
+            		<field name="quantity" sum="Quantity"/>
+            		<field name="uom"/>
+            		<field name="price_unit"/>
+            		<field name="standard_price"/>
+            		<field name="price_subtotal" sum="Product Amount"/>
+            		<field name="cost_ammount" sum="Cost Amount"/>
+            		<field name="margin" sum='Margin'/>
+            		<field name="margin_percent"/>
+            		<field name="product_id" invisible="1"/>
+            		<field name="account_journal_id" invisible="1"/>
+            	</tree>
+            </field>
+    	</record>
+    	<record id="view_account_sale_margin_form" model="ir.ui.view">
+    		<field name="name">sale.margin_product.form</field>
+            <field name="model">sale.margin_product</field>
+            <field name="arch" type="xml">
+            	<form string="Invoice sale margin Analysis" create="false" version="7.0">
+            		<group string="Sale Margin" col="4">
+	            		<field name="invoice_number"/>
+	            		<field name="date_invoice"/>
+	            		<field name="partner_id"/>
+	            		<field name="user_id"/>
+	            		<field name="categ_id"/>
+	            		<field name="product_name"/>
+	            		<field name="quantity"/>
+	            		<field name="uom"/>
+	            		<field name="price_unit"/>
+	            		<field name="standard_price"/>
+	            		<field name="price_subtotal"/>
+	            		<field name="cost_ammount"/>
+	            		<field name="margin"/>
+	            		<field name="margin_percent"/>
+	            		<field name="product_id" invisible="1"/>
+            			<field name="account_journal_id" invisible="1"/>
+            		</group>
+            	</form>
+            </field>
+    	</record>
+    	<record id="view_account_sale_margin_search" model="ir.ui.view">
+    		<field name="name">sale.margin_product.search</field>
+            <field name="model">sale.margin_product</field>
+            <field name="arch" type="xml">
+            	<search string="Invoice sale margin Analysis">
+            		<group expand="0" string="Group By...">
+                        <filter string="Salesperson" domain="[]" context="{'group_by':'user_id'}"/>
+                        <filter string="Product category" domain="[]" context="{'group_by':'categ_id'}"/>
+                        <filter string="Unit of Measure" domain="[]" context="{'group_by':'uom'}"/>
+                        <filter string="Customer" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Invoice Date" domain="[]" context="{'group_by':'date_invoice'}"/>
+                    </group>                    
+            	</search>
+            </field>
+    	</record>
+    	
+    	<record id="view_account_sale_margin_action1" model="ir.actions.act_window">
+            <field name="name">Sale Margin</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.margin_product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_account_sale_margin_search"/>
+        </record>
+        
+ 	 </data>
+</openerp>

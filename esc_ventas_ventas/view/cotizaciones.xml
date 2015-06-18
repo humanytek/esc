@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 03/03/2015 (felix) Ventas/Ventas/Cotizaciones -->
+        <record id="sale_order_form_inherit_1" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.1</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 03/03/2015 (felix)
+                    (+) Agregar campo "Fecha de entreaga"
+                    (+) Agregar campo "Fecha de pedidos"
+                -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='address_allotment_id']" position="before">
+                    <field name="fecha_pedido" string="Fecha de pedido"/>
+                    <field name="fecha_entrega" string="Fecha de entrega"/>
+                </xpath>
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='tax_id']" position="before">
+                    <field name="fecha_pedido" string="Fecha de pedido"/>
+                    <field name="fecha_entrega" string="Fecha de entrega"/>
+                </xpath>
+                
+                <!-- 03/03/2015 (felix) (+) Agregar atributo vista lista en order_line -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']" position="attributes">
+                    <attribute name="class">oe_view oe_list</attribute>
+                </xpath>
+            
+            </field>
+        </record>
+        
+        <!-- 03/03/2015 (felix) Cambiar "Quotations" por "Cotizaciones" en el action -->
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Cotizaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,form,calendar,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation, the first step of a new sale.
+              </p><p>
+                OpenERP will help you handle efficiently the complete sale flow:
+                from the quotation to the sales order, the
+                delivery, the invoicing and the payment collection.
+              </p><p>
+                The social feature helps you organize discussions on each sales
+                order, and allow your customers to keep track of the evolution
+                of the sales order.
+              </p>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

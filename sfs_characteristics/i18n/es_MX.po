@@ -1,0 +1,212 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* sfs_characteristics
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-11 12:08+0000\n"
+"PO-Revision-Date: 2014-04-11 12:08+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_fuel
+msgid "product.fuel"
+msgstr "product.fuel"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_application
+msgid "product.application"
+msgstr "product.application"
+
+#. module: sfs_characteristics
+#: field:product.product,aspirate_id:0
+#: field:product.product,aspirate_id2:0
+msgid "Aspirate"
+msgstr "Aspiracion"
+
+#. module: sfs_characteristics
+#: field:product.product,capacity:0
+#: field:product.product,capacity2:0
+msgid "Capacity"
+msgstr "Capacidad"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_charactersitics
+msgid "product.charactersitics"
+msgstr "product.charactersitics"
+
+#. module: sfs_characteristics
+#: selection:product.brand,type:0
+#: selection:product.charactersitics,type:0
+#: field:product.product,power_plant:0
+msgid "Power Plant"
+msgstr "Power Plant"
+
+#. module: sfs_characteristics
+#: field:product.product,boot_id:0
+msgid "Boot"
+msgstr "Arranque"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_model
+msgid "product.model"
+msgstr "product.model"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_line
+msgid "product.line"
+msgstr "product.line"
+
+#. module: sfs_characteristics
+#: field:product.product,application_id:0
+msgid "Application"
+msgstr "Aplicación"
+
+#. module: sfs_characteristics
+#: field:product.product,fuel_id:0
+msgid "Fuel"
+msgstr "Fuel"
+
+#. module: sfs_characteristics
+#: field:product.brand,type:0
+#: field:product.charactersitics,type:0
+msgid "Type"
+msgstr "Type"
+
+#. module: sfs_characteristics
+#: field:product.product,has_charactersitics:0
+msgid "Has Characteristics"
+msgstr "Tiene Caracteristicas"
+
+#. module: sfs_characteristics
+#: selection:product.brand,type:0
+#: selection:product.charactersitics,type:0
+#: field:product.product,engine:0
+#: field:product.product,engine_id:0
+msgid "Engine"
+msgstr "Motor"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: sfs_characteristics
+#: field:product.product,assembly_id:0
+msgid "Assembly"
+msgstr "Ensamble"
+
+#. module: sfs_characteristics
+#: field:product.product,brand_id:0
+#: field:product.product,brand_id2:0
+#: field:product.product,power_brand_id:0
+msgid "Brand"
+msgstr "Brand"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_boot
+msgid "product.boot"
+msgstr "product.boot"
+
+#. module: sfs_characteristics
+#: field:product.product,line_id:0
+msgid "Line"
+msgstr "Linea"
+
+#. module: sfs_characteristics
+#: field:product.product,case:0
+msgid "Case"
+msgstr "Gabinete"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_brand
+msgid "product.brand"
+msgstr "product.brand"
+
+#. module: sfs_characteristics
+#: field:product.product,cylinders:0
+#: field:product.product,cylinders2:0
+msgid "Cylinders"
+msgstr "Cilindros"
+
+#. module: sfs_characteristics
+#: field:product.application,name:0
+#: field:product.aspirate,name:0
+#: field:product.assembly,name:0
+#: field:product.boot,name:0
+#: field:product.brand,name:0
+#: field:product.charactersitics,name:0
+#: field:product.engine.type,name:0
+#: field:product.fuel,name:0
+#: field:product.line,name:0
+#: field:product.model,name:0
+#: field:product.product,engine_name:0
+#: field:product.quality,name:0
+#: field:product.transference,name:0
+msgid "Name"
+msgstr "Name"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_engine_type
+msgid "product.engine.type"
+msgstr "product.engine.type"
+
+#. module: sfs_characteristics
+#: field:product.product,transference_id:0
+msgid "Transference"
+msgstr "Transferencia"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_quality
+msgid "product.quality"
+msgstr "product.quality"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_transference
+msgid "product.transference"
+msgstr "product.transference"
+
+#. module: sfs_characteristics
+#: field:product.product,model_id:0
+msgid "Model"
+msgstr "Modelo"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_aspirate
+msgid "product.aspirate"
+msgstr "product.aspirate"
+
+#. module: sfs_characteristics
+#: view:product.product:0
+#: field:product.product,characteristics_id:0
+#: field:product.product,power_characteristics_id:0
+msgid "Characteristics"
+msgstr "Características"
+
+#. module: sfs_characteristics
+#: field:product.product,cont_term:0
+msgid "Cont/Term"
+msgstr "Cont/Term"
+
+#. module: sfs_characteristics
+#: model:ir.model,name:sfs_characteristics.model_product_assembly
+msgid "product.assembly"
+msgstr "product.assembly"
+
+#. module: sfs_characteristics
+#: field:product.product,engine_type_id:0
+msgid "Type of engine"
+msgstr "Tipo de Motor"
+
+#. module: sfs_characteristics
+#: field:product.product,quality_id:0
+msgid "Quality"
+msgstr "Calidad"
+

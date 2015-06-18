@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 19/02/2015 (felix) Crear form para registro de aduanas -->
+        <record id="group_compras_etapa_admin" model="res.groups">
+            <field name="name">Administrar etapas de compras</field>
+            <field name="comment">El usuario puede administrar registros de etapas para pedidos de compra</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        
+    </data>
+</openerp>

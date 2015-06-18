@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_transaction_history,user.transaction.history,model_user_transaction_history,group_sale_comission_manager,1,1,1,1
+access_user_transaction_history_user,user.transaction.history.user,model_user_transaction_history,group_sale_comission_user,1,0,0,0
+access_penalization_rule,penalization.rule,model_penalization_rule,group_sale_comission_manager,1,1,1,1
+access_penalization_rule_user,penalization.rule.user,model_penalization_rule,group_sale_comission_user,1,0,0,0
+access_penalization_rule_line,penalization.rule.line,model_penalization_rule_line,group_sale_comission_manager,1,1,1,1
+access_penalization_rule_line_user,penalization.rule.line.user,model_penalization_rule_line,group_sale_comission_user,1,0,0,0
+access_payment_comission_report,payment.comission.report,model_payment_comission_report,group_sale_comission_manager,1,1,1,1
+access_payment_comission_report_user,payment.comission.report,model_payment_comission_report,group_sale_comission_user,1,1,1,1

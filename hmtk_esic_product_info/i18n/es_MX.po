@@ -1,0 +1,148 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* hmtk_esic_product_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20130819-231103\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-11-27 07:27+0000\n"
+"PO-Revision-Date: 2014-11-27 07:27+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: hmtk_esic_product_info
+#: model:ir.model,name:hmtk_esic_product_info.model_product_attribute
+msgid "product.attribute"
+msgstr "product.attribute"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+#: field:product.product,document_ids:0
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: hmtk_esic_product_info
+#: model:ir.module.category,name:hmtk_esic_product_info.hmtk_product_attributes
+#: view:product.product:0
+#: field:product.product,product_attribute_ids:0
+msgid "Product Attributes"
+msgstr "Atributos del producto"
+
+#. module: hmtk_esic_product_info
+#: field:product.product,cas_no:0
+msgid "CAS Number"
+msgstr "Numero Cas"
+
+#. module: hmtk_esic_product_info
+#: view:product.document:0
+#: field:product.document,document:0
+msgid "Document"
+msgstr "Documento"
+
+#. module: hmtk_esic_product_info
+#: view:product.attribute:0
+msgid "Product Attribute"
+msgstr "los atributos del producto"
+
+#. module: hmtk_esic_product_info
+#: field:product.document,name:0
+msgid "Document Name"
+msgstr "Nombre del documento"
+
+#. module: hmtk_esic_product_info
+#: model:ir.model,name:hmtk_esic_product_info.model_product_product
+#: field:product.attribute,product_id:0
+#: field:product.document,product_id:0
+#: field:product.tarrif_fraction,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: hmtk_esic_product_info
+#: model:res.groups,name:hmtk_esic_product_info.group_product_attributes_manager
+msgid "Product Attributes Manager"
+msgstr "Administrador de atributos de producto"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: hmtk_esic_product_info
+#: model:ir.model,name:hmtk_esic_product_info.model_product_document
+msgid "product.document"
+msgstr "product.document"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+msgid "User state"
+msgstr "User state"
+
+#. module: hmtk_esic_product_info
+#: field:product.product,group_user:0
+msgid "User"
+msgstr "User"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+#: field:product.product,tarrif_fraction_ids:0
+#: view:product.tarrif_fraction:0
+#: field:product.tarrif_fraction,name:0
+msgid "Tarrif Fraction"
+msgstr "Fracción Arancelaria"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+msgid "Manufacturer"
+msgstr "Fabricante"
+
+#. module: hmtk_esic_product_info
+#: model:ir.model,name:hmtk_esic_product_info.model_product_tarrif_fraction
+msgid "product.tarrif_fraction"
+msgstr "product.tarrif_fraction"
+
+#. module: hmtk_esic_product_info
+#: sql_constraint:product.tarrif_fraction:0
+msgid "Tarrif fraction must be unique"
+msgstr "Fracción Arancelaria debe ser único"
+
+#. module: hmtk_esic_product_info
+#: field:product.product,previous_no:0
+msgid "Previous Number"
+msgstr "Numero Anterior"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+msgid "Features"
+msgstr "Características"
+
+#. module: hmtk_esic_product_info
+#: field:product.attribute,name:0
+msgid "Attribute"
+msgstr "atributo"
+
+#. module: hmtk_esic_product_info
+#: field:product.product,group_manager:0
+msgid "Manager"
+msgstr "gerente"
+
+#. module: hmtk_esic_product_info
+#: view:product.product:0
+msgid "Product Documentation"
+msgstr "Documentacion del producto"
+
+#. module: hmtk_esic_product_info
+#: model:res.groups,name:hmtk_esic_product_info.group_product_attributes_user
+msgid "Product Attributes User"
+msgstr "Usuario de atributos de producto"
+
+#. module: hmtk_esic_product_info
+#: help:product.product,cas_no:0
+msgid "Entering CAS number"
+msgstr "Entrando número CAS
+"
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 26/02/2015 (felix) Modificaciones en action de Albaranes internos -->
+        <record id="stock.action_picking_tree6" model="ir.actions.act_window">
+            <field name="name">Albaranes internos</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[('type','=','internal')]</field>
+            <field name="context">{'contact_display': 'partner_address', 'search_default_available': 1}</field>
+            <field name="search_view_id" ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create an internal move request. 
+              </p><p>
+                Most operations are prepared automatically by OpenERP according
+                to your preconfigured logistics rules, but you can also record
+                manual stock movements.
+              </p>
+            </field>
+        </record>
+        
+        <!-- 25/02/2015 (felix) Modificaciones en vista form de Albaranes internos -->
+        <record id="stock_picking_form_inherit_3" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit.3</field>
+            <field name="model">stock.picking</field>
+            <field name="priority" eval="450"/>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 25/02/2015 (felix) Page Productos
+                    (+) Cambiar etiqueta "Products" por "Productos"
+                    (+) Clase css para extender la vista con scroll
+                    (+) Cambiar etiqueta de placeholder en campo "note"
+                -->
+                <xpath expr="//notebook/page[@string='Products']" position="replace">
+                    <page string="Productos">
+                        <field name="move_lines" class="oe_view oe_list" string="Stock Move" context="{'address_in_id': partner_id, 'form_view_ref':'stock.view_move_picking_form', 'tree_view_ref':'stock.view_move_picking_tree', 'picking_type': 'internal'}" options='{"reload_on_button": true}'/>
+                        <field name="note" placeholder="Add an internal note..." class="oe_inline"/>
+                    </page>
+		        </xpath>
+		        
+		        <!-- 25/02/2015 (felix) Page Información adicional
+                    (+) Cambiar etiqueta "Additional" por "Información adicional"
+                -->
+                <xpath expr="//notebook/page[@string='Additional Info']" position="replace">
+                    <page string="Información adicional">
+                        <group>
+                            <group>
+                                <field name="move_type"/>
+                                <field name="type" invisible="1"/>
+                                <field name="auto_picking" groups="base.group_user"/>
+                            </group>
+                            <group>
+                                <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                                <field name="date_done" groups="base.group_no_one"/>
+                            </group>
+                        </group>
+                    </page>
+		        </xpath>
+		        
+		        <!-- 08/04/2015 (felix) (+) Agregar campo "Código de pre-entrada" -->
+		        <xpath expr="//field[@name='origin']" position="after">
+		            <field name="preentrada_id" string="Código de pre-entrada"/>
+	            </xpath>
+	            
+	            <!-- 05/06/2015 (felix) Agregar campo "Operación" -->
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="operaciones" string="Operación" required="1"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+		        		        
+	        </field>
+        </record>
+            
+    </data>
+</openerp>

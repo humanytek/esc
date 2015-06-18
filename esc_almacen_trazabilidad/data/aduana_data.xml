@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+		<record id="aduana_1" model="import.info.custom">
+	        <field name="custom_number">1</field>
+	        <field name="custom_name">Aduana de Aguascalientes</field>
+	        <field name="description">Sede en Aguascalientes</field>
+        </record>
+		<record id="aduana_2" model="import.info.custom">
+	        <field name="custom_number">2</field>
+	        <field name="custom_name">Aduana de Ensenada</field>
+	        <field name="description">Sede en Baja California</field>
+        </record>
+		<record id="aduana_3" model="import.info.custom">
+	        <field name="custom_number">3</field>
+	        <field name="custom_name">Aduana de Mexicali</field>
+	        <field name="description">Sede en Baja California</field>
+        </record>
+		<record id="aduana_4" model="import.info.custom">
+	        <field name="custom_number">4</field>
+	        <field name="custom_name">Aduana de Tecate</field>
+	        <field name="description">Sede en Baja California</field>
+        </record>
+		<record id="aduana_5" model="import.info.custom">
+	        <field name="custom_number">5</field>
+	        <field name="custom_name">Aduana de Tijuana</field>
+	        <field name="description">Sede en Baja California</field>
+        </record>
+		<record id="aduana_6" model="import.info.custom">
+            <field name="custom_number">6</field>
+            <field name="custom_name">Aduana de La Paz</field>
+            <field name="description">Sede en Baja California Sur</field>
+        </record>
+		<record id="aduana_7" model="import.info.custom">
+	        <field name="custom_number">7</field>
+	        <field name="custom_name">Aduana de Ciudad del Carmen</field>
+	        <field name="description">Sede en Campeche</field>
+        </record>
+		<record id="aduana_8" model="import.info.custom">
+	        <field name="custom_number">8</field>
+	        <field name="custom_name">Aduana de Ciudad Acuña</field>
+	        <field name="description">Sede en Coahuila de Zaragoza</field>
+        </record>
+		<record id="aduana_9" model="import.info.custom">
+	        <field name="custom_number">9</field>
+	        <field name="custom_name">Aduana de Piedras Negras</field>
+	        <field name="description">Sede en Coahuila de Zaragoza</field>
+        </record>
+		<record id="aduana_10" model="import.info.custom">
+	        <field name="custom_number">10</field>
+	        <field name="custom_name">Aduana de Torreón</field>
+	        <field name="description">Sede en Coahuila de Zaragoza</field>
+        </record>
+		<record id="aduana_11" model="import.info.custom">
+	        <field name="custom_number">11</field>
+	        <field name="custom_name">Aduana de Manzanillo</field>
+	        <field name="description">Sede en Colima</field>
+        </record>
+		<record id="aduana_12" model="import.info.custom">
+	        <field name="custom_number">12</field>
+	        <field name="custom_name">Aduana de Ciudad Hidalgo</field>
+	        <field name="description">Sede en Chiapas</field>
+        </record>
+		<record id="aduana_13" model="import.info.custom">
+	        <field name="custom_number">13</field>
+	        <field name="custom_name">Aduana de Ciudad Juárez</field>
+	        <field name="description">Sede en Chihuahua</field>
+        </record>
+		<record id="aduana_14" model="import.info.custom">
+	        <field name="custom_number">14</field>
+	        <field name="custom_name">Aduana de Chihuahua</field>
+	        <field name="description">Sede en Chihuahua</field>
+        </record>
+		<record id="aduana_15" model="import.info.custom">
+	        <field name="custom_number">15</field>
+	        <field name="custom_name">Aduana de Ojinaga</field>
+	        <field name="description">Sede en Chihuahua</field>
+        </record>
+		<record id="aduana_16" model="import.info.custom">
+	        <field name="custom_number">16</field>
+	        <field name="custom_name">Aduana de Puerto Palomas</field>
+	        <field name="description">Sede en Chihuahua</field>
+        </record>
+        <record id="aduana_17" model="import.info.custom">
+            <field name="custom_number">17</field>
+            <field name="custom_name">Aduana del Aeropuerto Internacional de la Ciudad de México</field>
+            <field name="description">Sede en el Distrito Federal</field>
+        </record>
+		<record id="aduana_18" model="import.info.custom">
+	        <field name="custom_number">18</field>
+	        <field name="custom_name">Aduana de México</field>
+	        <field name="description">Sede en el Distrito Federal</field>
+        </record>
+		<record id="aduana_19" model="import.info.custom">
+	        <field name="custom_number">19</field>
+	        <field name="custom_name">Aduana de Acapulco</field>
+	        <field name="description">Sede en Guerrero</field>
+        </record>
+		<record id="aduana_20" model="import.info.custom">
+	        <field name="custom_number">20</field>
+	        <field name="custom_name">Aduana de Guadalajara</field>
+	        <field name="description">Sede en Jalisco</field>
+        </record>
+		<record id="aduana_21" model="import.info.custom">
+	        <field name="custom_number">21</field>
+	        <field name="custom_name">Aduana de Toluca</field>
+	        <field name="description">Sede en el Estado de México</field>
+        </record>
+		<record id="aduana_22" model="import.info.custom">
+	        <field name="custom_number">22</field>
+	        <field name="custom_name">Aduana de Lázaro Cárdenas</field>
+	        <field name="description">Sede en Michoacán</field>
+        </record>
+		<record id="aduana_23" model="import.info.custom">
+	        <field name="custom_number">23</field>
+	        <field name="custom_name">Aduana de Colombia</field>
+	        <field name="description">Sede en Nuevo León</field>
+        </record>
+		<record id="aduana_24" model="import.info.custom">
+	        <field name="custom_number">24</field>
+	        <field name="custom_name">Aduana de Monterrey</field>
+	        <field name="description">Sede en Nuevo León</field>
+        </record>
+		<record id="aduana_25" model="import.info.custom">
+	        <field name="custom_number">25</field>
+	        <field name="custom_name">Aduana de Salina Cruz</field>
+	        <field name="description">Sede en Oaxaca</field>
+        </record>
+		<record id="aduana_26" model="import.info.custom">
+	        <field name="custom_number">26</field>
+	        <field name="custom_name">Aduana de Puebla</field>
+	        <field name="description">Sede en Puebla</field>
+        </record>
+		<record id="aduana_27" model="import.info.custom">
+	        <field name="custom_number">27</field>
+	        <field name="custom_name">Aduana de Guanajuato</field>
+	        <field name="description">Sede en Guanajuato</field>
+        </record>
+		<record id="aduana_28" model="import.info.custom">
+	        <field name="custom_number">28</field>
+	        <field name="custom_name">Aduana de Querétaro</field>
+	        <field name="description">Sede en Querétaro</field>
+        </record>
+		<record id="aduana_29" model="import.info.custom">
+	        <field name="custom_number">29</field>
+	        <field name="custom_name">Aduana de Cancún</field>
+	        <field name="description">Sede en Quintana Roo</field>
+        </record>
+		<record id="aduana_30" model="import.info.custom">
+	        <field name="custom_number">30</field>
+	        <field name="custom_name">Aduana de Subteniente López</field>
+	        <field name="description">Sede en Quintana Roo</field>
+        </record>
+		<record id="aduana_31" model="import.info.custom">
+	        <field name="custom_number">31</field>
+	        <field name="custom_name">Aduana de Mazatlán</field>
+	        <field name="description">Sede en Sinaloa</field>
+        </record>
+		<record id="aduana_32" model="import.info.custom">
+	        <field name="custom_number">32</field>
+	        <field name="custom_name">Aduana de Agua Prieta</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_33" model="import.info.custom">
+	        <field name="custom_number">33</field>
+	        <field name="custom_name">Aduana de Guaymas</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_34" model="import.info.custom">
+	        <field name="custom_number">34</field>
+	        <field name="custom_name">Aduana de Naco</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_35" model="import.info.custom">
+	        <field name="custom_number">35</field>
+	        <field name="custom_name">Aduana de Nogales</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_36" model="import.info.custom">
+	        <field name="custom_number">36</field>
+	        <field name="custom_name">Aduana de San Luis Río Colorado</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_37" model="import.info.custom">
+	        <field name="custom_number">37</field>
+	        <field name="custom_name">Aduana de Sonoyta</field>
+	        <field name="description">Sede en Sonora</field>
+        </record>
+		<record id="aduana_38" model="import.info.custom">
+	        <field name="custom_number">38</field>
+	        <field name="custom_name">Aduana de Dos Bocas</field>
+	        <field name="description">Sede en Tabasco</field>
+        </record>
+		<record id="aduana_39" model="import.info.custom">
+	        <field name="custom_number">39</field>
+	        <field name="custom_name">Aduana de Altamira</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_40" model="import.info.custom">
+	        <field name="custom_number">40</field>
+	        <field name="custom_name">Aduana de Ciudad Camargo</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_41" model="import.info.custom">
+	        <field name="custom_number">41</field>
+	        <field name="custom_name">Aduana de Ciudad Miguel Alemán</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_42" model="import.info.custom">
+	        <field name="custom_number">42</field>
+	        <field name="custom_name">Aduana de Ciudad Reynosa</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_43" model="import.info.custom">
+	        <field name="custom_number">43</field>
+	        <field name="custom_name">Aduana de Matamoros</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_44" model="import.info.custom">
+	        <field name="custom_number">44</field>
+	        <field name="custom_name">Aduana de Nuevo Laredo</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_45" model="import.info.custom">
+	        <field name="custom_number">45</field>
+	        <field name="custom_name">Aduana de Tampico</field>
+	        <field name="description">Sede en Tamaulipas</field>
+        </record>
+		<record id="aduana_46" model="import.info.custom">
+	        <field name="custom_number">46</field>
+	        <field name="custom_name">Aduana de Tuxpan</field>
+	        <field name="description">Sede en Veracruz</field>
+        </record>
+		<record id="aduana_47" model="import.info.custom">
+	        <field name="custom_number">47</field>
+	        <field name="custom_name">Aduana de Veracruz</field>
+	        <field name="description">Sede en Veracruz</field>
+        </record>
+		<record id="aduana_48" model="import.info.custom">
+	        <field name="custom_number">48</field>
+	        <field name="custom_name">Aduana de Coatzacoalcos</field>
+	        <field name="description">Sede en Veracruz</field>
+        </record>
+		<record id="aduana_49" model="import.info.custom">
+	        <field name="custom_number">49</field>
+	        <field name="custom_name">Aduana de Progreso</field>
+	        <field name="description">Sede en Yucatán</field>
+        </record>
+    </data>
+</openerp>

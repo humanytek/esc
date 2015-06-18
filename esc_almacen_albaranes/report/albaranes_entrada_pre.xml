@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report id="report_picking_entrada_pre" model="stock.picking.pre" name="albaranes.entrada.pre" 
+            string="Albarán de pre-entrada" rml="esc_almacen_albaranes/report/albaranes_entrada_pre.rml"/>
+        
+    </data>
+</openerp>

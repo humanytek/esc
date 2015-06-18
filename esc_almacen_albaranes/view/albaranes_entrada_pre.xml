@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 08/04/2015 (felix) Form para registro de condición para pre-entrada de un producto -->
+        <record id="view_inspeccion_fisica_form" model="ir.ui.view">
+            <field name="name">view.inspeccion.fisica.form</field>
+            <field name="model">stock.picking.pre.inspeccion</field>
+            <field name="arch" type="xml">
+                <form string="Insepección física" version="7.0">
+                    <sheet>
+                        <group col="2">
+                            <group>
+                                <field name="name" string="Condición" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 08/04/2015 (felix) Form para Albaranes de pre-entrada -->
+        <record id="view_picking_pre_tree" model="ir.ui.view">
+            <field name="name">view.picking.pre.tree</field>
+            <field name="model">stock.picking.pre</field>
+            <field name="arch" type="xml">
+                <tree string="Albaranes de pre-entrada" colors="red: fecha_caducidad &lt; current_date">
+                    <field name="name" string="Referencia"/>
+                    <field name="product_id" string="Producto"/>
+                    <field name="fabricante_id" string="Fabricante"/>
+                    <field name="proveedor_id" string="Proveedor"/>
+                    <field name="factura_no" string="Factura No."/>
+                    <field name="almacen_id" string="Almacén"/>
+                    <field name="aduana_id" string="Aduana"/>
+                    <field name="fecha_fabricacion" string="Fecha de fabricación"/>
+                    <field name="fecha_caducidad" string="Fecha de caducidad"/>
+                    <field name="fecha_ingreso" string="Fecha de ingreso"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- 15/04/2015 (felix) Tree para Cantidad y pesos por producto -->
+        <record id="view_picking_envases_tree" model="ir.ui.view">
+            <field name="name">view.picking.envases.tree</field>
+            <field name="model">stock.picking.envases</field>
+            <field name="arch" type="xml">
+                <tree string="Cantidad de envases por producto">
+                    <field name="cant_envases" string="Cantidad de envases" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                    <field name="peso_bruto" string="Peso bruto" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                    <field name="peso_tara" string="Peso tara" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                    <field name="peso_neto" string="Peso neto"/>
+                    <field name="subtotal_envases" string="Subtotal peso"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 08/04/2015 (felix) Form para Albaranes de pre-entrada -->
+        <record id="view_picking_pre_form" model="ir.ui.view">
+            <field name="name">view.picking.pre.form</field>
+            <field name="model">stock.picking.pre</field>
+            <field name="arch" type="xml">
+                <form string="Albarán de pre-entrada" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                        <label for="name" string="Albarán de pre-entrada" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group>
+                                <field name="product_id" string="Producto" required="1" on_change="on_change_product(product_id)"/>
+                                <field name="fabricante_id" string="Fabricante" required="1"/>
+                                <field name="proveedor_id" string="Proveedor" required="1"/>
+                                <field name="almacen_id" string="Ubicación"/>
+                                <field name="factura_no" string="Factura No."/>
+                                <field name="fecha_ingreso" string="Fecha de ingreso" required="1"/>                                
+                                <field name="fecha_fabricacion" string="Fecha de fabricación" required="1"/>
+                                <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
+                                <field name="fecha_retest" string="Fecha de retest" required="1"/>
+                            </group>
+                            <group>
+                                <field name="pedimento_id" string="Pedimento No." on_change="on_change_pedimento(pedimento_id)"/>
+                                <field name="aduana_id" string="Aduana" widget="selection"/>
+                                <field name="lote_id" string="Lote" on_change="on_change_lote(lote_id)"/>
+                                <field name="orden_compra_id" string="Orden de compra"/>
+                                <label for="peso_bruto" string="Cantidad por envases"/>
+                                <div>
+                                    <field name="envases_ids">
+                                        <tree string="Cantidad de envases" editable="1">
+                                            <field name="cant_envases" string="Cantidad de envases" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                                            <field name="peso_bruto" string="Peso bruto (kg)" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                                            <field name="peso_tara" string="Peso tara (kg)" on_change="on_change_peso(cant_envases,peso_bruto,peso_tara)"/>
+                                            <field name="peso_neto" string="Peso neto (kg)"/>
+                                            <field name="subtotal_envases" string="Total neto (kg)" sum="Total"/>
+                                        </tree>
+                                    </field>
+                                </div>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Inspección física">
+                                <field name="stock_inspeccion_ids" string="Inspección física" class="oe_list oe_view">
+                                    <tree string="Insepección física">
+                                        <field name="name" string="Condición"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 08/04/2015 (felix) Search para Albaranes de pre-entrada -->
+        <record id="view_picking_pre_search" model="ir.ui.view">
+            <field name="name">stock.picking.pre.search</field>
+            <field name="model">stock.picking.pre</field>
+            <field name="arch" type="xml">
+                <search string="Lista albaranes pre-entrada">
+                    <field name="name" string="Lista albaranes de pre-entrada" filter_domain="['|',('name','ilike', self)]"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Fabricante" domain="[]" context="{'group_by':'fabricante_id'}"/>
+                        <filter string="Almacén" domain="[]" context="{'group_by':'almacen_id'}"/>
+                        <filter string="Aduana" domain="[]" context="{'group_by':'aduana_id'}"/>
+                        <filter string="Factura No." domain="[]" context="{'group_by':'factura_no'}"/>
+                        <separator />
+                        <filter string="Fecha de ingreso" domain="[]" context="{'group_by':'fecha_ingreso'}"/>
+                        <filter string="Fecha de fabricación" domain="[]" context="{'group_by':'fecha_fabricacion'}"/>
+                        <filter string="Fecha de caducidad" domain="[]" context="{'group_by':'fecha_caducidad'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+        <!-- 08/04/2015 (felix) Action para Albaranes de pre-entrada -->
+        <record id="action_picking_pre_tree" model="ir.actions.act_window">
+            <field name="name">Albaranes de pre-entrada</field>
+            <field name="res_model">stock.picking.pre</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="view_picking_pre_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click para crear una pre-entrada de almacén. 
+              </p>
+            </field>
+        </record>
+        
+        <!-- 08/04/2015 (felix) Menú para Albaranes de pre-entrada -->
+        <menuitem id="mn_albaran_pre_entrada" name="Albaranes de pre-entrada" parent="stock.menu_stock_warehouse_mgmt" action="action_picking_pre_tree" sequence="0"/>
+            
+    </data>
+</openerp>

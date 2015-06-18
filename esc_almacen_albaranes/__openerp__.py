@@ -19,23 +19,54 @@
 #
 ##############################################################################
 {
-    'name': 'HMTK Stock Customization',
+    'name': 'HMTK Almacén/Alabaranes',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': "easy",
-    'description': """ This module is used to add some field and report for 
-    Import Information Packing original package""",
+    'description': """
+Módulo de Almacén modificado para agregar campos relacionados con requerimientos para ESIC.
+
+Detalles:
+---------
+* Agregar campos en Albaranes de: Entrada, Internos y Salida:
+    * Número pedimento
+    * Fecha de pedimento
+    * Aduana
+    * Fecha de fabricación
+    * Fecha de caducidad o expiración
+    * Fecha de retest
+    
+* Creación de reporte PDF especial con campos agregados en los menú de albaranes
+* Creación menú Albaranes de pre-entrada
+    """,
     'author': 'Humanytek',
     'website': 'http://humanytek.com',
     'depends': [
         'base',
-        'l10n_mx_import_info',
-        'stock'
+        'stock',
+        'product_manufacturer',
+        'esc_almacen_configuracion',
+        'esc_almacen_trazabilidad'
     ],
     'data': [
-        'view/numeros_lote.xml',
-        'view/control_pedimentos.xml',
+        # Seguridad y grupos
+        
+        # Data
+        
+        # View y menu
+        'view/albaranes_stock_move_view.xml',   # Para: Entrada, Internos y Salida
+        'view/albaranes.xml',                   # Para: Entrada, Internos y Salida
+        'view/albaranes_entrada_pre.xml',
+        'view/albaranes_entrada.xml',
+        'view/albaranes_internos.xml',
+        'view/albaranes_salida.xml',
+        
+        # Reportes
+        'report/albaranes_entrada_pre.xml',
+        'report/albaranes_entrada.xml',
+        'report/albaranes_internos.xml',
+        'report/albaranes_salida.xml'
     ],
     'demo_xml': [],
     'installable': True,

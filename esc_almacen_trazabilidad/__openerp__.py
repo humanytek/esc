@@ -19,23 +19,53 @@
 #
 ##############################################################################
 {
-    'name': 'HMTK Import and Customs Customization',
+    'name': 'HMTK Almacén/Trazabilidad',
     'version': '0.1',
     'sequence': 1,
     'category': 'Custom',
     'complexity': "easy",
-    'description': """ This module is used to add some field and report for 
-    Import Information Packing original package""",
+    'description': """
+Módulo de Almacén, desarrollos realizados en submenú Trazabilidad.
+
+Detalles:
+---------
+* Cambios en Control de Pedimentos
+    * Cambiar etiqueta de menú "Import informaction packing" por "Control de pedimentos"
+    * Cambiar etiqueta "Número de operación" por "Número de pedimento"
+    * Cambiar "Personalizados" por "Aduana", crear el modelo de aduana, crear un grupo editor para aduana
+    * Ocultar campo "Proveedor"
+    * Cambiar la etiqueta "Fecha" por "Fecha de pedimento"
+
+* Cambios en Números de lote
+    * Ocultar campo Fecha de fin de vida
+    * Ocultar fecha de eliminación
+    * Hacer obligatorios "Fecha de caducidad" y "Fecha de alerta", cambiar etiqueta "Fecha de alerta" por "Fecha de retest"
+
+* Menú Almacén/Trazabilidad/Certificado de análisis
+    """,
     'author': 'Humanytek',
     'website': 'http://humanytek.com',
     'depends': [
         'base',
+        'stock',
         'l10n_mx_import_info',
-        'stock'
+        'hmtk_l10n_mx_import_info_custom',
+        'product_import_cert',
+        'esc_almacen_configuracion',        
     ],
     'data': [
+        # Seguridad y grupos
+    
+        # Data
+        
+        # Vistas
         'view/numeros_lote.xml',
         'view/control_pedimentos.xml',
+        'view/certificados_importacion.xml',
+        'view/cert_analisis.xml',
+        
+        # Reportes
+        'report/cert_analisis.xml'
     ],
     'demo_xml': [],
     'installable': True,

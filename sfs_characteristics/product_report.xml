@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="product.report_product_label" model="product.product" name="product.product.label" string="Products Labels(Normal Standard)" xml="product/report/product_label.xml" xsl="sfs_characteristics/report/product_label.xsl"/>
+    	<report id="report_product_label_medium" model="product.product" name="product.product.label.medium" string="Products Labels(Medium Standard)" xml="product/report/product_label.xml" xsl="sfs_characteristics/report/product_label_medium.xsl"/>
+    </data>
+</openerp>

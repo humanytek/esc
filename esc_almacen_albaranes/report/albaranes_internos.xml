@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report id="stock.report_picking_list" model="stock.picking" name="albaranes.internos" string="Albaranes internos" rml="esc_almacen_albaranes/report/albaranes_internos.rml"/>
+        
+    </data>
+</openerp>

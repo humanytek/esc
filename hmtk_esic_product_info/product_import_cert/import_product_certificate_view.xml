@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!-- Product Import Certificate : Tree view -->
+		<record id="view_product_certificate_tree" model="ir.ui.view">
+            <field name="name">product.import.certificate.tree</field>
+            <field name="model">product.import.certificate</field>
+            <field name="arch" type="xml">
+                <tree string="Certificates" colors="blue:line_state =='blue';red:line_state =='red';">
+                    <field name="certificate_number"/>
+                    <field name="product_id"/>
+                    <field name="manufacturer_id"/>
+                    <field name="custom"/>
+                    <field name="initial_term"/>
+                    <field name="end_term"/>
+                    <field name="state"/>
+              	 	<field name="line_state" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Product Import Certificate : Form view -->
+        
+        <record id="view_product_certificate_form" model="ir.ui.view">
+            <field name="name">product.import.certificate.form</field>
+            <field name="model">product.import.certificate</field>
+            <field name="arch" type="xml">
+                <form string="Product Certificates" version="7.0">
+                	<header>
+                		<button name="previous_state" type="object" states="active" string="Previous" class="oe_highlight"/>
+                		<button name="change_state" type="object" states="new,active,in_renov,renov,spent" string="State" class="oe_highlight"/>
+                    	<field name="state" widget="statusbar" statusbar_visible="new,active,in_renov,renov,spent,not_extend"/>
+                	</header>
+                    <sheet>
+                        <div class="oe_right oe_button_box" name="button_box">
+                            <!-- Put here related buttons -->
+                        </div>
+                        <group colspan="4" col="4">
+                        	<field name="product_id" on_change="onchange_product(product_id)" />
+                        	<field name="certificate_number"/>
+	                    	<field name="certificate_date"/>
+	                    	<field name="initial_term" attrs="{'readonly':[('state', 'in', ['renov'])]}"/>
+	                    	<field name="end_term"/>
+	                    	<field name="manufacturer_id" domain="[('customer', '!=', True), ('supplier', '=', True)]"/>
+	                   	 	<field name="renewable" attrs="{'readonly':[('state', 'in', ['renov', 'new'])]}"/>
+	                   	 	<field name="custom"/>
+	                   	 	<field name="source"/>
+	                   	 	<field name="raw_material_imported"/>
+	                   	 	<field name="qty" required="1"/>
+	                   	 	<field name="uom_id"/>
+	                   	 	<field name="fraction_id" domain="[('product_id', '=', product_id)]"/>
+	                   	 	<field name="qty_uom" readonly="1"/>
+	                   	 	<!-- <field name="move_id" domain="[('location_id.name', '=', 'Suppliers'), ('product_id', '=', product_id)]" attrs="{'required':[('import_certificate', '=', True)]}"/> -->
+	                   	 	<field name="qty_imported"/>
+	                   	 	<field name="import_certificate" invisible="1"/>
+                        </group>
+                        <group string="Backgrounds">
+                        	<field name="background_country_ids" nolabel="1">
+                        		<tree editable="bottom">
+                        			<field name="name"/>
+                        			<field name="code"/>
+                        			<field name="currency_id"/>
+                        		</tree>
+                        	</field>
+                        	
+                        </group>
+                        <group string="Notes">
+                        	<field name="notes" nolabel="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_product_certificate_filter" model="ir.ui.view">
+            <field name="name">product.import.certificate.filter</field>
+            <field name="model">product.import.certificate</field>
+            <field name="arch" type="xml">
+                <search string="Product Certificate">
+                    <group expand="0" string="Group By...">
+                        <filter string="Manufacturer" name="manufacturer" icon="terp-personal" domain="[]" context="{'group_by':'manufacturer_id'}"/>
+                        <filter string="Product" name="product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+        
+        <!-- Product Import Certificate : Action -->
+        <record model="ir.actions.act_window" id="action_import_product_certificate">
+            <field name="name">Import Certificates</field>
+            <field name="res_model">product.import.certificate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="search_view_id" ref="view_product_certificate_filter"/> -->
+            <field name="context">{"search_default_manufacturer":1}</field>
+            <field name="view_id" ref="view_product_certificate_tree"></field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new product import certificate.
+              </p>
+            </field>
+        </record>
+        <menuitem id="menu_import_certificate" parent="stock.menu_traceability" sequence="10" action="action_import_product_certificate" groups="group_product_certificate_admin,group_product_certificate_user"/>
+        
+	</data>
+</openerp>

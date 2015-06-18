@@ -18,5 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-#import model
+import stock_move
+import stock_picking
+import stock_picking_pre
+import import_info
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

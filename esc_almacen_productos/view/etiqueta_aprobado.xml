@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 09/04/2015 (felix) Form para Etiquetas de aprobado -->
+        <record id="view_stick_aprobado_tree" model="ir.ui.view">
+            <field name="name">view.stick.aprobado.tree</field>
+            <field name="model">stick.aprobado</field>
+            <field name="arch" type="xml">
+                <tree string="Etiquetas de aprobado" colors="red: fecha_caducidad &lt; current_date">
+                    <field name="name" string="Referencia"/>
+                    <field name="product_id" string="Producto"/>
+                    <field name="lote" string="Lote"/>
+                    <field name="fecha_fabricacion" string="Fecha de fabricación"/>
+                    <field name="fecha_caducidad" string="Fecha de caducidad"/>                    
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 09/04/2015 (felix) Form para Etiquetas de aprobado -->
+        <record id="view_stick_aprobado_form" model="ir.ui.view">
+            <field name="name">view.stick.aprobado.form</field>
+            <field name="model">stick.aprobado</field>
+            <field name="arch" type="xml">
+                <form string="Etiqueta de aprobado" version="7.0">
+                    <sheet>
+                        <div class="oe_title">
+                        <label for="name" string="Referencia etiqueta de aprobado" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" required="1"/>
+                            </h1>
+                        </div>
+                        <group col="2">
+                            <group>
+                                <field name="product_id" string="Producto"/>
+                                <field name="lote" string="Lote"/>
+                                <field name="fecha_fabricacion" string="Fecha de fabricación" required="1"/>
+                                <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
+                            </group>
+                            <group>
+                                <label for="peso_bruto" string="Cantidad por envases"/>
+                                <div>
+                                    <div>
+                                        <field name="peso_neto" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
+                                        <label for="peso_neto" string="Peso neto (kg)" class="oe_inline"/>
+                                    </div>
+                                    <div>
+                                        <field name="peso_tara" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
+                                        <label for="peso_tara" string="Tara (kg)" class="oe_inline"/>
+                                    </div>
+                                    <div>
+                                        <field name="peso_bruto" class="oe_inline"/>
+                                        <label for="peso_bruto" string="Peso bruto (kg)" class="oe_inline"/>
+                                    </div>
+                                </div>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 09/04/2015 (felix) Search para Etiquetas de aprobado -->
+        <record id="stick_aprobado_search" model="ir.ui.view">
+            <field name="name">stick.aprobado.search</field>
+            <field name="model">stick.aprobado</field>
+            <field name="arch" type="xml">
+                <search string="Lista albaranes pre-entrada">
+                    <field name="name" string="Lista etiquetas de aprobado" filter_domain="['|',('name','ilike', self)]"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
+                        <separator />
+                        <filter string="Fecha de fabricación" domain="[]" context="{'group_by':'fecha_fabricacion'}"/>
+                        <filter string="Fecha de caducidad" domain="[]" context="{'group_by':'fecha_caducidad'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+        <!-- 09/04/2015 (felix) Action para Etiquetas de aprobado -->
+        <record id="action_stick_aprobado" model="ir.actions.act_window">
+            <field name="name">Etiquetas de aprobado</field>
+            <field name="res_model">stick.aprobado</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="stick_aprobado_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click para crear una etiqueta de aprobado. 
+              </p>
+            </field>
+        </record>
+        
+        <!-- 09/04/2015 (felix) Menú para Etiquetas de aprobado -->        
+        <menuitem id="mn_stick_aprobado" name="Etiquetas aprobado" parent="stock.menu_stock_product" action="action_stick_aprobado" sequence="3"/>
+        
+    </data>
+</openerp>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 10/04/2015 (felix) Crear tree para registro de pruebas para certificados de análisis -->
+        <record id="tree_cert_analisis_test" model="ir.ui.view">
+            <field name="name">tree.cert.analisis.test</field>
+            <field name="model">cert.analisis.test</field>
+            <field name="arch" type="xml">
+                <tree string="Pruebas de certificado de análisis">
+                    <field name="name" string="Prueba"/>
+                    <field name="especificacion" string="Especificación"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 10/04/2015 (felix) Crear form para registro de pruebas para certificados de análisis -->
+        <record id="form_cert_analisis_test" model="ir.ui.view">
+            <field name="name">form.cert.analisis.test</field>
+            <field name="model">cert.analisis.test</field>
+            <field name="arch" type="xml">
+                <form string="Pruebas de certificado de análisis" version="7.0">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Prueba" required="1"/>
+                            <field name="especificacion" string="Especificación"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- 10/04/2015 (felix) Crear action para registro de pruebas para certificados de análisis -->
+        <record id="action_cert_analisis_test" model="ir.actions.act_window">
+            <field name="name">Pruebas certificados de análisis</field>
+            <field name="res_model">cert.analisis.test</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help">Registro y configuración de condiciones para albarán de pre-entrada</field>
+        </record>
+        
+        <!-- 10/04/2015 (felix) Crear menu para registro de pruebas para certificados de análisis -->
+        <menuitem id="mn_cert_test_cfg" name="Pruebas certificados de análisis" action="action_cert_analisis_test" sequence="9" 
+            parent="stock.menu_stock_configuration"/>
+        
+    </data>
+</openerp>

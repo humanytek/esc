@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_certificate_admin,product.import.certificate,model_product_import_certificate,group_product_certificate_admin,1,1,1,1
+access_product_certificate_user,product.import.certificate,model_product_import_certificate,group_product_certificate_user,1,1,0,0
+access_product_certificate_warehouse_manager,product.import.certificate,model_product_import_certificate,stock.group_stock_manager,1,0,0,0
+access_product_certificate_warehouse_user,product.import.certificate,model_product_import_certificate,stock.group_stock_user,1,0,0,0
+access_product_certificate_purchase_manager,product.import.certificate,model_product_import_certificate,purchase.group_purchase_manager,1,0,0,0
+access_product_certificate_purchase_user,product.import.certificate,model_product_import_certificate,purchase.group_purchase_user,1,0,0,0

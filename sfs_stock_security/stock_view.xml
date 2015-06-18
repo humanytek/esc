@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+       <record id="stock_picking_out_inherit1_form" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='force_assign']" position="attributes">
+                    <attribute name="groups">sfs_stock_security.group_stock_force_availablity</attribute>
+                </xpath>
+            </field>
+       </record>
+       <record id="stock_picking_out_inherit2_form" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="model">stock.picking.out</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='force_assign']" position="attributes">
+                    <attribute name="groups">sfs_stock_security.group_stock_force_availablity</attribute>
+                </xpath>
+            </field>
+       </record>
+       <record id="stock_move_inherit1_form" model="ir.ui.view">
+            <field name="name">stock.move.form.inherit</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//button[@name='force_assign']" position="attributes">
+                    <attribute name="groups">sfs_stock_security.group_stock_force_availablity</attribute>
+                </xpath>
+              <!--   <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name="context">{'process_entirely_click': 1}</attribute>
+                </xpath> -->
+                <button name="action_done" position="attributes">
+                    <attribute name="context">{'process_entirely_click': 1}</attribute>
+                </button>
+            </field>
+       </record>
+	</data>
+</openerp>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 24/04/2015 (felix) Formulario Certificados de importación -->
+        <record id="view_product_certificate_form_inherit_1" model="ir.ui.view">
+            <field name="name">product.import.certificate.form.inherit.1</field>
+            <field name="model">product.import.certificate</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="product_import_cert.view_product_certificate_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- 24/04/2015 (felix) Cambiar vista de background_country_ids -->
+                <xpath expr="//field[@name='background_country_ids']" position="replace">
+                    <field name="background_country_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="name" string="País" required="1"/>
+                            <field name="cod_pais" string="Código de país"/>
+                            <field name="moneda_id" string="Moneda"/>
+                        </tree>
+                    </field>
+                </xpath>
+                
+                <!-- 06/06/2015 (felix) Quitar filtro de campo "Fracción arancelaria" -->
+                <xpath expr="//field[@name='fraction_id']" position="replace">
+                    <field name="fraction_id" string="Fracción arancelaria"/>
+                </xpath>
+                
+                <!-- 08/06/2015 (felix) Crear filtro de campo "manufacturer_id" a solo fabricante -->
+                <xpath expr="//field[@name='manufacturer_id']" position="replace">
+                    <field name="manufacturer_id" string="Fabricante" domain="[('manufacturer', '=', True)]"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 17/06/2014 (felix) Modificación del motor de búsqueda original -->
+        <record id="product_import_cert.view_product_certificate_filter" model="ir.ui.view">
+            <field name="name">product.import.certificate.filter</field>
+            <field name="model">product.import.certificate</field>
+            <field name="arch" type="xml">
+                <search string="Permiso sanitario de importación">
+                    <field name="certificate_number" string="Número de permiso" filter_domain="['|',('certificate_number','ilike',self)]"/>
+                    <group expand="0" string="Agrupar por...">
+                        <filter string="Manufacturer" name="manufacturer" icon="terp-personal" domain="[]" context="{'group_by':'manufacturer_id'}"/>
+                        <filter string="Product" name="product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Status" name="state" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+        
+        <!-- 15/06/2014 (felix) Cambiar eiqueta de menú -->
+        <record id="product_import_cert.action_import_product_certificate" model="ir.actions.act_window">
+            <field name="name">Permiso sanitario de importación</field>
+            <field name="res_model">product.import.certificate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="product_import_cert.view_product_certificate_filter"/>-->
+            <field name="context">{"search_default_manufacturer":1}</field>
+            <field name="view_id" ref="product_import_cert.view_product_certificate_tree"></field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a new product import certificate.
+              </p>
+            </field>
+        </record>
+        
+        <!-- 15/06/2014 (felix) Cambiar eiqueta de menú -->
+        <menuitem id="product_import_cert.menu_import_certificate" name="Permiso sanitario de importación" parent="stock.menu_traceability" 
+            sequence="10" action="product_import_cert.action_import_product_certificate" 
+            groups="product_import_cert.group_product_certificate_admin,product_import_cert.group_product_certificate_user"/>
+          
+    </data>
+</openerp>

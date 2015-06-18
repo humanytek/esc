@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 04/06/2015 (felix) Formulario Compras / Compra / Proveedores -->
+        <record id="view_partner_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.partner.form.inherit.1</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 04/06/2015 (felix) Agregar campo "Fabricante" -->
+                <xpath expr="//form/sheet/notebook/page[@string='Sales &amp; Purchases']/group/group[2]/field[@name='supplier']" position="after">
+                    <field name="manufacturer" string="Fabricante"/>
+                </xpath>
+            
+            </field>
+        </record>
+        
+        <!-- 04/06/2015 (felix) Búsqueda Compras / Compra / Proveedores -->
+        <record id="view_res_partner_filter_inherit_1" model="ir.ui.view">
+            <field name="name">view.res.partner.filter.inherit.1</field>
+            <field name="model">res.partner</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+
+                <!-- 04/06/2015 (felix) Agregar campo para filtrar por fabricante -->
+                <xpath expr="//filter[@name='supplier']" position="after">
+                    <filter string="Fabricante" name="manufacturer" domain="[('manufacturer','=',1)]" help="Fabricantes"/>
+                </xpath>
+
+            </field>
+        </record>
+        
+    </data>
+</openerp>

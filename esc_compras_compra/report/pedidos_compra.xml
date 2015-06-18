@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- 14/05/2015 (felix) Botón reporte Pedidos de compra -->
+        <report id="report_pedidos_compra" model="purchase.order"
+                name="pedidos.compra" rml="esc_compras_compra/report/pedidos_compra.rml"
+                string="Pedido de compra"/>
+    </data>
+</openerp>

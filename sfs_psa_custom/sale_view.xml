@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="sfs_view_sale_form_inherit" model="ir.ui.view">
+            <field name="name">sfs.view.sale.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Order Lines']/field//field[@name='th_weight']" position="after">
+                        <field name="supplier_id" class="oe_inline" 
+                         domain="[('product_id','=',product_id)]" 
+                         on_change="onchange_supplier_id(supplier_id, parent.date_order, parent.pricelist_id, product_id, product_uom_qty, product_uom)"/>
+                         <field name="brand_id" readonly="1"/>
+                </xpath>
+                <xpath expr="//page[@string='Order Lines']/field//field[@name='state']" position="before">
+                       <button name="view_info" string="View Info" type="object" context="{'product_id': product_id,
+                       'quantity': product_uom_qty, 'pricelist': parent.pricelist_id, 
+                       'date_order': parent.date_order, 'uom': product_uom, 'shop': parent.shop_id}"/>
+                </xpath>
+                <xpath expr="//page[@string='Order Lines']/field//field[@name='address_allotment_id']" position="attributes">
+                	 <attribute name="invisible">1</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+        <record id="view_order_form_inherit_sale_stock" model="ir.ui.view">
+     		<field name="name">sfs.view.sale.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit"/>
+            <field name="arch" type="xml">
+	     		<xpath expr="//field[@name='property_ids']" position="attributes">
+	                	 <attribute name="invisible">1</attribute>
+	            </xpath>
+            </field>
+     	</record>
+     </data>
+</openerp>

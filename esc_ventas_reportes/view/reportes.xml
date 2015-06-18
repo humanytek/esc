@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 13/04/2015 (felix) Menú para Ventas/Reportes -->
+        <menuitem id="mn_reportes" name="Reportes" parent="base.menu_base_partner" sequence="3"/>
+    
+        <!-- 13/04/2015 (felix) Form para Reportes de venta -->
+        <record id="view_reportes_ventas_tree" model="ir.ui.view">
+            <field name="name">view.reportes.ventas.tree</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Reportes de venta" colors="gray: state == 'done'; blue: state == 'confirmed'; red: state == 'cancel'" edit="false">
+                    <field name="name" string="Producto"/>
+                    <field name="order_id" string="Orden de venta"/>
+                    <field name="product_uom_qty" string="Cantidad"/>
+                    <field name="product_uom" string="Unidad de medida"/>
+                    <field name="price_unit" string="Precio unitario" sum="Precio unitario"/>
+                    <field name="state" invisible="1"/>
+                    <field name="tipo_venta" invisible="1"/>
+                    <field name="operaciones" invisible="1"/>
+                    <field name="linea" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+    
+        <!-- 13/04/2015 (felix) Search para Reportes de venta -->
+        <record id="search_sale_order_line" model="ir.ui.view">
+            <field name="name">sale.order.line.search</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Lista de productos vendidos">
+                    <field name="name" string="Lista de productos vendidos" filter_domain="['|',('name','ilike', self)]"/>
+                    <group expand="0" string="Agrupar por:">
+                        <filter string="Producto" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Orden de venta" domain="[]" context="{'group_by':'order_id'}"/>
+                        <separator />
+                        <filter string="Fecha de pedido" domain="[]" context="{'group_by':'fecha_pedido'}"/>
+                        <filter string="Fecha de entrega" domain="[]" context="{'group_by':'fecha_entrega'}"/>
+                        <separator />
+                        <filter string="Tipo de venta" domain="[]" context="{'group_by':'tipo_venta'}"/>
+                        <filter string="Operación" domain="[]" context="{'group_by':'operaciones'}"/>
+                        <filter string="Línea" domain="[]" context="{'group_by':'linea'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    
+        <!-- 13/04/2015 (felix) Action para Reportes de venta -->
+        <record id="action_reportes_ventas" model="ir.actions.act_window">
+            <field name="name">Reportes de venta</field>
+            <field name="view_id" ref="view_reportes_ventas_tree"/>
+            <field name="res_model">sale.order.line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('state', 'in', ['done','confirmed','cancel']), ('product_desglose', '=', False)]</field>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="search_sale_order_line"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click para crear una analisis-entrada de almacén. 
+              </p>
+            </field>
+        </record>
+        
+        <!-- 13/04/2015 (felix) Menú Ventas/Reportes/Reportes de venta -->
+        <menuitem id="mn_reportes_ventas" name="Reportes de venta" parent="mn_reportes" action="action_reportes_ventas" sequence="1"/>
+            
+    </data>
+</openerp>

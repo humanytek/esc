@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	<!-- Stock move form view : For adding new fields -->
+
+        <record model="ir.ui.view" id="certificate_stock_move_view">
+            <field name="name">stock.move.form</field>
+            <field name="model">stock.move</field>
+            <field name="inherit_id" ref="stock.view_move_form"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//form/sheet/group/group[@string='Traceability']" position="after" groups="product_import_cert.group_product_certificate_admin,product_import_cert.group_product_certificate_user">
+            		<group string="Product Import Certificate">
+                    	 <field name="certificate_id" domain="[('product_id', '=', product_id)]" attrs="{'required':[('import_certificate', '=', True)]}"/>
+                    	 <field name="import_certificate" invisible="1"/>       
+                    </group>
+            	</xpath>
+            	
+            </field>
+        </record>
+	</data>
+</openerp>

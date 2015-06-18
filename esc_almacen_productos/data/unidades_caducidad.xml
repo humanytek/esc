@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="1">
+	
+	    <!-- 07/04/2015 (felix) Categoría de unidad de caducidad de productos -->
+		<record id="product_catg_cad" model="product.uom.categ">
+	        <field name="name">Caducidad de producto</field>
+        </record>
+        
+        <!--- 07/04/2015 (felix) Unidades disponibles para caducidad de productos -->
+		<record id="dias" model="product.uom">
+	        <field name="name">Días</field>
+	        <field name="category_id" model="product.uom.categ" ref="product_catg_cad"/>
+	        <field name="uom_type">reference</field>
+	        <field name="active">True</field>
+	        <field name="rounding" eval="0.010"/>
+        </record>
+		<record id="meses" model="product.uom">
+	        <field name="name">Meses</field>
+	        <field name="category_id" model="product.uom.categ" ref="product_catg_cad"/>
+	        <field name="uom_type">reference</field>
+	        <field name="active">True</field>
+	        <field name="rounding" eval="0.010"/>
+        </record>
+		<record id="anos" model="product.uom">
+	        <field name="name">Año</field>
+	        <field name="category_id" model="product.uom.categ" ref="product_catg_cad"/>
+	        <field name="uom_type">reference</field>
+	        <field name="active">True</field>
+	        <field name="rounding" eval="0.010"/>
+        </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!-- 09/06/2015 (felix) Menú: Contabilidad/Clientes/Facturas de cliente -->
+        <record id="view_ir_attachment_facturae_mx_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.ir.attachment.facturae.mx.form.inherit.1</field>
+            <field name="model">ir.attachment.facturae.mx</field>
+            <field name="inherit_id" ref="l10n_mx_ir_attachment_facturae.view_ir_attachment_facturae_mx_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- 09/06/2015 (felix) 
+                    (+) Agregar campo clase para evitar desborde de contenido en campo
+                -->
+                <xpath expr="//field[@name='file_xml_sign_index']" position="replace">
+                    <field name="file_xml_sign_index" class="oe_application"/>
+                </xpath>
+                            
+            </field>
+        </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 20/02/2015 (felix) Vista tree de Stock Move ventana emergente
+            Esta vista incide en:
+            - Albaranes de entrada
+            - Albaranes internos
+            - Albaranes de salida
+        -->
+        <record id="view_move_picking_tree_inherit_1" model="ir.ui.view">
+            <field name="name">stock.move.tree.inherit.1</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="replace">
+                    <tree colors="grey:scrapped == True" string="Movimientos en almacén">
+                        <field name="product_id"/>
+                        <field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)"/>
+                        <field name="product_uom" string="Unidad de medida" groups="product.group_uom"/>
+                        <field name="product_uos_qty" groups="product.group_uos"/>
+                        <field name="product_uos" groups="product.group_uos"/>
+                        <field name="location_id" groups="stock.group_locations" invisible="1"/>
+                        <field name="picking_id" invisible="1" />
+                        <field name="create_date" invisible="1" />
+                        <field name="date_expected" invisible="1" />
+                        <button name="%(stock.move_scrap)d"
+                            string="Scrap Products" type="action"
+                            icon="terp-gtk-jump-to-ltr" context="{'scrap': True}"
+                            states="draft,waiting,confirmed,assigned"
+                            groups="base.group_user"/>
+                        <field name="scrapped" invisible="1"/>
+                        <field name="prodlot_id" groups="stock.group_production_lot"/>
+                        <button
+                            name="%(stock.track_line)d"
+                            string="Split in Serial Number"
+                            groups="stock.group_production_lot"
+                            type="action" icon="gtk-justify-fill"
+                            states="draft,waiting,confirmed,assigned"/>
+                        <field groups="stock.group_tracking_lot" name="tracking_id"/>
+                        
+                        <!-- 20/02/2015 (felix) Campos de fechas número de serie -->
+                        <field name="fecha_fabricacion" string="Fecha de fabricación" widget="date"/>
+                        <field name="fecha_caducidad" string="Fecha de caducidad" widget="date"/>
+                        <field name="fecha_retest" string="Fecha de retest" widget="date"/>
+                                                
+                        <button name="setlast_tracking" string="Put in current pack" type="object"
+                            attrs="{'invisible': [('tracking_id','&lt;&gt;',False)]}"
+                            icon="terp-accessories-archiver"
+                            groups="stock.group_tracking_lot"
+                            states="draft,assigned,confirmed"/>
+                        <button name="%(stock.split_into)d" string="Put in a new pack" type="action"
+                            groups="stock.group_tracking_lot"
+                            icon="terp-accessories-archiver+"
+                            states="draft,assigned,confirmed"/>
+                        <field name="location_dest_id" groups="stock.group_locations"/>
+                        <field name="state"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+    
+        <!-- 20/02/2015 (felix) Vista form de Stock Move ventana emergente
+            Esta vista incide en:
+            - Albaranes de entrada
+            - Albaranes internos
+            - Albaranes de salida
+        -->
+        <record id="view_move_picking_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.move.picking.form.inherit.1</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="stock.view_move_picking_form"/>
+            <field name="arch" type="xml">
+                
+                <!-- 20/02/2015 (felix) Grupo Trazabilidad
+                    (+) Cambiar etiqueta "Traceability" por "Trazabilidad"
+                    (+) Agregar campo "Fecha de fabricación"
+                    (+) Agregar campo "Fecha de caducidad"
+                    (+) Agregar campo "Fecha de retest"
+                -->
+                <xpath expr="//group[@string='Traceability']" position="replace">
+                    <group groups="stock.group_tracking_lot,stock.group_production_lot" string="Trazabilidad">
+                        <label for="tracking_id"/>
+                        <div>
+                            <field name="tracking_id" groups="stock.group_tracking_lot" class="oe_inline"/>
+                            <button name="%(stock.split_into)d" 
+                                string="New Pack" type="action"
+                                icon="terp-accessories-archiver+"
+                                states="draft,assigned,confirmed"/>
+                        </div>
+                        <label for="prodlot_id" string="Lote"/>
+                        <div>
+                            <field name="prodlot_id" groups="stock.group_production_lot"
+                                context="{'location_id':location_id, 'product_id':product_id}"
+                                domain="[('product_id','=?',product_id)]"
+                                on_change="onchange_lot_id(prodlot_id,product_qty, location_id, product_id, product_uom)" class="oe_inline"/>
+                            <button name="%(stock.track_line)d"
+                                groups="stock.group_production_lot"
+                                states="draft,waiting,confirmed,assigned"
+                                string="Split" type="action" icon="gtk-justify-fill"/>
+                        </div>
+                        <field name="fecha_fabricacion" string="Fecha de fabricación" required="1"/>
+                        <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
+                        <field name="fecha_retest" string="Fecha de retest" required="1"/>
+                    </group>
+                </xpath>
+                
+                <!-- 20/02/2015 (felix) Grupo Ubicaciones
+                    (-) Cambiar etiqueta de grupo "Locations" por "Ubicaciones"
+                -->
+                <xpath expr="//group[@string='Locations']" position="replace">
+                    <group string="Ubicaciones" groups="stock.group_locations">
+                        <field name="location_id" domain="[('usage','&lt;&gt;','view')]"/>
+                        <field name="location_dest_id" domain="[('usage','in', ['internal', 'supplier', 'customer'])]" groups="stock.group_locations"/>
+                    </group>
+                </xpath>
+                
+            </field>
+        </record>
+    
+    </data>
+</openerp>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="sfs_product_supplierinfo_form_inherit" model="ir.ui.view">
+            <field name="name">sfs.product.supplierinfo.form.inherit</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group/field[@name='company_id']" position="after">
+                        <field name="brand_id"/>
+                </xpath>
+            </field>
+        </record>
+     </data>
+</openerp>

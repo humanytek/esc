@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 14/04/2015 (felix) Agregar agrupador para flujo secundario en Pedidos de compra -->
+        <record id="purchase.view_purchase_order_filter" model="ir.ui.view">
+            <field name="name">purchase.order.list.select</field>
+            <field name="model">purchase.order</field>
+            <field name="priority" eval="300"/>
+            <field name="arch" type="xml">
+                <search string="Search Purchase Order">
+                    <field name="name" string="Reference"/>
+                    <filter icon="terp-mail-message-new" string="Unread Messages" name="message_unread" domain="[('message_unread','=',True)]"/>
+                    <separator/>
+                    <filter icon="terp-document-new" name="draft" string="Quotations" domain="[('state','=','draft')]" help="Purchase orders which are in draft state"/>
+                    <filter icon="terp-check" name="approved" string="Purchase Orders" domain="[('state','not in',('draft','cancel'))]" help="Approved purchase orders"/>
+                    <filter icon="terp-emblem-important" name="exception" string="Exception" domain="[('state','in',('except_invoice','except_picking'))]" help="Purchase orders which are in exception state"/>
+                    <separator/>
+                    <filter icon="terp-gtk-go-back-rtl" name="not_invoiced" string="Not Invoiced" domain="[('invoice_ids','=', False)]" help="Purchase orders that include lines not invoiced."/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="product_id"/>
+                    <field name="create_uid"/>
+                    <group expand="0" string="Agrupar por...">
+                        <filter string="Supplier" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Source" icon="terp-gtk-jump-to-rtl" domain="[]" context="{'group_by':'origin'}"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Order Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_order'}"/>
+                        <filter string="Expected Date" icon="terp-go-month" domain="[]" context="{'group_by':'minimum_planned_date'}"/>
+                        <separator />
+                        <filter string="Etapa secundaria" domain="[]" context="{'group_by':'purchase_stage_id'}" groups="esc_compras_compra.group_compras_etapa_admin"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+   
+    
+        <!-- 13/04/2015 (felix) Agregar instrucciones de embarque en formulario para orden de compra por línea -->
+        <record id="purchase_order_line_form_inherit_1" model="ir.ui.view">
+            <field name="name">purchase.order.line.form.inherit.1</field>
+            <field name="model">purchase.order.line</field>
+            <field name="inherit_id" ref="purchase.purchase_order_line_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 13/04/2015 (felix) 
+                    (+) Agregar pestaña para información de instrucciones de embarque
+                -->
+                <xpath expr="//form/sheet/notebook/page[@string='Invoices and Receptions']" position="after">
+                    <page string="Instrucciones de embarque">
+                        <group col="2">
+                            <group>
+                                <field name="empresa_id" string="Facturar a" on_change="on_change_empresa(empresa_id)"/>
+                                <field name="rfc_empresa" string="RFC Facturar a"/>
+                                <field name="proveedor_id" string="Consignar a" on_change="on_change_proveedor(proveedor_id)"
+                                    domain="[('supplier', '=', True), ('type','=','invoice')]"/>
+                                <field name="rfc_proveedor" string="RFC Consignar a"/>
+                                <!-- 04/06/2015 (felix) Ocultar campo por solicitud del cliente -->
+                                <!--
+                                <field name="contacto_ids" string="Contacto" widget="many2many_tags" domain="[('type','=', 'contact'), ('parent_id','=',proveedor_id)]"/>
+                                -->
+                                <!-- 04/06/2015 (felix) Nueva posición -->
+                                <field name="requiere_permiso" string="Requiere permiso"/>
+                                <field name="certificate_number" string="Número de permiso" domain="[('product_id', '=', product_id)]" 
+                                    on_change="on_change_permiso(certificate_number)" attrs="{'invisible':[('requiere_permiso','=',False)]}"/>
+                                <field name="fecha_vigencia" widget="date" string="Vigencia de permiso" attrs="{'invisible':[('requiere_permiso','=',False)]}"/>
+                                <field name="procedencia_id" string="Procedencias" domain="[('certificado_id', '=', certificate_number)]" 
+                                    attrs="{'invisible':[('requiere_permiso','=',False)]}"/>
+                                <field name="aduana_id" string="Aduana"/>                                
+                                <field name="incoterm" string="Incoterm"/>
+                                <label for="ciudad_id" string="Destino final" class="oe_inline"/>
+                                <div class="oe_inline">
+                                    <field name="ciudad_id" string="Ciudad" class="oe_inline" placeholder="Ciudad" 
+                                        domain="[('country_id.code', 'like', 'MX')]" help="Ciudad"/>,
+                                    <field name="estado_id" string="Estado" class="oe_inline" placeholder="Estado" 
+                                        domain="[('country_id.code', 'like', 'MX')]" help="Estado"/>
+                                </div>
+                            </group>
+                            <group>
+                                <!-- 04/06/2015 (felix) Filtrado por nuevo campo "manufacturer" -->
+                                <field name="manufacturer_id" string="Fabricante" domain="[('manufacturer', '=', True)]"/>
+                                <field name="fraccion_id" string="Fracción arancelaria"/>                                
+                                <field name="notas_embarque" string="Notas adicionales"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                
+                <!-- 14/04/2015 (felix) 
+                    (+) Agregar campo "Tipo de venta" invisible
+                    (+) Agregar campo "Línea" invisible
+                    (+) Agregar campo "Operaciones" invisible
+                -->
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="tipo_venta" string="Tipo de venta" invisible="1"/>
+                    <field name="operaciones" string="Operaciones" invisible="1"/>
+                    <field name="linea" string="Línea" invisible="1"/>
+                </xpath>
+                
+            </field>
+        </record>
+    
+        <!-- 04/03/2015 (felix) Compras -> Compra -> Pedidos de compra -->
+        <record id="purchase_order_form_inherit_1" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit.1</field>
+            <field name="model">purchase.order</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 05/03/2015 (felix) Insertar flujo secundario -->
+                <xpath expr="//form/header/field[@name='state']" position="after">
+                    <field name="purchase_stage_id" widget="statusbar" statusbar_visible="approved,done" 
+                        clickable="True" modifiers="{'readonly': true}" style="float:left;" 
+                        attrs="{'invisible': [('state', 'not in', ['approved','done'])], 'readonly': [('state', '=', 'done')]}"
+                        groups="esc_compras_compra.group_compras_etapa_admin"/>
+                </xpath>
+                
+                <!-- 05/03/2015 (felix) Solapa para preguntas específicas en flujo secundario -->
+                <xpath expr="//form/sheet/notebook/page[@string='Incoming Shipments &amp; Invoices']" position="after">
+                    <page string="Etapas de pedidos de compra" attrs="{'invisible': [('state', 'not in', ['approved','done'])]}"
+                         groups="esc_compras_compra.group_compras_etapa_admin"/>
+                </xpath>
+                
+                <!-- 13/04/2015 (felix) Agregar instrucciones de embarque en formulario para orden de compra por línea -->
+                <xpath expr="//form/sheet/notebook/page[@string='Purchase Order']/field[@name='order_line']" position="replace">
+                    <field name="order_line">
+                        <tree string="Purchase Order Lines">
+                            <field name="product_id" on_change="onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,False,price_unit,context)"/>
+                            <field name="name"/>
+                            <field name="date_planned"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <field name="account_analytic_id" groups="purchase.group_analytic_accounting" domain="[('type','not in',('view','template'))]"/>
+                            <field name="product_qty" on_change="onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                            <field name="product_uom" groups="product.group_uom" on_change="onchange_product_uom(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                            <field name="price_unit"/>
+                            <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+                            <field name="price_subtotal"/>
+                        </tree>
+                    </field>
+                </xpath>
+                
+                <!-- 05/06/2015 (felix) Agregar campo "Operación" -->
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="operaciones" string="Operación" required="1"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 04/03/2015 (felix) Cambiar "Purchase Orders" por "Pedidos de compra" en el action -->
+        <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+            <field name="name">Pedidos de compra</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">purchase.order</field>
+            <field name="view_mode">tree,form,graph,calendar</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','not in',('draft','sent','confirmed'))]</field>
+            <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a quotation that will be converted into a purchase order. 
+              </p><p>
+                Use this menu to search within your purchase orders by
+                references, supplier, products, etc. For each purchase order,
+                you can track the related discussion with the supplier, control
+                the products received and control the supplier invoices.
+              </p>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

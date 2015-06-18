@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    	 <record model="ir.ui.view" id="view_voucher_line_form_view_inh">
+            <field name="name">product.product.form.inh</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+            	<xpath expr="//field[@name='categ_id']" position="after">
+            		<div name="options" groups="base.group_user">
+	            		<label for="has_charactersitics"/>
+	            		<field name="has_charactersitics"/>
+            		</div>
+            	</xpath>
+            	<xpath expr="//page[@string='Information']" position="after">
+            		<page string="Characteristics" attrs= "{'invisible':[('has_charactersitics','=',False)]}">
+            			<group col = "2">
+	            			<field name="engine" on_change="engine_val(engine)"/>
+	            		</group>
+	            			<group col="4" attrs= "{'invisible':[('engine','=',False)]}">
+	            				<field name="engine_type_id"/>
+	            				<field name="brand_id" domain="[('type','=','engine')]"/>
+	            				<field name="capacity"/>
+	            				<field name="application_id"/>
+	            				<field name="characteristics_id" domain="[('type','=','engine')]"/>
+	            				<field name="cylinders"/>
+	            				<field name="aspirate_id"/>
+	            				<field name="fuel_id"/>
+	            			</group>
+	            		<group col = "2">
+	            			<field name="power_plant" on_change="power_plant_val(power_plant)"/>
+	            		</group>
+	            			<group col="4" attrs= "{'invisible':[('power_plant','=',False)]}">
+	            				<field name="power_characteristics_id" domain="[('type','=','power_plant')]"/>
+	            				<field name="power_brand_id" domain="[('type','=','power_plant')]"/>
+	            				<field name="line_id"/>
+	            				<field name="assembly_id"/>
+	            				<field name="quality_id"/>
+	            				<field name="model_id"/>
+	            				<field name="transference_id"/>
+	            				<field name="cont_term"/>
+	            				<field name="case"/>
+	            				<field name="boot_id"/>
+	            				<field name="engine_id" domain="[('engine','=',True)]" on_change="onchange_engine(engine_id)"/>
+	            				<field name="engine_name"/>
+	            				<field name="cylinders2"/>
+	            				<field name="brand_id2"/>
+	            				<field name="aspirate_id2"/>
+	            				<field name="capacity2"/>
+	            			</group>
+            		</page>
+            	</xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

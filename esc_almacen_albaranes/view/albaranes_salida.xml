@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+    
+        <!-- 26/02/2015 (felix) Modificaciones en action de Albaranes de salida -->
+        <record id="stock.action_picking_tree" model="ir.actions.act_window">
+            <field name="name">Albaranes de salida</field>
+            <field name="res_model">stock.picking.out</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[('type','=','out')]</field>
+            <field name="context">{'default_type': 'out', 'contact_display': 'partner_address'}</field>
+            <field name="search_view_id" ref="stock.view_picking_out_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to create a delivery order. 
+              </p><p>
+                This is the list of all delivery orders that have to be
+                prepared, according to your different sales orders and your
+                logistics rules.
+              </p>
+            </field>
+        </record>
+        
+        <!-- 26/02/2015 (felix) Modificaciones en vista form de Albaranes de salida -->
+        <record id="view_picking_out_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.picking.out.form.inherit.1</field>
+            <field name="model">stock.picking.out</field>
+            <field name="priority" eval="450"/>
+            <field name="inherit_id" ref="stock.view_picking_out_form"/>
+            <field name="arch" type="xml">
+                        
+                <!-- 26/02/2015 (felix) Page Productos
+                    (+) Cambiar etiqueta "Products" por "Productos"
+                    (+) Clase css para extender la vista con scroll
+                    (+) Cambiar etiqueta de placeholder en campo "note"
+                -->
+                <xpath expr="//notebook/page[@string='Products']" position="replace">
+                    <page string="Productos">
+				        <field name="move_lines" class="oe_view oe_list" string="Stock Move" options='{"reload_on_button": true}' 
+				            context="{'address_out_id': partner_id, 'picking_type': 'out', 'form_view_ref':'stock.view_move_picking_form', 'tree_view_ref':'stock.view_move_picking_tree'}"/>
+				        <field name="note" placeholder="Información adicional..." class="oe_inline" modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+			        </page>
+		        </xpath>
+		        
+		        <!-- 12/03/2015 (felix) Agregar campo "Control de pedimento" 
+		            17/04/2015 (felix) ahora se ocultó el campo, aquí no lo quieren
+		        -->
+		        <!--
+		        <xpath expr="//field[@name='partner_id']" position="after">
+		            <field name="pedimento_id" string="Control de pedimento" 
+		                modifiers="{'readonly': [['state', 'in', ['cancel', 'done']]]}"/>
+	            </xpath>
+	            -->
+	            
+	            <!-- 18/03/2015 (felix) Agregar pestaña y campo "Perfiles" -->
+                <xpath expr="//page[@string='Additional Info']" position="after">
+                    <page string="Perfiles">
+                        <field name="perfiles_ids" string="Perfiles"/>
+                    </page>
+                </xpath>
+                
+                <!-- 08/04/2015 (felix) (+) Agregar campo "Código de pre-entrada" -->
+		        <xpath expr="//field[@name='origin']" position="after">
+		            <field name="cliente_ref" string="Referencia cliente"/>
+		            <field name="preentrada_id" string="Código de pre-entrada"/>
+	            </xpath>
+	            
+	            <!-- 20/04/2015 (felix) Agregar campo "Efectúa" -->
+		        <xpath expr="//field[@name='stock_journal_id']" position="after">
+		            <field name="efectua_id" string="Efectúa" domain="[('id', '=', uid)]"/>
+	            </xpath>
+	            
+	            <!-- 05/06/2015 (felix) Agregar campo "Operación" -->
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="operaciones" string="Operación" required="1"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+                                	                            		        		        
+	        </field>
+        </record>
+        
+        <!-- 16/06/2015 (felix) Modificaciones en vista de líneas de Albaranes de salida -->
+        <record id="view_move_picking_tree_inherit_1" model="ir.ui.view">
+            <field name="name">view.move.picking.tree.inherit.1</field>
+            <field name="model">stock.move</field>
+            <field name="priority" eval="450"/>
+            <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+            <field name="arch" type="xml">
+            
+                <!-- 16/06/2015 (felix) Agregar suma en cantidad de productos -->
+                <xpath expr="//field[@name='product_qty']" position="attributes">
+                    <attribute name="sum">Cantidad</attribute>
+                </xpath>
+            
+            </field>
+        </record>
+                    
+    </data>
+</openerp>

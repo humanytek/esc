@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+       <record id="view_sale_order_line_info" model="ir.ui.view">
+            <field name="name">Sales Order Line Info</field>
+            <field name="model">sale.order.line.view.info</field>
+            <field name="arch" type="xml">
+             <form string="Quantity and Unit price per Brand" version="7.0">
+                <group string="Quantity and Unit price per Brand" col="1">
+                       <field name="stock_price_ids" readonly="1" nolabel="1">
+                       	  <tree string="Info">
+                       		<field name="brand"/>
+                       		<field name="real_stock"/>
+                       		<field name="unit_price"/>
+                       	  </tree>
+                       </field>
+                </group>
+            </form>
+            </field>
+        </record>
+        
+        <record id="action_view_sale_order_line_info" model="ir.actions.act_window">
+            <field name="name">View Info</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line.view.info</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_sale_order_line_info"/>
+            <field name="target">new</field>
+        </record>
+     </data>
+</openerp>        

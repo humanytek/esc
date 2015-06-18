@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+  <data>
+     <report string="Reconcile Ledger Report"
+                model="reconcile.ledger.report"
+                auto="False"
+                name="reconcile.ledger.jasper.report"
+                rml="sfs_reconcile_ledger_report/report/ledger_jasper_report.jrxml"
+                id="report_jasper_reconcile_jasper_report"
+                menu="False"
+                report_type="pdf"
+                usage="default"
+                />
+    
+  </data>
+</openerp>

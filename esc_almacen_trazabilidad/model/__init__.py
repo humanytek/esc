@@ -18,5 +18,6 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-#import model
+import cert_analisis
+import product_import_cert_line
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

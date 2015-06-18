@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 20/03/2015 (felix) Ventas/Ventas/Pedidos de ventas: vista forma para desglose de entrega de productos -->
+        <record id="desglose_entrega_form" model="ir.ui.view">
+            <field name="name">desglose.entrega.form</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Desglose de entrega" version="7.0">
+                    <field name="state" invisible="1"/>
+                    <group col="2">
+                        <group>
+                            <label for="product_uom_qty" string="Cantidad restante para desglose"/>
+                            <div>
+                                <field name="product_uom_qty" readonly="1" class="oe_inline"/>
+                                <field name="product_uom" readonly="1" class="oe_inline"/>
+                            </div>
+                            <field name="cant_desglose" string="Cantidad para desglosar" attrs="{'readonly': [('cant_desglose', '=', 0.00)]}"/>
+                        </group>
+                        <group>
+                            <field name="fecha_entrega" string="Fecha de entrega" attrs="{'readonly': [('cant_desglose', '=', 0.00)]}"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="guardar_desglose" string="Guardar" type="object" class="oe_highlight" attrs="{'invisible': [('cant_desglose', '=', 0.00)]}"/>
+                        <button string="Cancelar" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>    
+    
+        <!-- 17/03/2015 (felix) Ventas/Ventas/Pedidos de ventas -->
+        <record id="sale_order_form_inherit_2" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.2</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="301"/>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 17/03/2015 (felix)
+                    (+) Agregar "Código y nombre del producto" según el cliente seleccionado, vista form y vista tree
+                -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='product_id']" position="after">
+                    <field name="cod_name_prod" string="Código y nombre del producto" help="Código y nombre del producto según el cliente"/>
+                </xpath>
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='name']" position="after">
+                    <field name="cod_name_prod" string="Código y nombre del producto" help="Código y nombre del producto según el cliente"/>
+                </xpath>
+                
+                <!-- 17/03/2015 (felix) (+) Agregar pestaña y campo "Perfiles" -->
+                <xpath expr="//page[@string='Other Information']" position="after">
+                    <page string="Perfiles">
+                        <field name="perfiles_ids" string="Perfiles"/>
+                    </page>
+                </xpath>
+                
+                <!-- 19/03/2015 (felix) (+) Agregar botón tree para desplegar desglose de entregas por productos -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='product_id']" position="before">
+                    <button name="hacer_entrega" icon="gtk-indent" type="object" help="Desglosar entrega para este producto"
+                        attrs="{'invisible': ['|', ('state', 'in', ['draft','done']), ('product_desglose', '=', True)]}"/>
+                    <field name="product_desglose" invisible="1"/>
+                    <field name="cant_desglose" invisible="1"/>
+                </xpath>
+                
+                <!-- 27/03/2015 (felix) (+) Resaltar de azul líneas que son desglose de un producto específico -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']" position="attributes">
+                    <attribute name="colors">blue: product_desglose == True</attribute>
+                    <attribute name="bgcolor">gray: product_desglose == True</attribute>
+                </xpath>
+                
+                <!-- 06/04/2015 (felix)
+                    (+) Agregar "Cantidad total" campo para crear cantidad total de desglose inicial
+                -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='cod_name_prod']" position="after">
+                    <field name="cant_desglose" string="Cantidad de desglose" invisible="1"/>
+                </xpath>
+                
+                <!-- 14/04/2015 (felix)
+                    (+) Agregar campo "Linea" invisible
+                    (+) Agregar campo "Operaciones" invisible
+                    (+) Agregar campo "tipo de venta" invisible
+                -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/form[@string='Sales Order Lines']/group/group/field[@name='cod_name_prod']" position="after">
+                    <field name="tipo_venta" invisible="1"/>
+                    <field name="linea" invisible="1"/>
+                    <field name="operaciones" invisible="1"/>
+                </xpath>
+                
+                <!-- 05/06/2015 (felix) Agregar campo "Operación" -->
+                <xpath expr="//notebook" position="before">
+                    <group>
+                        <group>
+                            <field name="operaciones" string="Operación" required="1" 
+                                modifiers="{'readonly': [['state', 'not in', ['draft', 'sent']]], 'required': true}"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+                
+                <!-- 15/06/2015 (felix) Agregar suma en cantidad de productos -->
+                <xpath expr="//page[@string='Order Lines']/field[@name='order_line']/tree[@string='Sales Order Lines']/field[@name='product_uom_qty']" position="attributes">
+                    <attribute name="sum">Cantidad</attribute>
+                </xpath>
+                
+            </field>
+        </record>
+                
+    </data>
+</openerp>

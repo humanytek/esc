@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_brand_stock_price_manager,brand.stock.price.manager,model_brand_stock_price,base.group_sale_salesman,1,1,1,1
+access_report_mrp_p2c_user,brand.stock.price.user,model_brand_stock_price,base.group_user,1,0,0,0
+access_model_sale_order_line_view_info_manager,sale.order.line.view.info.manager,model_sale_order_line_view_info,base.group_sale_salesman,1,1,1,1
+access_model_sale_order_line_view_info_user,sale.order.line.view.info.user,model_sale_order_line_view_info,base.group_user,1,0,0,0

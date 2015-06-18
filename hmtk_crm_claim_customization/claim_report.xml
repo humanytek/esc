@@ -1,0 +1,24 @@
+<openerp>
+   <data>
+   
+   	<report string="Claim Report"
+			model="crm.claim"
+			auto="True"
+			name="crm_claim_report"
+			rml="hmtk_crm_claim_customization/report/claim_report.jrxml"
+			id="report_crm_claim_report"
+			header="True"
+			menu="False"
+			/>
+			
+	<report string="Claim Report "
+			model="crm.claim"
+			auto="True"
+			name="crm_claim_report_spanish"
+			rml="hmtk_crm_claim_customization/report/claim_report_spanish.jrxml"
+			id="report_crm_claim_report_spanish"
+			header="True"
+			menu="False"
+			/>
+   </data>
+</openerp>

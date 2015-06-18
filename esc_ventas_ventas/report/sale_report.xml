@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report auto="False" id="sale.report_sale_order" model="sale.order" name="sale.order"
+                rml="esc_ventas_ventas/report/sale_order.rml" string="Presupuesto / Pedido"
+                usage="default"/>
+
+    </data>
+</openerp>

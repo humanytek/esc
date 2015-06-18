@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 08/04/2015 (felix) Vista form Caducidad mínima por producto -->
+        <record id="producto_caducidad_form" model="ir.ui.view">
+            <field name="name">producto.caducidad.form</field>
+            <field name="model">product.cliente.caducidad</field>
+            <field name="arch" type="xml">
+                <form string="Datos de caducidad por producto" version="7.0">
+                    <group col="2">
+                        <group>
+                            <field name="name" string="Cantidad de caducidad mínima" required="1"/>
+                            <field name="unidad_cad_id" string="Unidad de caducidad" required="1"/>
+                        </group>
+                        <group />
+                    </group>
+                </form>
+            </field>
+        </record>
+    
+        <!-- 17/03/2015 (felix) Vista tree Datos de producto por cliente -->
+        <record id="producto_cliente_tree" model="ir.ui.view">
+            <field name="name">producto.cliente.tree</field>
+            <field name="model">product.cliente</field>
+            <field name="arch" type="xml">
+                <tree string="Datos del producto por cliente">
+                    <field name="cliente_id" string="Cliente"/>
+                    <field name="codigo_prod" string="Código del producto"/>
+                    <field name="name" string="Nombre del producto"/>
+                    <field name="especificacion" string="Especificación"/>
+                    <field name="caducidad_id" string="Tiempo mínimo de caducidad"/>
+                    <field name="cond_entrega" string="Condición de entrega"/>                    
+                </tree>
+            </field>
+        </record>
+        
+        <!-- 15/04/2015 (felix) Cambios en la vista tree de Productos -->
+        <record id="product_product_tree_view_inherit_1" model="ir.ui.view">
+            <field name="name">product.product.tree.inherit.1</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="priority" eval="300"/>
+            <field name="arch" type="xml">
+                
+                <!-- 15/04/2015 (felix) Ocultar campo de "Precio al público" -->
+                <xpath expr="//field[@name='lst_price']" position="replace">
+                    <field name="lst_price" invisible="1"/>
+                </xpath>
+                
+                <!-- 15/04/2015 (felix) Agregar campo de "Fabricante" -->
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="manufacturer" string="Fabricante"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- 17/03/2015 (felix) Menú: Almacén/Productos/Productos -->
+        <record id="product_normal_form_view_inherit_1" model="ir.ui.view">
+            <field name="name">product.normal.form.view.inherit.1</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                
+                <!-- 17/03/2015 (felix) 
+                    (+) Crear Page nuevo con descripción del producto según el cliente
+                    (+) Agregar vista tree con los campos:
+                        - Cliente
+                        - Código de producto
+                        - Nombre de producto
+                        - Fecha mínima de caducidad
+                        - Condición de entrega
+                -->
+                <xpath expr="//form/sheet/notebook/page[@string='Sales']" position="after">
+                    <page string="Datos de producto por cliente">
+                        <field name="producto_cliente_ids" string="Datos del producto por cliente">
+                            <tree string="Datos del producto por cliente" editable="1">
+                                <field name="cliente_id" string="Cliente"/>
+                                <field name="codigo_prod" string="Código del producto"/>
+                                <field name="name" string="Nombre del producto"/>
+                                <field name="especificacion" string="Especificación"/>
+                                <field name="caducidad_id" string="Tiempo mínimo de caducidad"/>
+                                <field name="cond_entrega" string="Condición de entrega"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                
+                <!-- 13/04/2015 (felix)
+                    (+) Agregar campo "Línea"
+                    (+) Agregar campo "Operaciones"
+                    (+) Agregar campo "Tipo de venta"
+                -->
+                <xpath expr="//form/sheet/notebook" position="before">
+                    <seperator />
+                    <group col="2">
+                        <group>
+                            <field name="linea" string="Línea de producto"/>
+                            <!-- 05/06/2015 (felix) Ocultar campo "Operación" por solicitud del cliente -->
+                            <!-- 
+                            <field name="operaciones" string="Operación"/> 
+                            -->
+                            <field name="tipo_venta" string="Tipo de venta"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+                            
+            </field>            
+        </record>
+                
+        <!-- 22/04/2015 (felix) Cambiar el campo "Fracción arancelaria" one2many por many2one -->
+        <record id="product_normal_form_view_inherit_2" model="ir.ui.view">
+            <field name="name">product.normal.form.view.inherit.2</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="300"/>
+            <field name="inherit_id" ref="hmtk_esic_product_info.product_normal_form_view_inherit"/>
+            <field name="arch" type="xml">
+            
+                <!-- 22/04/2015 (felix) Campo "Fracción arancelaria" many2one -->
+                <xpath expr="//field[@name='tarrif_fraction_ids']" position="replace">
+                    <group col="2">
+                        <group>
+                            <field name="fraccion_id" string="Fracción arancelaria"/>
+                        </group>
+                        <group />
+                    </group>
+                </xpath>
+            
+            </field>
+        </record>
+                
+        
+        <!-- 12/06/2015 (felix) Campos de fabricante -->
+        <record id="view_product_form_expiry_inherit_1" model="ir.ui.view">
+            <field name="name">view.product.form.expiry.inherit.1</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="500"/>
+            <field name="inherit_id" ref="product_manufacturer.view_product_form_expiry" />
+            <field name="arch" type="xml">
+            
+                <!-- 12/06/2015 (felix) Agregar dominio fabricante al campo "manufacturer" -->
+                <xpath expr="//group[@name='procurement']/group[@string='Manufacturer']/field[@name='manufacturer']" position="replace">
+                    <field name="manufacturer" context="{'default_supplier':True, 'default_customer':False}"
+                        domain="[('manufacturer', '=', True)]"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
+    </data>
+</openerp>

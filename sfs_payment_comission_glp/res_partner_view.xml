@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record id="view_partner_form_view_inherit" model="ir.ui.view">
+            <field name="name">partner.form.view.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="comission_percent" required="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
