@@ -43,10 +43,11 @@ Detalles:
         'stock',
         'product',
         'product_manufacturer',
-        'hmtk_esic_product_info'
+        'hmtk_esic_product_info',
     ],
     'data': [
         # Seguridad y grupos
+        'security/ir.model.access.csv',
     
         # Data
         'data/unidades_caducidad.xml',
@@ -54,6 +55,8 @@ Detalles:
         # Vistas
         'view/productos.xml',
         'view/etiqueta_aprobado.xml',
+        'view/product_tarrif_fraction_form.xml',
+        'view/therapeutic_action_form.xml',
         
         # Reportes
         'report/stick_aprobado.xml'

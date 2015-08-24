@@ -46,3 +46,9 @@ msgstr "Paquete"
 #: field:stock.move,prodlot_id:0
 msgid "Serial Number"
 msgstr "Número de serial"
+
+#. module: esc_almacen_albaranes
+#: view:stock.picking.in:0
+msgid "Import certificate number"
+msgstr "Número sanitario de importación"
+

@@ -21,6 +21,7 @@
 
 from openerp.osv import fields, osv
 from openerp.tools.translate import _
+import re
 import logging
 _logger = logging.getLogger(__name__)
 
@@ -37,20 +38,45 @@ class stock_picking_esc(osv.Model):
         for i in self.browse(cr, uid, ids, context):
             res[i.id] = ''
             
+            # Albaran interno
+            if i.origin and i.type in ['internal']:
+                # Revisa de una venta
+                if re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
+                    
+                # Revisa de una compra
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    elif i.origin:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+                
             # Albaran de salida, captura una venta
             if i.origin and i.type in ['out']:
                 src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
                 res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
                 
-            # Albaran de entrada, captura una compra
+            # Albaran de entrada, captura una compra o devolucion
             if i.origin and i.type in ['in']:
-                doc = i.origin.split(':')
-                if doc:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                else:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-            
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    else:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+                    
+                elif re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_sale_order:
+                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
+                
         return res
     
     _columns = {
@@ -83,20 +109,45 @@ class stock_picking_in_esc(osv.Model):
         for i in self.browse(cr, uid, ids, context):
             res[i.id] = ''
             
+            # Albaran interno
+            if i.origin and i.type in ['internal']:
+                # Revisa de una venta
+                if re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
+                    
+                # Revisa de una compra
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    elif i.origin:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+            
             # Albaran de salida, captura una venta
             if i.origin and i.type in ['out']:
                 src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
                 res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
                 
-            # Albaran de entrada, captura una compra
+            # Albaran de entrada, captura una compra o devolucion
             if i.origin and i.type in ['in']:
-                doc = i.origin.split(':')
-                if doc:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                else:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-            
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    else:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+                    
+                elif re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_sale_order:
+                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
+                                
         return res
     
     _columns = {
@@ -105,7 +156,9 @@ class stock_picking_in_esc(osv.Model):
             'Codigo de pre-entrada'),
         'operaciones': fields.function(_get_operacion, type='selection', 
             selection=[('linea','Operaciones de linea'), 
-            ('desarrollo','Operaciones de desarrollo')], string='Operacion')
+            ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
+        'certificate_number_id': fields.many2one('product.import.certificate', 
+            'Import certificate number'),
     }
     
 stock_picking_in_esc()
@@ -124,19 +177,44 @@ class stock_picking_out_esc(osv.Model):
         for i in self.browse(cr, uid, ids, context):
             res[i.id] = ''
             
+            # Albaran interno
+            if i.origin and i.type in ['internal']:
+                # Revisa de una venta
+                if re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
+                    
+                # Revisa de una compra
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    elif i.origin:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+            
             # Albaran de salida, captura una venta
             if i.origin and i.type in ['out']:
                 src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
                 res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
                 
-            # Albaran de entrada, captura una compra
+            # Albaran de entrada, captura una compra o devolucion
             if i.origin and i.type in ['in']:
-                doc = i.origin.split(':')
-                if doc:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                else:
-                    src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+                if re.match('^PO',i.origin):
+                    doc = i.origin.split(':')
+                    if doc:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
+                    else:
+                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
+                    
+                    if src_purchase_order:
+                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
+                    
+                elif re.match('^SO',i.origin):
+                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
+                    if src_sale_order:
+                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
             
         return res
     

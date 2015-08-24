@@ -62,6 +62,7 @@
                                 <field name="customs" string="Aduana" widget="selection"/>
                                 <field name="date" string="Fecha de pedimento" required="1"/>
                                 <field name="rate"/>
+                                <field name="active" string="Activo"/>
                                 <field name="company_id" select="1" groups="base.group_multi_company" widget="selection"/>
                             </group>
                             <newline/>

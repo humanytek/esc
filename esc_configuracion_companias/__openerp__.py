@@ -29,14 +29,17 @@
     'website': 'http://humanytek.com',
     'depends': [
         'base',
+        'stock',
     ],
     'data': [
         # Seguridad y grupos
+        #'security/esc_security.xml',
+        #'security/ir.model.access.csv',
         
         # Data
         
         # View y menu
-        'view/companias.xml',
+        #'view/companias.xml',
         
         # Reportes       
         

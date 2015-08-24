@@ -16,3 +16,27 @@ msgstr ""
 "X-Launchpad-Export-Date: 2014-10-07 06:57+0000\n"
 "X-Generator: Launchpad (build 17196)\n"
 
+#. module: esc_almacen_productos
+#: view:product.tarrif_fraction:0
+msgid "Purchase tax"
+msgstr "Impuesto de compra"
+
+#. module: esc_almacen_productos
+#: view:product.tarrif_fraction:0
+msgid "Import tax"
+msgstr "Impuesto de importación"
+
+#. module: esc_almacen_productos
+#: view:product.tarrif_fraction:0
+msgid "Notes"
+msgstr "Notas"
+
+#. module: esc_almacen_productos
+#: view:product.therapeutic.action:0
+msgid "Therapeutic Action"
+msgstr "Acción terapéutica"
+
+#. module: esc_almacen_productos
+#: view:product.product:0
+msgid "Therapeutic action"
+msgstr "Acción terapéutica"

@@ -75,10 +75,14 @@
 	            </xpath>
 	            -->
 	            
-	            <!-- 08/04/2015 (felix) (+) Agregar campo "Código de pre-entrada" -->
+	            <!-- 08/04/2015 (felix) (+) Agregar campo "Código de pre-entrada"
+	                22/06/2015 (felix) Por solicitud del cliente Ocultar campo "Código de pre-entrada"  
+	            -->
+	            <!--
 		        <xpath expr="//field[@name='origin']" position="after">
 		            <field name="preentrada_id" string="Código de pre-entrada"/>
 	            </xpath>
+	            -->
 	            
 	            <!-- 05/06/2015 (felix) Agregar campo "Operación" -->
                 <xpath expr="//notebook" position="before">
@@ -88,6 +92,11 @@
                         </group>
                         <group />
                     </group>
+                </xpath>
+                
+                <!-- 20/08/2015 (felix) Agregar campo "Permiso Sanitario de Importación" -->
+                <xpath expr="//field[@name='origin']" position="after">
+                    <field name="certificate_number_id" string="Import certificate number"/>
                 </xpath>
 		        		        		        
 	        </field>

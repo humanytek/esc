@@ -43,6 +43,7 @@ Este módulo proporciona el desarrollo y cambios en las configuraciones para el 
     'data': [
         # Seguridad y grupos
         'security/aduana_group.xml',
+        'security/ir.model.access.csv',
         
         # Data
         'data/aduanas_data.xml',

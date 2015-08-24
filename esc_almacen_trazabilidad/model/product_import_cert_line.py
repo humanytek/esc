@@ -149,10 +149,26 @@ class product_import_certificate_esc(osv.Model):
                 qty_uom = str(i.qty)+' / '+str(i.uom_id.name)
             res[i.id] = qty_uom
         return res
+        
+    # 20/08/2015 (felix) Captura de datos para lista de productos por numero de permiso de importacion
+    """
+    def _get_move_in(self, cr, uid, ids, field_name, arg=None, context=None):
+        res = {}
+        if not ids:
+            return res
+        for i in ids:
+            result.setdefault(i, [])
+        cr.execute('''SELECT WHERE certificate_number
+        ''')
+        res_q = cr.fetchall()
+        for r in res_q:
+            res[r[0]].append(r[1])
+        return res
+    """
     
     _columns = {
         'background_country_ids': fields.one2many('product.import.certificate.line', 
-            'certificado_id', 'Backgrounds')
+            'certificado_id', 'Backgrounds'),
     }
     _rec_name = 'certificate_number'
     

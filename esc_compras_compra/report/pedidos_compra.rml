@@ -185,7 +185,7 @@
                                         <para style="terp_default_6"><b>Facturar a:</b> [[ line_head_1.empresa_id.name or '' ]]</para>
                                         <para style="terp_default_6"><b>RFC Facturar a:</b> [[ line_head_1.rfc_empresa or '' ]]</para>
                                         <para style="terp_default_6"><b>Incoterm:</b> [[ line_head_1.incoterm.name or '' ]]</para>
-                                        <para style="terp_default_6"><b>Destino final:</b> [[ line_head_1.ciudad_id.name or '' ]], [[ line_head_1.estado_id.name or '' ]]</para>
+                                        <para style="terp_default_6"><b>Destino final:</b> [[ (line_head_1.empresa_id.street) or '' ]] [[ (line_head_1.empresa_id.street2) or '' ]] [[ (line_head_1.empresa_id.block) or '' ]] [[ (line_head_1.empresa_id.zip) or '' ]] [[ (line_head_1.empresa_id.city) or '' ]] [[ (line_head_1.empresa_id.state_id.name) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_street3) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_street4) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_city2) or '' ]] [[ (line_head_1.empresa_id.country_id.name) or '' ]]</para>
                                     </td>
                                 </tr>
                             </blockTable>
@@ -269,10 +269,10 @@
                             </section>
                             <para style="terp_default_Bold_6"><b>Instrucciones de embarque</b></para>
                             <para style="terp_default_Tab_6"><b>Aduana:</b> ([[ line.aduana_id.custom_number or '' ]]) [[ line.aduana_id.custom_name or '' ]]</para>
-                            <para style="terp_default_Tab_6"><b>Fabricante:</b> [[ line.fabricante_id.name or '' ]]</para>
+                            <para style="terp_default_Tab_6"><b>Fabricante:</b> [[ line.manufacturer_id.name or '' ]]</para>
                             <para style="terp_default_Tab_6"><b>Fracción arancelaria:</b> [[ line.fraccion_id.name or '' ]]</para>
-                            <para style="terp_default_Tab_6"><b>Número de permiso:</b> [[ line.permiso_id.certificate_number or 'No requiere permiso' ]]</para>
-                            <para style="terp_default_Tab_6"><b>Fecha de vigencia:</b> [[ formatLang(line.fecha_vigencia,date=True) ]]</para>
+                            <para style="terp_default_Tab_6"><b>Número de permiso:</b> [[ line.certificate_number or 'No requiere permiso' ]]</para>
+                            <para style="terp_default_Tab_6"><b>Fecha de vigencia:</b> [[ (line.fecha_vigencia and formatLang(line.fecha_vigencia, date=True)) or '' ]]</para>
                             <para style="terp_default_Tab_6"><b>Procedencias:</b> </para>
                                 <section>
                                     <para>[[repeatIn(line.procedencia_id,'procedencia')]]</para>

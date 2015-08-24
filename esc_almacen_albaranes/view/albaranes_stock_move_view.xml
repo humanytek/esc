@@ -40,6 +40,9 @@
                             states="draft,waiting,confirmed,assigned"/>
                         <field groups="stock.group_tracking_lot" name="tracking_id"/>
                         
+                        <!-- 22/06/2015 (felix) Agregar campo "Pre-entrada" -->
+                        <field name="preentrada_id" string="Pre-entrada"/>
+                        
                         <!-- 20/02/2015 (felix) Campos de fechas número de serie -->
                         <field name="fecha_fabricacion" string="Fecha de fabricación" widget="date"/>
                         <field name="fecha_caducidad" string="Fecha de caducidad" widget="date"/>
@@ -105,10 +108,16 @@
                         <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
                         <field name="fecha_retest" string="Fecha de retest" required="1"/>
                     </group>
+                    
+                    <!-- 22/06/2015 (felix) Agregar campo "Pre-entrada" -->
+                    <group>
+                        <field name="preentrada_id" string="Pre-entrada"/>
+                    </group>
+                    
                 </xpath>
                 
                 <!-- 20/02/2015 (felix) Grupo Ubicaciones
-                    (-) Cambiar etiqueta de grupo "Locations" por "Ubicaciones"
+                    (+) Cambiar etiqueta de grupo "Locations" por "Ubicaciones"
                 -->
                 <xpath expr="//group[@string='Locations']" position="replace">
                     <group string="Ubicaciones" groups="stock.group_locations">

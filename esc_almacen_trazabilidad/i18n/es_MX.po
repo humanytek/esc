@@ -390,3 +390,19 @@ msgstr "Números de lote"
 #: model:ir.ui.menu,name:product_import_cert.menu_import_certificate
 msgid "Import Certificates"
 msgstr "Permiso sanitario de importación"
+
+#. module: esc_almacen_trazabilidad
+#: view:product.import.certificate:0
+msgid "Origins"
+msgstr "Procedencias"
+
+#. module: esc_almacen_trazabilidad
+#: view:product.import.certificate:0
+msgid "Products"
+msgstr "Productos"
+
+#. module: esc_almacen_trazabilidad
+#: view:import.info:0
+msgid "Active"
+msgstr "Activado"
+

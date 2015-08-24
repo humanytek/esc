@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 24/08/2015 (felix) Formulario: Product Tarrif Fraction -->
+        <record id="view_product_tarrif_fraction_form_inherit_1" model="ir.ui.view">
+            <field name="name">view.product.tarrif.fraction.form.inherit.1</field>
+            <field name="model">product.tarrif_fraction</field>
+            <field name="inherit_id" ref="hmtk_esic_product_info.view_product_tarrif_fraction_form"/>
+            <field name="arch" type="xml">
+            
+                <!-- 24/08/2015 (felix) Reorganizar formulario -->
+                <xpath expr="//form[@string='Tarrif Fraction']" position="replace">
+                    <form string="Tarrif Fraction" version="7.0">
+                        <sheet>
+                            <group col="2">
+                                <group>
+                                    <field name="name" string="Fracción arancelaria"/>
+                                    <field name="tax_purchase_id" string="Purchase tax" domain="[('type_tax_use', '=', 'purchase')]"/>
+                                    <field name="tax_import_id" string="Import tax" domain="[('type_tax_use', '=', 'purchase')]"/>
+                                </group>
+                                <group>
+                                    <field name="notes" string="Notes"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </xpath>
+                
+            </field>
+        </record>
+        
+    </data>
+</openerp>

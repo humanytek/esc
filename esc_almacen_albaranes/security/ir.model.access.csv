@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_picking_user,stock.picking user,model_stock_picking,stock.group_stock_user,1,1,1,1
+access_stock_picking_in_user,stock.picking.in,model_stock_picking_in,stock.group_stock_user,1,1,1,1
+access_stock_picking_out_user,stock.picking.out,model_stock_picking_out,stock.group_stock_user,1,1,1,1
+access_stock_picking_manager,stock.picking manager,model_stock_picking,stock.group_stock_manager,1,1,0,0
+access_stock_picking_in_manager,stock.picking.in manager,model_stock_picking_in,stock.group_stock_manager,1,0,0,0
+access_stock_picking_out_manager,stock.picking.out manager,model_stock_picking_out,stock.group_stock_manager,1,0,0,0
+access_stock_picking_pre_user,stock.picking.pre,model_stock_picking_pre,stock.group_stock_user,1,1,1,1
+access_stock_picking_pre_manager,stock.picking.pre manager,model_stock_picking_pre,stock.group_stock_manager,1,0,0,0
+access_stock_picking_pre_inspeccion_user,stock.picking.pre.inspeccion,model_stock_picking_pre_inspeccion,stock.group_stock_user,1,1,1,1
+access_stock_picking_pre_inspeccion_manager,stock.picking.pre.inspeccion manager,model_stock_picking_pre_inspeccion,stock.group_stock_manager,1,0,0,0
+access_stock_picking_envases_user,stock.picking.envases,model_stock_picking_envases,stock.group_stock_user,1,1,1,1
+access_stock_picking_envases_manager,stock.picking.envases manager,model_stock_picking_envases,stock.group_stock_manager,1,0,0,0
+access_stock_picking_pre_condicion_user,stock.picking.pre.condicion,esc_almacen_configuracion.model_stock_picking_pre_condicion,stock.group_stock_user,1,1,1,1
+access_stock_picking_pre_condicion_manager,stock.picking.pre.condicion manager,esc_almacen_configuracion.model_stock_picking_pre_condicion,stock.group_stock_manager,1,0,0,0

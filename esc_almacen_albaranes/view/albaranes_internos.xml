@@ -71,7 +71,8 @@
                 <xpath expr="//notebook" position="before">
                     <group>
                         <group>
-                            <field name="operaciones" string="Operación" required="1"/>
+                            <!-- 19/08/2015 (felix) Se dejó invisible por nuevo requerimiento del cliente -->
+                            <field name="operaciones" string="Operación" invisible="1"/>
                         </group>
                         <group />
                     </group>

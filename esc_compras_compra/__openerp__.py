@@ -48,6 +48,7 @@ Detalles:
     'data': [
         # Seguridad y grupos
         'security/etapas_group.xml',
+        'security/ir.model.access.csv',
     
         # Data
         

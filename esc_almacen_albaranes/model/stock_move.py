@@ -33,6 +33,7 @@ class stock_move_esc(osv.Model):
         'fecha_caducidad': fields.datetime('Fecha de caducidad'),
         'fecha_retest': fields.datetime('Fecha de retest'),
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
+        'preentrada_id': fields.many2one('stock.picking.pre', 'Pre-entrada')
     }
     
     # 20/02/2015 (felix) Metodo original modificado para agregar campos:

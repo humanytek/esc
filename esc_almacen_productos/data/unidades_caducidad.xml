@@ -14,20 +14,23 @@
 	        <field name="uom_type">reference</field>
 	        <field name="active">True</field>
 	        <field name="rounding" eval="0.010"/>
+	        <field name="factor" eval="1.0"/>
         </record>
 		<record id="meses" model="product.uom">
 	        <field name="name">Meses</field>
 	        <field name="category_id" model="product.uom.categ" ref="product_catg_cad"/>
-	        <field name="uom_type">reference</field>
+	        <field name="uom_type">bigger</field>
 	        <field name="active">True</field>
 	        <field name="rounding" eval="0.010"/>
+	        <field name="factor" eval="0.030"/>
         </record>
 		<record id="anos" model="product.uom">
 	        <field name="name">Año</field>
 	        <field name="category_id" model="product.uom.categ" ref="product_catg_cad"/>
-	        <field name="uom_type">reference</field>
+	        <field name="uom_type">bigger</field>
 	        <field name="active">True</field>
 	        <field name="rounding" eval="0.010"/>
+	        <field name="factor" eval="0.365"/>
         </record>
         
     </data>

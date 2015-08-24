@@ -109,7 +109,7 @@
     
         <!-- 03/03/2015 (felix) Menú: Compras -> Configuración -> Compra -> Etapas de pedidos de compra -->
         <menuitem id="mn_compra_etapas" name="Etapas de pedidos de compra" parent="mn_compra_config" sequence="10"
-            action="action_compra_etapas" groups="esc_compras_compra.group_compras_etapa_admin"/>
+            action="action_compra_etapas" groups="purchase.group_purchase_manager"/>
                 
     </data>
 </openerp>

@@ -10,7 +10,11 @@
             <field name="inherit_id" ref="product_import_cert.view_product_certificate_form"/>
             <field name="arch" type="xml">
                 
-                <!-- 24/04/2015 (felix) Cambiar vista de background_country_ids -->
+                <!-- 
+                    24/04/2015 (felix) Cambiar vista de background_country_ids 
+                    20/08/2015 (felix) Se comenta este bloque para reorganizar posiciones por requerimientos del cliente
+                -->
+                <!--
                 <xpath expr="//field[@name='background_country_ids']" position="replace">
                     <field name="background_country_ids" nolabel="1">
                         <tree editable="bottom">
@@ -20,6 +24,7 @@
                         </tree>
                     </field>
                 </xpath>
+                -->
                 
                 <!-- 06/06/2015 (felix) Quitar filtro de campo "Fracción arancelaria" -->
                 <xpath expr="//field[@name='fraction_id']" position="replace">
@@ -29,6 +34,31 @@
                 <!-- 08/06/2015 (felix) Crear filtro de campo "manufacturer_id" a solo fabricante -->
                 <xpath expr="//field[@name='manufacturer_id']" position="replace">
                     <field name="manufacturer_id" string="Fabricante" domain="[('manufacturer', '=', True)]"/>
+                </xpath>
+                
+                <!-- 20/08/2015 (felix) Reorganización de:
+                    - Procedencias y notas en una pestaña
+                    - Agregar una pestaña de listado de productos asociados al número de permiso
+                -->
+                <xpath expr="//group[@string='Notes']" position="replace"/>
+                <xpath expr="//group[@string='Backgrounds']" position="replace">
+                    <notebook>
+                        <page string="Origins">
+                            <field name="background_country_ids" nolabel="1">
+                                <tree editable="bottom">
+                                    <field name="name" string="País" required="1"/>
+                                    <field name="cod_pais" string="Código de país"/>
+                                    <field name="moneda_id" string="Moneda"/>
+                                </tree>
+                            </field>
+                            <field name="notes" string="Notes" nolabel="1"/>
+                        </page>
+                        <page string="Products">
+                            <!--
+                            <field name="move_ids" readonly="1"/>
+                            -->
+                        </page>
+                    </notebook>
                 </xpath>
                 
             </field>

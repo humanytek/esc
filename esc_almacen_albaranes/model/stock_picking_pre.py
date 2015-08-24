@@ -77,7 +77,9 @@ class stock_picking_pre_esc(osv.Model):
         'envases_ids': fields.one2many('stock.picking.envases', 'envases_id', 
             'Envases'),
         'stock_inspeccion_ids': fields.one2many('stock.picking.pre.inspeccion', 
-            'stock_picking_pre_id', 'Inspeccion fisica')
+            'stock_picking_pre_id', 'Inspeccion fisica'),
+        'stock_preentrada_ids': fields.one2many('stock.move', 'preentrada_id', 
+            'Pre-entrada/Stock Move')
     }
     _order = 'fecha_ingreso desc'
     _defaults = {

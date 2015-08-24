@@ -118,7 +118,7 @@
             <field name="model">stock.picking.pre</field>
             <field name="arch" type="xml">
                 <search string="Lista albaranes pre-entrada">
-                    <field name="name" string="Lista albaranes de pre-entrada" filter_domain="['|',('name','ilike', self)]"/>
+                    <field name="name" string="Lista albaranes de pre-entrada" filter_domain="[('name','ilike', self)]"/>
                     <group expand="0" string="Agrupar por:">
                         <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Fabricante" domain="[]" context="{'group_by':'fabricante_id'}"/>

@@ -20,4 +20,5 @@
 ##############################################################################
 import cert_analisis
 import product_import_cert_line
+import import_info
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

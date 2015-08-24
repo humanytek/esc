@@ -20,4 +20,4 @@
 ##############################################################################
 import product_product
 import stick_aprobado
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+import product_tarrif_fraction

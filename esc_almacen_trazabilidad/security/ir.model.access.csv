@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cert_analisis_user,cert.analisis user,model_cert_analisis,stock.group_stock_user,1,1,1,1
+access_cert_analisis_manager,cert.analisis manager,model_cert_analisis,stock.group_stock_manager,1,0,0,0
+access_cert_analisis_line_user,cert.analisis.line user,model_cert_analisis_line,stock.group_stock_user,1,1,1,1
+access_cert_analisis_line_manager,cert.analisis.line manager,model_cert_analisis_line,stock.group_stock_manager,1,0,0,0
+access_product_import_certificate_user,product.import.certificate user,model_product_import_certificate,stock.group_stock_user,1,1,1,1
+access_product_import_certificate_manager,product.import.certificate manager,model_product_import_certificate,stock.group_stock_manager,1,0,0,0
+access_product_import_certificate_line_user,product.import.certificate.line user,model_product_import_certificate_line,stock.group_stock_user,1,1,1,1
+access_product_import_certificate_line_manager,product.import.certificate.line manager,model_product_import_certificate_line,stock.group_stock_manager,1,0,0,0
+access_cert_analisis_test_user,cert.analisis.test user,esc_almacen_configuracion.model_cert_analisis_test,stock.group_stock_user,1,1,1,1
+access_cert_analisis_test_manager,cert.analisis.test manager,esc_almacen_configuracion.model_cert_analisis_test,stock.group_stock_manager,1,0,0,0

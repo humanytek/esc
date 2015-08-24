@@ -55,6 +55,7 @@ Detalles:
     ],
     'data': [
         # Seguridad y grupos
+        'security/ir.model.access.csv',
     
         # Data
         

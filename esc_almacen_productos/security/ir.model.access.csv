@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stick_aprobado_user,stick.aprobado user,model_stick_aprobado,stock.group_stock_user,1,1,1,1
+access_stick_aprobado_manager,stick.aprobado manager,model_stick_aprobado,stock.group_stock_manager,1,0,0,0
+access_product_cliente_user,product.cliente user,model_product_cliente,stock.group_stock_user,1,1,1,1
+access_product_cliente_manager,product.cliente manager,model_product_cliente,stock.group_stock_manager,1,0,0,0
+access_product_cliente_caducidad_user,product.cliente.caducidad user,model_product_cliente_caducidad,stock.group_stock_user,1,1,1,1
+access_product_cliente_caducidad_manager,product.cliente.caducidad manager,model_product_cliente_caducidad,stock.group_stock_manager,1,0,0,0

@@ -51,6 +51,8 @@ Detalles:
     ],
     'data': [
         # Seguridad y grupos
+        #'security/almacen_security.xml',
+        'security/ir.model.access.csv',
         
         # Data
         

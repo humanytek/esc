@@ -144,13 +144,13 @@
                     <para style="terp_default_Bold_9"><b>Shipping address :</b></para>
                     <para style="terp_default_9">[[ (o.partner_shipping_id and o.partner_id.title and o.partner_shipping_id.title.name) or '' ]] [[ (o.partner_shipping_id and o.partner_shipping_id.name) or '' ]]</para>
                     <para style="terp_default_9">[[ o.partner_shipping_id and display_address(o.partner_shipping_id) ]]</para>
-                    <para style="terp_default_9">RFC: [[ (o.partner_id.vat) or removeParentNode('para') ]]</para>
                     <para style="terp_default_9"><font color="white"> </font></para>
                 </td>
                 <td>
                     <para style="terp_default_Bold_9"><b>Invoice address :</b></para>
                     <para style="terp_default_9">[[ (o.partner_invoice_id and o.partner_invoice_id.title and o.partner_invoice_id.title.name) or '' ]] [[ (o.partner_invoice_id and o.partner_invoice_id.name) or '' ]]</para>
                     <para style="terp_default_9">[[ o.partner_invoice_id and display_address(o.partner_invoice_id) ]]</para>
+                    <para style="terp_default_9">RFC: [[ (o.partner_id.vat) or removeParentNode('para') ]]</para>
                     <para style="terp_default_8"><font color="white"> </font></para>
                 </td>
                 <td></td>
@@ -234,7 +234,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ atributo.codigo_prod ]] [[ atributo.name ]] [[ atributo.especificacion ]]</para>
+                                            <para style="terp_default_Tab_6">[[ atributo.codigo_prod ]] [[ (atributo.cliente_id.id == o.partner_id.id and atributo.name) ]] [[ (atributo.cliente_id.id == o.partner_id.id) and atributo.especificacion ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>

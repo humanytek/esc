@@ -62,14 +62,16 @@ class res_partner_esc(osv.Model):
                 
         # Sincronizar desde el padre el campo "Perfiles"
         if partner.answers_ids:
+            obj_partner_question = self.pool.get('partner.question.rel')
             domain_children = [('parent_id', '=', partner.id)]
             update_ids = self.search(cr, uid, domain_children, context=context)
             for c in update_ids:
                 contacto = self.browse(cr, uid, c, context)
                 valores = []
                 for perfil in partner.answers_ids:
-                    valores.append({perfil.id: perfil.question_id.id})
-                for campos in valores:
-                    self.write(cr, uid, [contacto.id], {'answers_ids': [(6, 0, campos)]}, context)
+                    #valores.append({perfil.id:perfil.question_id.id})
+                    cr.execute('UPDATE partner_question_rel SET partner = %s, answer = %s WHERE partner = %s AND answer = %s', 
+                        (perfil.id, perfil.question_id.id, perfil.id, perfil.question_id.id))
+                #self.write(cr, uid, [contacto.id], {'answers_ids': [(6, 0, valores)]}, context)
     
 res_partner_esc()

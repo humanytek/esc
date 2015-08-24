@@ -131,7 +131,6 @@
             
             </field>
         </record>
-                
         
         <!-- 12/06/2015 (felix) Campos de fabricante -->
         <record id="view_product_form_expiry_inherit_1" model="ir.ui.view">
@@ -143,10 +142,31 @@
             
                 <!-- 12/06/2015 (felix) Agregar dominio fabricante al campo "manufacturer" -->
                 <xpath expr="//group[@name='procurement']/group[@string='Manufacturer']/field[@name='manufacturer']" position="replace">
-                    <field name="manufacturer" context="{'default_supplier':True, 'default_customer':False}"
+                    <field name="manufacturer" context="{'default_supplier': True, 'default_customer': False}"
                         domain="[('manufacturer', '=', True)]"/>
                 </xpath>
                 
+            </field>
+        </record>
+        
+        <!-- 24/08/2015 (felix) Heredar de formulario product_normal_form_view_inherit en hmtk_esic_product_info -->
+        <record id="product_normal_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.product.form</field>
+            <field name="model">product.product</field>
+            <field name="priority" eval="200"/>
+            <field name="inherit_id" ref="hmtk_esic_product_info.product_normal_form_view_inherit"/>
+            <field name="arch" type="xml">
+            
+                <!-- 24/086/2015 (felix) Ocultar campo "previous_no" -->
+                <xpath expr="//field[@name='previous_no']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <!-- 24/086/2015 (felix) Ocultar campo "therapeutic_action_id" -->
+                <xpath expr="//field[@name='cas_no']" position="after">
+                    <field name="therapeutic_action_id" string="Therapeutic action"/>
+                </xpath>
+            
             </field>
         </record>
         

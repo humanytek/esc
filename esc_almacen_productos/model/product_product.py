@@ -41,7 +41,9 @@ class product_product_esc(osv.Model):
         'tipo_venta': fields.selection([('esic','ESIC'), 
             ('chemo','Grupo CHEMO')], 'Tipo de venta'),
         'fraccion_id': fields.many2one('product.tarrif_fraction', 
-            'Fracción arancelaria')
+            'Fracción arancelaria'),
+        'therapeutic_action_id': fields.many2one('product.therapeutic.action', 
+            'Therapeutic action')
     }
 
 product_product_esc()
@@ -94,3 +96,18 @@ class product_cliente_caducidad_esc(osv.Model):
         return res
     
 product_cliente_caducidad_esc()
+
+
+class product_therapeutic_action_esc(osv.Model):
+    
+    _name = 'product.therapeutic.action'
+    _description = 'Add fields and methods for Therapeutic Actions'
+    _columns = {
+        'name': fields.char('Therapeutic Action', size=1024),
+    }
+    _sql_constraints = [
+        ('name_uniq', 'unique(name)', 'Therapeutic Action must be unique'),
+    ]
+    
+product_therapeutic_action_esc()
+

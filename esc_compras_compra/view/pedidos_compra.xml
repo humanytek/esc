@@ -27,7 +27,8 @@
                         <filter string="Order Date" icon="terp-go-month" domain="[]" context="{'group_by':'date_order'}"/>
                         <filter string="Expected Date" icon="terp-go-month" domain="[]" context="{'group_by':'minimum_planned_date'}"/>
                         <separator />
-                        <filter string="Etapa secundaria" domain="[]" context="{'group_by':'purchase_stage_id'}" groups="esc_compras_compra.group_compras_etapa_admin"/>
+                        <filter string="Etapa secundaria" domain="[]" context="{'group_by':'purchase_stage_id'}"
+                            groups="purchase.group_purchase_manager,purchase.group_purchase_user"/>
                     </group>
                 </search>
             </field>
@@ -38,6 +39,7 @@
         <record id="purchase_order_line_form_inherit_1" model="ir.ui.view">
             <field name="name">purchase.order.line.form.inherit.1</field>
             <field name="model">purchase.order.line</field>
+            <field name="priority" eval="300"/>
             <field name="inherit_id" ref="purchase.purchase_order_line_form"/>
             <field name="arch" type="xml">
             
@@ -111,13 +113,13 @@
                     <field name="purchase_stage_id" widget="statusbar" statusbar_visible="approved,done" 
                         clickable="True" modifiers="{'readonly': true}" style="float:left;" 
                         attrs="{'invisible': [('state', 'not in', ['approved','done'])], 'readonly': [('state', '=', 'done')]}"
-                        groups="esc_compras_compra.group_compras_etapa_admin"/>
+                        groups="purchase.group_purchase_manager"/>
                 </xpath>
                 
                 <!-- 05/03/2015 (felix) Solapa para preguntas específicas en flujo secundario -->
                 <xpath expr="//form/sheet/notebook/page[@string='Incoming Shipments &amp; Invoices']" position="after">
                     <page string="Etapas de pedidos de compra" attrs="{'invisible': [('state', 'not in', ['approved','done'])]}"
-                         groups="esc_compras_compra.group_compras_etapa_admin"/>
+                        groups="purchase.group_purchase_manager"/>
                 </xpath>
                 
                 <!-- 13/04/2015 (felix) Agregar instrucciones de embarque en formulario para orden de compra por línea -->

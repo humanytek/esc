@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Selector to define between manager and users -->
+        <record id="module_category_esc_management" model="ir.module.category">
+            <field name="name">ESIC roles</field>
+            <field name="description">Select an user or manager</field>
+            <field name="sequence">1</field>
+        </record>
+        <record id="group_esc_users" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="module_category_esc_management"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_esc_admin" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_esc_management"/>
+            <!--<field name="implied_ids" eval="[(4, ref('group_stock_user'))]"/>-->
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+        
+        <!-- Hidden elements -->
+        <record id="group_esc_hidden" model="res.groups">
+            <field name="name">ESIC hidden elements</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+    </data>
+    <data noupdate="0">
+    
+        <!--
+        <record id="data_esc_rule" model="ir.rule">
+            <field name="name">data_esc creador</field>
+            <field name="model_id" search="[('model','=','data.esc')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
+        
+        <record model="ir.rule" id="stock_picking_type_rule">
+            <field name="name">Stock Picking Type multi-company</field>
+            <field name="model_id" search="[('model','=','stock.picking.type')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('warehouse_id', '=', False), '|',('warehouse_id.company_id','=',False),('warehouse_id.company_id','child_of',[user.company_id.id])]</field>
+        </record>
+        
+        <record model="ir.rule" id="stock_warehouse_comp_rule">
+            <field name="name">Warehouse multi-company</field>
+            <field name="model_id" ref="model_stock_warehouse"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_location_comp_rule">
+            <field name="name">Location multi-company</field>
+            <field name="model_id" ref="model_stock_location"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_move_rule">
+            <field name="name">stock_move multi-company</field>
+            <field name="model_id" search="[('model','=','stock.move')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_inventory_line_comp_rule">
+            <field name="name">Inventory Line multi-company</field>
+            <field name="model_id" ref="model_stock_inventory_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_inventory_comp_rule">
+            <field name="name">Inventory multi-company</field>
+            <field name="model_id" ref="model_stock_inventory"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_warehouse_orderpoint_rule">
+            <field name="name">stock_warehouse.orderpoint multi-company</field>
+            <field name="model_id" search="[('model','=','stock.warehouse.orderpoint')]" model="ir.model"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','child_of',[user.company_id.id]),('company_id','=',False)]</field>
+        </record>
+
+        <record model="ir.rule" id="product_pulled_flow_comp_rule">
+            <field name="name">product_pulled_flow multi-company</field>
+            <field name="model_id" ref="model_procurement_rule"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record model="ir.rule" id="stock_location_path_comp_rule">
+            <field name="name">stock_location_path multi-company</field>
+            <field name="model_id" ref="model_stock_location_path"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+        -->
+        
+    </data>
+</openerp>
