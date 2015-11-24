@@ -250,7 +250,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ atributo.codigo_prod ]] [[ atributo.name ]] [[ atributo.especificacion ]]</para>
+                                            <para style="terp_default_Tab_6">[[ (atributo.codigo_prod) or '' ]] [[ (atributo.name) or '' ]] [[ (atributo.especificacion) or '' ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>
@@ -283,7 +283,17 @@
                     <tr>
                         <td width="300.0">
                             <para style="terp_default_9"><font face="Helvetica" size="9.0">[[ get_product_desc(move_lines) ]]</font></para>
-                            <para style="terp_default_Tab_6">[[ move_lines.producto_cliente_ids.codigo_prod ]]</para>
+                            <!--<para style="terp_default_Tab_6">[[ (move_lines.producto_cliente_ids.codigo_prod) or '' ]]</para>-->
+                            <section>
+                                <para>[[ repeatIn(move_lines.product_id.producto_cliente_ids,'atributo') ]]</para>
+                                <blockTable>
+                                    <tr>
+                                        <td>
+                                            <para style="terp_default_Tab_6">[[ (atributo.codigo_prod) or '' ]] [[ (atributo.name) or '' ]] [[ (atributo.especificacion) or '' ]]</para>
+                                        </td>
+                                    </tr>
+                                </blockTable>
+                            </section>
                             <para style="terp_default_Tab_6"><b>N° Pedimento</b>: [[ (move_lines.pedimento_id.name) or removeParentNode('para') ]]</para>
                             <para style="terp_default_Tab_6"><b>Fecha</b>: [[ formatLang(move_lines.pedimento_id.date,date = True) ]]</para>
                             <para style="terp_default_Tab_6"><b>Aduana</b>: [[ move_lines.pedimento_id.customs.custom_number and move_lines.pedimento_id.customs.custom_name ]]</para>

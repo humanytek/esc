@@ -3,8 +3,15 @@
     <data>
 
         <report auto="False" id="sale.report_sale_order" model="sale.order" name="sale.order"
-                rml="esc_ventas_ventas/report/sale_order.rml" string="Presupuesto / Pedido"
-                usage="default"/>
+            rml="esc_ventas_ventas/report/sale_order.rml" string="Presupuesto / Pedido"
+            usage="default"/>
+                
+        <!-- PRUEBA -->
+        <!--
+        <report auto="False" id="report_sale_order_xls" model="sale.order" name="sale.order.xls"
+            rml="esc_ventas_ventas/report/sale_order.rml" string="Presupuesto / Pedido XLS"
+            usage="default" context="{'xls_export': 1}"/>
+        -->
 
     </data>
 </openerp>
