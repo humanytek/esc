@@ -219,7 +219,7 @@
             <blockTable style="Table1" colWidths="300.0,100.0,200.0,161.0">
                 <tr>
                     <td><para style="terp_default_8">[[ picking.partner_id.name or '']]</para></td>
-                    <td><para style="terp_default_8">[[ picking.cliente_ref ]]</para></td>
+                    <td><para style="terp_default_8">[[ picking.partner_id.ref or '']]</para></td>
                     <td><para style="terp_default_8">[[ picking.stock_journal_id.name]]</para></td>
                     <td><para style="terp_default_8">[[ formatLang(picking.min_date,date_time = True) ]]</para></td>
                 </tr>
@@ -231,8 +231,8 @@
                     <td width="300.0"><para style="terp_tblheader_Details">Descripción</para></td>
                     <td width="58.0"><para style="terp_tblheader_Details_Centre">Lote</para></td>
                     <td width="56.0"><para style="terp_tblheader_Details_Centre">Fabricación</para></td>
+                    <td width="56.0"><para style="terp_tblheader_Details_Centre">Caducidad</para></td>
                     <td width="56.0"><para style="terp_tblheader_Details_Centre">Retest</para></td>
-                    <td width="56.0"><para style="terp_tblheader_Details_Centre">Caducidad</para></td>        
                     <td width="58.0"><para style="terp_tblheader_Details_Centre">Estado</para></td>
                     <td width="60.0"><para style="terp_tblheader_Details_Right">Ubicación</para></td>
                     <td width="50.0"><para style="terp_tblheader_Details_Right">Cantidad</para></td>
@@ -260,9 +260,9 @@
                             <para style="terp_default_Tab_6"><b>Aduana</b>: [[ move_lines.pedimento_id.customs.custom_number and move_lines.pedimento_id.customs.custom_name ]]</para>
                         </td>
                         <td width="58.0"><para style="terp_default_Centre_9">[[ (move_lines.prodlot_id and move_lines.prodlot_id.name) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_fabricacion,date = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_retest,date = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_caducidad,date = True) or '' ]]</para></td>          
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date_time = True) or '' ]]</para></td>
                         <td width="58.0">
                             <para style="terp_default_Centre_9">Waiting Availability[[ move_lines.state == 'confirmed' and ' ' or removeParentNode('para') ]]</para>
                             <para style="terp_default_Centre_9">Done[[ move_lines.state == 'done' and ' ' or removeParentNode('para') ]]</para>
@@ -289,9 +289,9 @@
                             <para style="terp_default_Tab_6"><b>Aduana</b>: [[ move_lines.pedimento_id.customs.custom_number and move_lines.pedimento_id.customs.custom_name ]]</para>
                         </td>
                         <td width="58.0"><para style="terp_default_Centre_9">[[ (move_lines.prodlot_id and move_lines.prodlot_id.name) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_fabricacion,date = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_retest,date = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.fecha_caducidad,date = True) or '' ]]</para></td>          
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date_time = True) or '' ]]</para></td>
                         <td width="58.0">
                             <para style="terp_default_Centre_9">[[ (picking.type == 'in' or removeParentNode('para')) and '' ]][[ move_lines.state == 'done' and 'Received' or move_lines.state]]</para>
                             <para style="terp_default_Centre_9">[[ (picking.type == 'out' or removeParentNode('para')) and '']][[ move_lines.state == 'done' and 'Delivered' or move_lines.state]]</para>

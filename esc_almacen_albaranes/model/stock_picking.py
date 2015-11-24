@@ -29,56 +29,6 @@ class stock_picking_esc(osv.Model):
 
     _inherit = 'stock.picking'
     _description = 'Cambios en campos y modelos para Stock Picking'
-    
-    # 17/06/2015 (felix) Metodo para asignar valor a la operacion
-    def _get_operacion(self, cr, uid, ids, fields_name, args, context=None):
-        res = {}
-        obj_sale_order = self.pool.get('sale.order')
-        obj_purchase_order = self.pool.get('purchase.order')
-        for i in self.browse(cr, uid, ids, context):
-            res[i.id] = ''
-            
-            # Albaran interno
-            if i.origin and i.type in ['internal']:
-                # Revisa de una venta
-                if re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                    
-                # Revisa de una compra
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    elif i.origin:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-                
-            # Albaran de salida, captura una venta
-            if i.origin and i.type in ['out']:
-                src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                
-            # Albaran de entrada, captura una compra o devolucion
-            if i.origin and i.type in ['in']:
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    else:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-                    
-                elif re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_sale_order:
-                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                
-        return res
-    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'perfiles_ids': fields.related('partner_id', 'answers_ids', 
@@ -88,9 +38,10 @@ class stock_picking_esc(osv.Model):
             'Codigo de pre-entrada'),
         'cliente_ref': fields.char('Referencia cliente', size=1024),
         'efectua_id': fields.many2one('res.users', 'Efectua'),
-        'operaciones': fields.function(_get_operacion, type='selection', 
-            selection=[('linea','Operaciones de linea'), 
-            ('desarrollo','Operaciones de desarrollo')], string='Operacion')
+        'operaciones': fields.selection([('linea','Operaciones de linea'), 
+            ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
+        'certificate_number_id': fields.many2one('product.import.certificate', 
+            'Import certificate number'),
     }
     
 stock_picking_esc()
@@ -100,62 +51,11 @@ class stock_picking_in_esc(osv.Model):
 
     _inherit = 'stock.picking.in'
     _description = 'Cambios en campos y modelos para Stock Picking In'
-    
-    # 17/06/2015 (felix) Metodo para asignar valor a la operacion
-    def _get_operacion(self, cr, uid, ids, fields_name, args, context=None):
-        res = {}
-        obj_sale_order = self.pool.get('sale.order')
-        obj_purchase_order = self.pool.get('purchase.order')
-        for i in self.browse(cr, uid, ids, context):
-            res[i.id] = ''
-            
-            # Albaran interno
-            if i.origin and i.type in ['internal']:
-                # Revisa de una venta
-                if re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                    
-                # Revisa de una compra
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    elif i.origin:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-            
-            # Albaran de salida, captura una venta
-            if i.origin and i.type in ['out']:
-                src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                
-            # Albaran de entrada, captura una compra o devolucion
-            if i.origin and i.type in ['in']:
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    else:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-                    
-                elif re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_sale_order:
-                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                                
-        return res
-    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'preentrada_id': fields.many2one('stock.picking.pre', 
             'Codigo de pre-entrada'),
-        'operaciones': fields.function(_get_operacion, type='selection', 
-            selection=[('linea','Operaciones de linea'), 
+        'operaciones': fields.selection([('linea','Operaciones de linea'), 
             ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
         'certificate_number_id': fields.many2one('product.import.certificate', 
             'Import certificate number'),
@@ -167,57 +67,7 @@ stock_picking_in_esc()
 class stock_picking_out_esc(osv.Model):
 
     _inherit = 'stock.picking.out'
-    _description = 'Cambios en campos y modelos para Stock Picking Out'
-    
-    # 17/06/2015 (felix) Metodo para asignar valor a la operacion
-    def _get_operacion(self, cr, uid, ids, fields_name, args, context=None):
-        res = {}
-        obj_sale_order = self.pool.get('sale.order')
-        obj_purchase_order = self.pool.get('purchase.order')
-        for i in self.browse(cr, uid, ids, context):
-            res[i.id] = ''
-            
-            # Albaran interno
-            if i.origin and i.type in ['internal']:
-                # Revisa de una venta
-                if re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                    
-                # Revisa de una compra
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    elif i.origin:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-            
-            # Albaran de salida, captura una venta
-            if i.origin and i.type in ['out']:
-                src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-                
-            # Albaran de entrada, captura una compra o devolucion
-            if i.origin and i.type in ['in']:
-                if re.match('^PO',i.origin):
-                    doc = i.origin.split(':')
-                    if doc:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', doc[0])])
-                    else:
-                        src_purchase_order = obj_purchase_order.search(cr, uid, [('name', 'like', i.origin)])
-                    
-                    if src_purchase_order:
-                        res[i.id] = obj_purchase_order.browse(cr, uid, src_purchase_order[0], context)['operaciones']
-                    
-                elif re.match('^SO',i.origin):
-                    src_sale_order = obj_sale_order.search(cr, uid, [('name', 'like', i.origin)])
-                    if src_sale_order:
-                        res[i.id] = obj_sale_order.browse(cr, uid, src_sale_order[0], context)['operaciones']
-            
-        return res
-    
+    _description = 'Cambios en campos y modelos para Stock Picking Out'    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'perfiles_ids': fields.related('partner_id', 'answers_ids', 
@@ -227,9 +77,10 @@ class stock_picking_out_esc(osv.Model):
             'Codigo de pre-entrada'),
         'cliente_ref': fields.char('Referencia cliente', size=1024),
         'efectua_id': fields.many2one('res.users', 'Efectua'),
-        'operaciones': fields.function(_get_operacion, type='selection', 
-            selection=[('linea','Operaciones de linea'), 
-            ('desarrollo','Operaciones de desarrollo')], string='Operacion')
+        'operaciones': fields.selection([('linea','Operaciones de linea'), 
+            ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
+        'certificate_number_id': fields.many2one('product.import.certificate', 
+            'Import certificate number'),
     }
     
 stock_picking_out_esc()
