@@ -51,7 +51,7 @@ Detalles:
         'l10n_mx_import_info',
         'hmtk_l10n_mx_import_info_custom',
         'product_import_cert',
-        'esc_almacen_configuracion',        
+        'esc_almacen_configuracion',
     ],
     'data': [
         # Seguridad y grupos

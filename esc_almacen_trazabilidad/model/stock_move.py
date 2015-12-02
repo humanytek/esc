@@ -18,8 +18,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import cert_analisis
-import product_import_cert_line
-import product_import_cert
-import import_info
-#import stock_move
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+
+class stock_move_esc(osv.Model):
+
+    _inherit = 'stock.move'
+    _description = 'Datos adicionales en stock_move'
+    _columns = {
+        'move_import_cert_id': fields.many2one('product.import.certificate', 
+            'Productos')
+    }
+    
+stock_move_esc()

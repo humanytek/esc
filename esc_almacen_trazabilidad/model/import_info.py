@@ -31,7 +31,8 @@ class import_info_esc(osv.Model):
     _inherit = 'import.info'
     _description = 'Add of fields and methods for ESIC'
     _columns = {
-        'active': fields.boolean('Active')
+        'active': fields.boolean('Active'),
+        'name': fields.char('Number of Operation', size=128)
     }
     _defaults = {
         'active': True

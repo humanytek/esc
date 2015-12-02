@@ -406,3 +406,7 @@ msgstr "Productos"
 msgid "Active"
 msgstr "Activado"
 
+#. module: esc_almacen_trazabilidad
+#: view:product.import.certificate:0
+msgid "Name"
+msgstr "Número sanitario de importación"

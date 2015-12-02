@@ -54,11 +54,14 @@
                             <field name="notes" string="Notes" nolabel="1"/>
                         </page>
                         <page string="Products">
-                            <!--
                             <field name="move_ids" readonly="1"/>
-                            -->
                         </page>
                     </notebook>
+                </xpath>
+                
+                <!-- 27/08/2015 (felix) Cambiar campo "certificate_number" por "name" -->
+                <xpath expr="//field[@name='certificate_number']" position="replace">
+                    <field name="name" string="Name"/>
                 </xpath>
                 
             </field>
