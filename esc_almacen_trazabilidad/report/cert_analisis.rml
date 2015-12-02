@@ -179,14 +179,17 @@
       <tr>
         <td width="100.0"><para style="terp_tblheader_General">Producto / Product</para></td>
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.product_id.name or '' ]]</para></td>
-        <td width="100.0"><para style="terp_tblheader_General">Fecha de fabricación / Manufacturing date</para></td>
-        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_fabricacion, date=True) or '' ]]</para></td>
+        <!-- 02/12/2015 nuevo campo -->
+        <td width="100.0"><para style="terp_tblheader_General">Fecha de expedición / Expedition date</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_expedicion, date=True) or '' ]]</para></td>
+        
       </tr>
       <tr>
-        <td width="100.0"><para style="terp_tblheader_General">Lote / Lot</para></td>
+        <!-- 02/12/2015 cambio de etiqueta "Lote / Lot" a "Lote / Batch" -->
+        <td width="100.0"><para style="terp_tblheader_General">Lote / Batch</para></td>
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.lote or '' ]]</para></td>
-        <td width="100.0"><para style="terp_tblheader_General">Fecha de reanálisis / Reanalysis date</para></td>
-        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_reanalisis, date=True) or '' ]]</para></td>
+        <td width="100.0"><para style="terp_tblheader_General">Fecha de fabricación / Manufacturing date</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_fabricacion, date=True) or '' ]]</para></td>
       </tr>
       <tr>
         <!-- 22/04/2015 ocultar por sugerencia del cliente -->
@@ -194,9 +197,11 @@
         <td width="100.0"><para style="terp_tblheader_General">Certificado</para></td>
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.certificado or '' ]]</para></td>
         -->
-        <td></td>
-        <td></td>
-        <td width="100.0"><para style="terp_tblheader_General">Fecha de caducidad / Due date</para></td>
+        <!-- 02/12/2015 (felix) cambiar etiqueta a "Fecha de reanálisis / Retest date" -->
+        <td width="100.0"><para style="terp_tblheader_General">Fecha de reanálisis / Retest date</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_reanalisis, date=True) or '' ]]</para></td>
+        <!-- 02/12/2015 (felix) cambiar etiqueta de "Fecha de caducidad / Due date" a "Fecha de caducidad / Expiry date" -->
+        <td width="100.0"><para style="terp_tblheader_General">Fecha de caducidad / Expiry date</para></td>
         <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_caducidad, date=True) or '' ]]</para></td>
       </tr>
     </blockTable>

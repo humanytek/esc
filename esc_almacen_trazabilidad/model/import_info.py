@@ -37,6 +37,9 @@ class import_info_esc(osv.Model):
     _defaults = {
         'active': True
     }
+    _sql_constraints = [
+        ('name_uniq', 'unique(name)', 'Este campo debe ser unico')
+    ]
     
 import_info_esc()
 

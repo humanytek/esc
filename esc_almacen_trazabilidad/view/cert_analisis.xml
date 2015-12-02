@@ -11,6 +11,7 @@
                     <field name="name" string="Certificado de análisis / Analysis certificate"/>
                     <field name="product_id" string="Producto / Product"/>
                     <field name="lote" string="Lote / Lot"/>
+                    <field name="fecha_expedicion" string="Fecha de expedición / Expedition date date"/>
                     <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date"/>
                     <field name="fecha_reanalisis" string="Fecha de reanálisis / Reanalysis date"/>
                     <field name="fecha_caducidad" string="Fecha de caducidad / Due date"/>
@@ -34,15 +35,19 @@
                         <group col="2">
                             <group>
                                 <field name="product_id" string="Producto / Product" required="1"/>
-                                <field name="lote" string="Lote / Lot"/>
+                                <!-- 02/12/2015 (felix) cambiar etiqueta de "Lote / Lot" a "Lote / Batch" -->
+                                <field name="lote" string="Lote / Batch"/>
                                 <!-- 22/04/2015 (felix) Ocultar campo
                                 <field name="certificado" string="Certificado"/>
                                 -->
                             </group>
                             <group>
+                                <field name="fecha_expedicion" string="Fecha de expedición / Expedition date date" required="1"/>
                                 <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date" required="1"/>
-                                <field name="fecha_reanalisis" string="Fecha de reanálisis / Renalysis date" required="1"/>
-                                <field name="fecha_caducidad" string="Fecha de caducidad / Due date" required="1"/>
+                                <!-- 02/12/2015 (felix) cambiar etiqueta a "Fecha de reanálisis / Retest date" -->
+                                <field name="fecha_reanalisis" string="Fecha de reanálisis / Retest date" required="1"/>
+                                <!-- 02/12/2015 (felix) cambiar etiqueta de "Fecha de caducidad / Due date" a "Fecha de caducidad / Expiry date" -->
+                                <field name="fecha_caducidad" string="Fecha de caducidad / Expiry date" required="1"/>
                             </group>
                         </group>
                         <notebook>
