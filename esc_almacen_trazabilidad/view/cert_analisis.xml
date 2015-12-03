@@ -11,7 +11,6 @@
                     <field name="name" string="Certificado de análisis / Analysis certificate"/>
                     <field name="product_id" string="Producto / Product"/>
                     <field name="lote" string="Lote / Lot"/>
-                    <field name="fecha_expedicion" string="Fecha de expedición / Expedition date date"/>
                     <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date"/>
                     <field name="fecha_reanalisis" string="Fecha de reanálisis / Reanalysis date"/>
                     <field name="fecha_caducidad" string="Fecha de caducidad / Due date"/>
@@ -42,7 +41,6 @@
                                 -->
                             </group>
                             <group>
-                                <field name="fecha_expedicion" string="Fecha de expedición / Expedition date date" required="1"/>
                                 <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date" required="1"/>
                                 <!-- 02/12/2015 (felix) cambiar etiqueta a "Fecha de reanálisis / Retest date" -->
                                 <field name="fecha_reanalisis" string="Fecha de reanálisis / Retest date" required="1"/>

@@ -50,7 +50,7 @@ class stick_aprobado_esc(osv.Model):
         'fecha_fabricacion': fields.date('Fecha de fabricacion'),
         'fecha_caducidad': fields.date('Fecha de caducidad'),
         'product_id': fields.many2one('product.product', 'Producto'),
-        'lote': fields.char('Lote', size=2048),
+        'lote_id': fields.many2one('stock.production.lot', 'Lote'),
         'peso_neto': fields.float('Peso neto', digits=(10,2)),
         'peso_bruto': fields.float('Peso bruto', digits=(10,2)),
         'peso_tara': fields.float('Tara', digits=(10,2))

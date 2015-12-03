@@ -18,7 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import product_product
-import stick_aprobado
-import product_tarrif_fraction
-import stock_production_lot
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class stock_production_lot_esc(osv.Model):
+
+    _inherit = 'stock.production.lot'
+    _description = 'Creacion modelo Stick Aprobado para etiquetas de aprobado'
+        
+    _columns = {
+        'lote_ids': fields.one2many('stick.aprobado', 'lote_id', 'Lote'),
+    }
+    
+stock_production_lot_esc()

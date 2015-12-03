@@ -10,7 +10,7 @@
                 <tree string="Etiquetas de aprobado" colors="red: fecha_caducidad &lt; current_date">
                     <field name="name" string="Referencia"/>
                     <field name="product_id" string="Producto"/>
-                    <field name="lote" string="Lote"/>
+                    <field name="lote_id" string="Lote"/>
                     <field name="fecha_fabricacion" string="Fecha de fabricación"/>
                     <field name="fecha_caducidad" string="Fecha de caducidad"/>                    
                 </tree>
@@ -33,7 +33,7 @@
                         <group col="2">
                             <group>
                                 <field name="product_id" string="Producto"/>
-                                <field name="lote" string="Lote"/>
+                                <field name="lote_id" string="Lote"/>
                                 <field name="fecha_fabricacion" string="Fecha de fabricación" required="1"/>
                                 <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
                             </group>

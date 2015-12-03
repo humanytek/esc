@@ -40,3 +40,8 @@ msgstr "Acción terapéutica"
 #: view:product.product:0
 msgid "Therapeutic action"
 msgstr "Acción terapéutica"
+
+#. module: esc_almacen_productos
+#: view:product.product:0
+msgid "Permissions"
+msgstr "Permisos"

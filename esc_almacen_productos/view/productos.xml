@@ -170,5 +170,31 @@
             </field>
         </record>
         
+        <!-- 25/08/2015 (felix) Heredar formulario product_cer_product_normal_view en product_import_cert -->
+        <record id="product_cer_product_normal_view_inherit_1" model="ir.ui.view">
+            <field name="name">product.cer.product.normal.view.inherit.1</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product_import_cert.product_cer_product_normal_view"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 25/08/2015 (felix) Cambiar etiqueta "Requiere certificado de importación " por "Permissions" -->
+                <xpath expr="//label[@for='import_certificate']" position="attributes">
+                    <attribute name="string">Permissions</attribute>
+                </xpath>
+                
+                <!-- 25/08/2015 (felix) Cambiar etiqueta "Certificates" por "Permissions" -->
+                <xpath expr="//page[@string='Certificates']/group[@string='Certificates']" position="attributes">
+                    <attribute name="string">Permissions</attribute>
+                </xpath>
+                
+                <!-- 25/08/2015 (felix) Cambiar etiqueta "Certificates" por "Permissions" -->
+                <xpath expr="//page[@string='Certificates']" position="attributes">
+                    <attribute name="string">Permissions</attribute>
+                </xpath>
+            
+            </field>
+        </record>
+        
     </data>
 </openerp>

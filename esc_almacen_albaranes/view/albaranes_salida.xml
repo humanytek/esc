@@ -64,7 +64,8 @@
                 <!-- 08/04/2015 (felix) (+) Agregar campo "Código de pre-entrada" -->
 		        <xpath expr="//field[@name='origin']" position="after">
 		            <field name="cliente_ref" string="Referencia cliente"/>
-		            <field name="preentrada_id" string="Código de pre-entrada"/>
+	                <!-- 03/12/2015 (felix) Ocultar campo "Código de pre-entrada" -->
+		            <!--<field name="preentrada_id" string="Código de pre-entrada"/>-->
 	            </xpath>
 	            
 	            <!-- 20/04/2015 (felix) Agregar campo "Efectúa" -->
