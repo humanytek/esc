@@ -42,15 +42,18 @@
                                 <div>
                                     <div>
                                         <field name="peso_neto" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
-                                        <label for="peso_neto" string="Peso neto (kg)" class="oe_inline"/>
+                                        <field name="peso_neto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                        <label for="peso_neto" string="Peso neto" class="oe_inline"/>
                                     </div>
                                     <div>
                                         <field name="peso_tara" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
-                                        <label for="peso_tara" string="Tara (kg)" class="oe_inline"/>
+                                        <field name="peso_tara_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                        <label for="peso_tara" string="Tara" class="oe_inline"/>
                                     </div>
                                     <div>
                                         <field name="peso_bruto" class="oe_inline"/>
-                                        <label for="peso_bruto" string="Peso bruto (kg)" class="oe_inline"/>
+                                        <field name="peso_bruto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                        <label for="peso_bruto" string="Peso bruto" class="oe_inline"/>
                                     </div>
                                 </div>
                             </group>

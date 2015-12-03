@@ -18,8 +18,25 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import product_product
-import stick_aprobado
-import product_tarrif_fraction
-import stock_production_lot
-import product_uom
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class product_uom_esc(osv.Model):
+
+    _inherit = 'product.uom'
+    _description = 'Creacion modelo Stick Aprobado para etiquetas de aprobado'
+    _columns = {
+        'peso_neto_uom_ids': fields.one2many('stick.aprobado', 'peso_neto_uom_id', 
+            'Unidad peso neto'),
+        'peso_bruto_uom_ids': fields.one2many('stick.aprobado', 'peso_bruto_uom_id', 
+            'Unidad peso bruto'),
+        'peso_tara_uom_ids': fields.one2many('stick.aprobado', 'peso_tara_uom_id', 
+            'Unidad peso tara'),
+    }
+    
+product_uom_esc()
