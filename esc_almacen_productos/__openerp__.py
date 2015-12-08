@@ -47,8 +47,9 @@ Detalles:
     ],
     'data': [
         # Seguridad y grupos
+        'security/product_group.xml',
         'security/ir.model.access.csv',
-    
+        
         # Data
         'data/unidades_caducidad.xml',
         

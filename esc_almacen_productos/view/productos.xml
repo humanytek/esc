@@ -110,7 +110,7 @@
                 
                 <!-- 07/12/2015 (felix) Agregar campo "Costo DIV" -->
                 <xpath expr="//form/sheet/notebook/page[@string='Procurements']/group[@name='procurement']/group[@name='general']/div" position="after">
-                    <field name="costo_div" string="Costo DIV"/>
+                    <field name="costo_div" string="Costo DIV" groups="esc_almacen_productos.group_productos_admin"/>
                 </xpath>
                             
             </field>            
