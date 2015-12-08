@@ -48,18 +48,15 @@ class stick_aprobado_esc(osv.Model):
     
     _columns = {
         'name': fields.char('Referencia etiqueta aprobado', size=250),
-        'fecha_fabricacion': fields.date('Fecha de fabricacion'),
-        'fecha_caducidad': fields.date('Fecha de caducidad'),
+        'fecha_fabricacion': fields.char('Fecha de fabricacion'),
+        'fecha_caducidad': fields.char('Fecha de caducidad'),
         'product_id': fields.many2one('product.product', 'Producto'),
         'lote_id': fields.many2one('stock.production.lot', 'Lote'),
-        'peso_neto': fields.float('Peso neto', digits=(10,2), 
-            digits_compute=dp.get_precision('Peso neto')),
+        'peso_neto': fields.float('Peso neto', digits=(10,3)),
         'peso_neto_uom_id': fields.many2one('product.uom', 'Unidad peso neto'),
-        'peso_bruto': fields.float('Peso bruto', digits=(10,2),
-            digits_compute=dp.get_precision('Peso bruto')),
+        'peso_bruto': fields.float('Peso bruto', digits=(10,3)),
         'peso_bruto_uom_id': fields.many2one('product.uom', 'Unidad peso bruto'),
-        'peso_tara': fields.float('Tara', digits=(10,2),
-            digits_compute=dp.get_precision('Tara')),
+        'peso_tara': fields.float('Tara', digits=(10,3)),
         'peso_tara_uom_id': fields.many2one('product.uom', 'Unidad peso tara'),
     }
     _defaults = {

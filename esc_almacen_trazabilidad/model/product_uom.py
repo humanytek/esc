@@ -18,8 +18,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import cert_analisis
-import product_import_cert_line
-import product_import_cert
-import import_info
-import product_uom
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class product_uom_esc(osv.Model):
+
+    _inherit = 'product.uom'
+    _description = 'Creacion modelo Stick Aprobado para etiquetas de aprobado'
+    _columns = {
+        'cant_uom_ids': fields.one2many('cert.analisis', 'cant_uom_id', 
+            'Unidad de cantidad'),
+    }
+    
+product_uom_esc()

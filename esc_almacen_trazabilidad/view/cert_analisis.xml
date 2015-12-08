@@ -39,6 +39,12 @@
                                 <!-- 22/04/2015 (felix) Ocultar campo
                                 <field name="certificado" string="Certificado"/>
                                 -->
+                                <!-- 04/12/2015 (felix) agregar campo "cant" y "cant_uom_id" -->
+                                <label for="cant" string="Cantidad / Quantity"/>
+                                <div>
+                                    <field name="cant" string="Cantidad / Quantity" class="oe_inline"/>
+                                    <field name="cant_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                </div>
                             </group>
                             <group>
                                 <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date" required="1"/>
@@ -52,8 +58,9 @@
                             <page string="Pruebas">
                                 <field name="cert_line_ids" string="Pruebas" class="oe_list oe_view">
                                     <tree string="Pruebas" editable="1">
-                                        <field name="name" string="Prueba / Test" required="1" on_change="on_change_prueba(name)"/>
-                                        <field name="especificacion" string="Especificación / Epecification"/>
+                                        <!-- 03/12/2015 (felix) cambiar etiqueta de "Prueba / Test" a "Prueba / Testing" -->
+                                        <field name="name" string="Prueba / Testing Item" required="1" on_change="on_change_prueba(name)"/>
+                                        <field name="especificacion" string="Especificación / Specification"/>
                                         <field name="resultado" string="Resultado / Result"/>
                                     </tree>
                                 </field>

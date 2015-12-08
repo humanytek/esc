@@ -61,7 +61,9 @@ class cert_analisis_esc(osv.Model):
         'cod_product': fields.char('Codigo producto', size=5000),
         'pedido_compra': fields.char('Pedido de compra', size=5000),
         'cert_line_ids': fields.one2many('cert.analisis.line', 
-            'cert_analisis_id', 'Pruebas/Especificaciones')
+            'cert_analisis_id', 'Pruebas/Especificaciones'),
+        'cant': fields.float('Cantidad', digits=(10,3)),
+        'cant_uom_id': fields.many2one('product.uom', 'Unidad de Cantidad'),
     }
     _order = 'fecha_reanalisis desc'
     _defaults = {

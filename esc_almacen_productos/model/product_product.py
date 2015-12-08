@@ -43,7 +43,8 @@ class product_product_esc(osv.Model):
         'fraccion_id': fields.many2one('product.tarrif_fraction', 
             'Fracción arancelaria'),
         'therapeutic_action_id': fields.many2one('product.therapeutic.action', 
-            'Therapeutic action')
+            'Therapeutic action'),
+        'costo_div': fields.float('Costo DIV', digits=(10,2)),
     }
 
 product_product_esc()

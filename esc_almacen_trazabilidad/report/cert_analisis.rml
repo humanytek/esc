@@ -196,8 +196,9 @@
         <td width="100.0"><para style="terp_tblheader_General">Certificado</para></td>
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.certificado or '' ]]</para></td>
         -->
-        <td></td>
-        <td></td>
+        <!-- 04/12/2015 (felix) agregar campo "cant" y "cant_uom_id" -->
+        <td width="100.0"><para style="terp_tblheader_General">Cantidad / Quantity</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ cert_analisis.cant or '' ]] [[ cert_analisis.cant_uom_id.name or '' ]]</para></td>
         <!-- 02/12/2015 (felix) cambiar etiqueta de "Fecha de caducidad / Due date" a "Fecha de caducidad / Expiry date" -->
         <td width="100.0"><para style="terp_tblheader_General">Fecha de caducidad / Expiry date</para></td>
         <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_caducidad, date=True) or '' ]]</para></td>
@@ -207,8 +208,8 @@
     <para style="terp_default_5cm_Above_Space"><font color="white"> </font></para>
     <blockTable repeatRows="1" style="Move_Line_Header">
         <tr>
-            <td width="33%"><para style="terp_tblheader_Details">Prueba / Test</para></td>
-            <td width="33%"><para style="terp_tblheader_Details">Especificación / Especification</para></td>
+            <td width="33%"><para style="terp_tblheader_Details">Prueba / Testing Item</para></td>
+            <td width="33%"><para style="terp_tblheader_Details">Especificación / Specification</para></td>
             <td width="33%"><para style="terp_tblheader_Details">Resultado / Result</para></td>
         </tr>
     </blockTable>
@@ -237,7 +238,8 @@
     </blockTable>
     <para style="terp_default_1cm_above_Space"><font color="white"> </font></para>
     <para style="terp_default_Centre_6">ESTE CERTIFICADO ES UNA TRANSCRIPCIÓN DEL PROPORCIONADO POR EL FABRICANTE</para>
-    <para style="terp_default_Centre_6">THIS CERTIFICATE IS A TRANSCRIPTION GIVEN BY THE MANUFACTURER</para>
+    <!-- 04/12/2015 (felix) ocultar -->
+    <!--<para style="terp_default_Centre_6">THIS CERTIFICATE IS A TRANSCRIPTION GIVEN BY THE MANUFACTURER</para>-->
     <para style="terp_default_5cm_Above_Space"><font color="white"> </font></para>
     <para style="terp_default_8"><b>CÓDIGO DE PRODUCTO / PRODUCT CODE:</b> [[ cert_analisis.cod_product or '' ]]</para>
     <para style="terp_default_8"><b>PEDIDO DE COMPRA / PURCHASE ORDER:</b> [[ cert_analisis.pedido_compra or '' ]]</para>
