@@ -166,11 +166,25 @@ class purchase_order_line_esc(osv.Model):
         res = {}
         obj_permiso_import = self.pool.get('product.import.certificate')
         src_permiso_import = obj_permiso_import.search(cr, uid, [('id', '=', certificate_number)])
-        fecha_vigencia = obj_permiso_import.browse(cr, uid, src_permiso_import[0], context)['end_term']
-        res = {
-            'fecha_vigencia': fecha_vigencia
-        }
-        return {'value':res}
+        if src_permiso_import:
+            fecha_vigencia = obj_permiso_import.browse(cr, uid, src_permiso_import[0], context)['end_term']
+            fraction_id = obj_permiso_import.browse(cr, uid, src_permiso_import[0], context)['fraction_id']
+            manufacturer_id = obj_permiso_import.browse(cr, uid, src_permiso_import[0], context)['manufacturer_id']
+            custom = obj_permiso_import.browse(cr, uid, src_permiso_import[0], context)['custom']
+            res = {
+                'fecha_vigencia': fecha_vigencia,
+                'fraccion_id': fraction_id.id,
+                'manufacturer_id': manufacturer_id.id,
+                'aduana_id': custom.id
+            }
+        else:
+            res = {
+                'fecha_vigencia': None,
+                'fraccion_id': None,
+                'manufacturer_id': None,
+                'aduana_id': None
+            }
+        return {'value': res}
     
     # 13/04/2015 (felix) Metodo original para agregar fabricante de producto por defecto
     def onchange_product_id(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,

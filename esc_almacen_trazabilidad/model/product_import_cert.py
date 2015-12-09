@@ -189,21 +189,6 @@ class product_import_certificate_esc(osv.Model):
         'qty_imported': fields.function(_calculate_qty, type='float', 
             string='Quantity Imported', states={'not_extend':[('readonly',True)]}),
     }
-    
-    # 17/11/2015 (felix) Get name
-    def name_get(self, cr, uid, ids, context=None):
-        if isinstance(ids, (list, tuple)) and not len(ids):
-            return []
-        if isinstance(ids, (long, int)):
-            ids = [ids]
-        reads = self.read(cr, uid, ids, ['certificate_number'], context=context)
-        res = []
-        for record in reads:
-            cert_num = record['certificate_number']
-            if cert_num:
-                name = cert_num
-                res.append((record['id'], name))
-        return res
-    
+        
     
 product_import_certificate_esc()

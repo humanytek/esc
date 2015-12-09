@@ -60,9 +60,17 @@
                 </xpath>
                 
                 <!-- 27/08/2015 (felix) Cambiar campo "certificate_number" por "name" -->
+                <!-- 09/12/2015 (felix) Dejar otra vez campo "name" por "certificate_number" -->
+                <!--
                 <xpath expr="//field[@name='certificate_number']" position="replace">
                     <field name="name" string="Name"/>
                 </xpath>
+                -->
+                <!-- 09/12/2015 (felix) Agregar atributo string para etiqueta de campo -->
+                <xpath expr="//field[@name='certificate_number']" position="attributes">
+                    <attribute name="string">Número de permiso</attribute>
+                </xpath>
+                
                 
             </field>
         </record>
