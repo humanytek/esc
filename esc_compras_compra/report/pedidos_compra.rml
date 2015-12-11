@@ -185,7 +185,11 @@
                                         <para style="terp_default_6"><b>Facturar a:</b> [[ line_head_1.empresa_id.name or '' ]]</para>
                                         <para style="terp_default_6"><b>RFC Facturar a:</b> [[ line_head_1.rfc_empresa or '' ]]</para>
                                         <para style="terp_default_6"><b>Incoterm:</b> [[ line_head_1.incoterm.name or '' ]]</para>
+                                        <!-- 11/10/2015 (felix) Cambiar por otro campo de destino final llamado "destino_final"
                                         <para style="terp_default_6"><b>Destino final:</b> [[ (line_head_1.empresa_id.street) or '' ]] [[ (line_head_1.empresa_id.street2) or '' ]] [[ (line_head_1.empresa_id.block) or '' ]] [[ (line_head_1.empresa_id.zip) or '' ]] [[ (line_head_1.empresa_id.city) or '' ]] [[ (line_head_1.empresa_id.state_id.name) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_street3) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_street4) or '' ]] [[ (line_head_1.empresa_id.l10n_mx_city2) or '' ]] [[ (line_head_1.empresa_id.country_id.name) or '' ]]</para>
+                                        -->
+                                        <!-- 11/10/2015 (felix) Agregar este campo por el anterior -->
+                                        <para style="terp_default_6"><b>Destino final:</b> [[ line_head_1.ciudad_id.name or '' ]] . [[ line_head_1.estado_id.name or '' ]]</para>
                                         <para style="terp_default_6"><b>Plazo de pago:</b> [[ o.payment_term_id.name or '']]</para>
                                     </td>
                                 </tr>
