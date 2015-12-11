@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-    
-        <!-- 09/12/2015 (felix) Vista de búsqueda en Albaranes de entrada -->
-        <record id="view_picking_in_search_inherit_1" model="ir.ui.view">
-            <field name="name">stock.picking.in.search.inherit.1</field>
-            <field name="model">stock.picking.in</field>
-            <field name="inherit_id" ref="stock.view_picking_in_search"/>
-            <field name="priority" eval="200"/>
-            <field name="arch" type="xml">
-                
-                <!-- 09/12/2015 (felix) Agregar filtros: 
-                    - Lote
-                    - Pedimento
-                    - Track-lot
-                    - Orden de compra
-                -->
-                <xpath expr="//search/filter[@name='to_invoice']" position="after">
-                    <separator />
-                    <!--<filter icon="terp-check" name="" string="Lote" help="Filtrar por Lote"/>
-                    <filter icon="terp-check" name="tracking_id" string="Track-lot" help="Filtrar por Track-lot"/>-->
-                    <filter icon="terp-check" name="pedimento_id" string="Pedimento" help="Filtrar por Pedimento"/>                     
-                    <filter icon="terp-check" name="purchase_id" string="Orden de compra" help="Filtrar por Orden de compra"/>
-                </xpath>
-                
-            </field>
-        </record>
-    
+        
         <!-- 26/02/2015 (felix) Modificaciones en action de Albaranes de entrada -->
         <record id="stock.action_picking_tree4" model="ir.actions.act_window">
             <field name="name">Albaranes de entrada</field>

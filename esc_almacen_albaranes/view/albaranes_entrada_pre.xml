@@ -119,6 +119,18 @@
             <field name="arch" type="xml">
                 <search string="Lista albaranes pre-entrada">
                     <field name="name" string="Lista albaranes de pre-entrada" filter_domain="[('name','ilike', self)]"/>
+                    
+                    <!-- 09/12/2015 (felix) Agregar filtros: 
+                        - Lote
+                        - Pedimento
+                        - Track-lot
+                        - Orden de compra
+                    -->
+                    <filter icon="terp-check" name="" string="Lote" help="Filtrar por Lote"/>
+                    <filter icon="terp-check" name="tracking_id" string="Track-lot" help="Filtrar por Track-lot"/>
+                    <filter icon="terp-check" name="pedimento_id" string="Pedimento" help="Filtrar por Pedimento"/>                     
+                    <filter icon="terp-check" name="purchase_id" string="Orden de compra" help="Filtrar por Orden de compra"/>
+                    
                     <group expand="0" string="Agrupar por:">
                         <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Fabricante" domain="[]" context="{'group_by':'fabricante_id'}"/>
