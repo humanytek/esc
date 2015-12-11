@@ -18,9 +18,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import product_product
-import stick_aprobado
-import product_tarrif_fraction
-import stock_production_lot
-import product_uom
-import res_currency
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from lxml import etree
+import codecs
+import logging
+_logger = logging.getLogger(__name__)
+
+
+class res_currency_esc(osv.Model):
+
+    _inherit = 'res.currency'
+    _description = 'Divisas'
+    _columns = {
+        'costo_cus_divisa_ids': fields.one2many('product.product', 'costo_cus_divisa_id', 
+            'Divisa'),
+    }
+
+res_currency_esc()

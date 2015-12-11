@@ -44,7 +44,8 @@ class product_product_esc(osv.Model):
             'Fracción arancelaria'),
         'therapeutic_action_id': fields.many2one('product.therapeutic.action', 
             'Therapeutic action'),
-        'costo_div': fields.float('Costo DIV', digits=(10,2)),
+        'costo_cus': fields.float('Costo (Manejo de ESIC)', digits=(10,2)),
+        'costo_cus_divisa_id': fields.many2one('res.currency', 'Divisa'),
     }
 
 product_product_esc()
