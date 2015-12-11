@@ -187,7 +187,10 @@ class product_import_certificate_esc(osv.Model):
         #    obj='stock.move', string='Moves'),
         'move_ids': fields.one2many('stock.move', 'picking_id', 'Moves'),
         'qty_imported': fields.function(_calculate_qty, type='float', 
-            string='Quantity Imported', states={'not_extend':[('readonly',True)]}),
+            string='Quantity Imported', digits=(10,3), 
+            states={'not_extend':[('readonly',True)]}),
+        'qty': fields.float('Quantity', digits=(10,3), 
+            states={'not_extend':[('readonly',True)]}),
     }
         
     

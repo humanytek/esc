@@ -10,20 +10,26 @@
             <field name="name">view.reportes.compras.tree</field>
             <field name="model">purchase.order.line</field>
             <field name="arch" type="xml">
+            
+                <!-- 11/12/2015 (felix) Cambiar posición de campos en la vista -->            
                 <tree string="Purchase Order Lines" colors="gray: state == 'done'; blue: state == 'confirmed'; red: state == 'cancel'" edit="false">
+                    <field name="order_id" string="Pedido"/>
+                    <field name="proveedor_id" string="Proveedor"/>
                     <field name="product_id" on_change="onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,False,price_unit,context)"/>
-                    <field name="order_id" string="Orden de compra"/>
-                    <field name="date_planned"/>
-                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
                     <field name="product_qty" on_change="onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
                     <field name="product_uom" groups="product.group_uom" on_change="onchange_product_uom(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                    <field name="date_planned"/>
                     <field name="price_unit"/>
-                    <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
                     <field name="price_subtotal" sum="Subtotal"/>
-                    <field name="state" invisible="1"/>
+                    <field name="state"/>
+                                        
+                    <!--
+                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="taxes_id" widget="many2many_tags" domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
                     <field name="tipo_venta" invisible="1"/>
                     <field name="operaciones" invisible="1"/>
                     <field name="linea" invisible="1"/>
+                    -->
                 </tree>
             </field>
         </record>
@@ -34,7 +40,8 @@
             <field name="model">purchase.order.line</field>
             <field name="arch" type="xml">
                 <search string="Lista de productos comprados">
-                    <field name="name" string="Lista de productos comprados" filter_domain="['|',('name','ilike', self)]"/>
+                    <!--<field name="name" string="Lista de productos comprados" filter_domain="['|',('name','ilike', self)]"/>-->
+                    <field name="product_id" string="Lista de productos comprados" filter_domain="[('product_id', '=', self)]"/>
                     <group expand="0" string="Agrupar por:">
                         <filter string="Producto" domain="[]" context="{'group_by':'name'}"/>
                         <filter string="Orden de compra" domain="[]" context="{'group_by':'order_id'}"/>
@@ -43,6 +50,10 @@
                         <filter string="Tipo de venta" domain="[]" context="{'group_by':'tipo_venta'}"/>
                         <filter string="Operación" domain="[]" context="{'group_by':'operaciones'}"/>
                         <filter string="Línea" domain="[]" context="{'group_by':'linea'}"/>
+                        <!-- 11/12/2015 (felix) Agregar agrupador -->
+                        <separator />
+                        <filter string="Estatus" domain="[]" context="{'group_by':'state'}"/>
+                        <separator />
                     </group>
                 </search>
             </field>
