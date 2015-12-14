@@ -18,9 +18,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import stock_move
-import stock_picking
-import stock_picking_pre
-import import_info
-import stock_tracking
-import product_import_certificate
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class product_import_certificate_esc(osv.Model):
+
+    _inherit = 'product.import.certificate'
+    _description = 'Modificaciones en product_import_certificate'
+    _columns = {
+        'perm_certificate_ids': fields.one2many('stock.picking.pre', 'perm_certificate_id', 
+            'Permiso sanitario de importacion'),
+    }
+    
+product_import_certificate_esc()
+

@@ -80,10 +80,22 @@
                                 <field name="fecha_retest" string="Fecha de retest" required="1"/>
                             </group>
                             <group>
-                                <field name="pedimento_id" string="Pedimento No." on_change="on_change_pedimento(pedimento_id)"/>
+                                <!-- 14/12/2015 (felix) Creación de atributeo domain en "pedimento_id" -->
+                                <field name="pedimento_id" string="Pedimento No." on_change="on_change_pedimento(pedimento_id)"
+                                    domain="[('product_info_ids.product_id', '=?', product_id)]"/>
+                                <!-- 14/12/2015 (felix) Agregar campo "Permiso sanitario de importación" -->
+                                <!-- 14/12/2015 (felix) Creación de atributeo domain en "perm_certificate_id" -->
+                                <field name="perm_certificate_id" string="Permiso sanitario de importación"
+                                    domain="[('move_ids.product_id', '=?', product_id)]"/>
                                 <field name="aduana_id" string="Aduana" widget="selection"/>
-                                <field name="lote_id" string="Lote" on_change="on_change_lote(lote_id)"/>
-                                <field name="orden_compra_id" string="Orden de compra"/>
+                                <!-- 14/12/2015 (felix) Agregar campo "Track-lot" -->
+                                <!-- 14/12/2015 (felix) Creación de atributeo domain en "pack_id" -->
+                                <field name="pack_id" string="Track-lot" domain="[('move_ids.product_id', '=?', product_id)]"/>
+                                <!-- 14/12/2015 (felix) Creación de atributeo domain en "lote_id" -->
+                                <field name="lote_id" string="Lote" on_change="on_change_lote(lote_id)"
+                                    domain="[('product_id', '=?', product_id)]"/>
+                                <!-- 14/12/2015 (felix) Creación de atributeo domain en "orden_compra_id" -->
+                                <field name="orden_compra_id" string="Orden de compra" domain="[('order_line.product_id', '=?', product_id)]"/>
                                 <label for="peso_bruto" string="Cantidad por envases"/>
                                 <div>
                                     <field name="envases_ids">
@@ -126,10 +138,10 @@
                         - Track-lot
                         - Orden de compra
                     -->
-                    <filter icon="terp-check" name="" string="Lote" help="Filtrar por Lote"/>
+                    <filter icon="terp-check" name="lote_id" string="Lote" help="Filtrar por Lote"/>
                     <filter icon="terp-check" name="tracking_id" string="Track-lot" help="Filtrar por Track-lot"/>
                     <filter icon="terp-check" name="pedimento_id" string="Pedimento" help="Filtrar por Pedimento"/>                     
-                    <filter icon="terp-check" name="purchase_id" string="Orden de compra" help="Filtrar por Orden de compra"/>
+                    <filter icon="terp-check" name="orden_compra_id" string="Orden de compra" help="Filtrar por Orden de compra"/>
                     
                     <group expand="0" string="Agrupar por:">
                         <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>

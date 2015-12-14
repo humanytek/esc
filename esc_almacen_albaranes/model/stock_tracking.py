@@ -18,9 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import stock_move
-import stock_picking
-import stock_picking_pre
-import import_info
-import stock_tracking
-import product_import_certificate
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class stock_tracking_esc(osv.Model):
+
+    _inherit = 'stock.tracking'
+    _description = 'Modificaciones en stock_tracking'
+    _columns = {
+        'pack_ids': fields.one2many('stock.picking.pre', 'pack_id', 'Track-lot'),
+    }
+    
+stock_tracking_esc()
+

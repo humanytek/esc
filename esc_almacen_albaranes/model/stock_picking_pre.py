@@ -79,7 +79,10 @@ class stock_picking_pre_esc(osv.Model):
         'stock_inspeccion_ids': fields.one2many('stock.picking.pre.inspeccion', 
             'stock_picking_pre_id', 'Inspeccion fisica'),
         'stock_preentrada_ids': fields.one2many('stock.move', 'preentrada_id', 
-            'Pre-entrada/Stock Move')
+            'Pre-entrada/Stock Move'),
+        'pack_id': fields.many2one('stock.tracking', 'Track-lot'),
+        'perm_certificate_id': fields.many2one('product.import.certificate', 
+            'Permiso sanitario de importacion')
     }
     _order = 'fecha_ingreso desc'
     _defaults = {
@@ -105,14 +108,15 @@ class stock_picking_pre_esc(osv.Model):
     # 15/04/2015 (felix) Autocompletar campos relacionados con el producto
     def on_change_product(self, cr, uid, ids, product_id, context=None):
         res = {}
+        dom = {}
         if product_id:
             obj_product = self.pool.get('product.product')
             src_product = obj_product.search(cr, uid, [('id', '=', product_id)])
             fabricante = obj_product.browse(cr, uid, src_product[0], context)['manufacturer']
             res = {
                 'fabricante_id': fabricante.id
-            }
-        return {'value':res}
+            }            
+        return {'value': res, 'domain': dom}
         
     # 04/06/2015 (felix) Autocompletar campos relacionados con Lote
     def on_change_lote(self, cr, uid, ids, lote_id, context=None):
