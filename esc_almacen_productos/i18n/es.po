@@ -19,12 +19,12 @@ msgstr ""
 #. module: esc_almacen_productos
 #: view:product.tarrif_fraction:0
 msgid "Purchase tax"
-msgstr "Impuesto de compra"
+msgstr "IVA"
 
 #. module: esc_almacen_productos
 #: view:product.tarrif_fraction:0
 msgid "Import tax"
-msgstr "Impuesto de importación"
+msgstr "ADV"
 
 #. module: esc_almacen_productos
 #: view:product.tarrif_fraction:0
