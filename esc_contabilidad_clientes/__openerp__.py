@@ -46,7 +46,7 @@ Detalles:
         
         # View y menu
         'view/facturas_cliente.xml',
-        'view/attachment_facturae_mx.xml',
+        #'view/attachment_facturae_mx.xml',
         
         # Reportes
         'report/facturas_cliente.xml',

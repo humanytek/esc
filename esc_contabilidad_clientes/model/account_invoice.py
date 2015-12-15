@@ -114,11 +114,12 @@ class account_invoice_line_esc(osv.Model):
             obj_product_cliente = self.pool.get('product.cliente')
             src_product_cliente = obj_product_cliente.search(cr, uid, [('cliente_id', '=', partner_id),('producto_cliente_id','=',product)])
             res_final['value']['cod_name_prod'] = ''
-            for i in obj_product_cliente.browse(cr, uid, src_product_cliente, context):
-                res_final['value']['cod_name_prod'] = '['+str(i.codigo_prod)+'] '+str(i.name)
-                res_final['value']['caducidad_min'] = i.caducidad_id['name']+' '+i.caducidad_id['unidad_cad_id']['name']
-                res_final['value']['condicion'] = i.cond_entrega
-                res_final['value']['especificacion'] = i.especificacion
+            if src_product_cliente:
+                for i in obj_product_cliente.browse(cr, uid, src_product_cliente, context):
+                    res_final['value']['cod_name_prod'] = '['+str(i.codigo_prod)+'] '+str(i.name)
+                    res_final['value']['caducidad_min'] = i.caducidad_id.name+' '+i.caducidad_id.unidad_cad_id.name
+                    res_final['value']['condicion'] = i.cond_entrega
+                    res_final['value']['especificacion'] = i.especificacion
             if not res_final['value']['cod_name_prod']:
                 raise osv.except_osv('Aviso','No existe codigo y nombre del producto definido por el cliente.\nDebe crearse el registro en:\nAlmacen/Productos/Productos/Datos del producto por cliente')
             
