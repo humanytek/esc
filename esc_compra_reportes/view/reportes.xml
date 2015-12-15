@@ -15,12 +15,15 @@
                 <tree string="Purchase Order Lines" colors="gray: state == 'done'; blue: state == 'confirmed'; red: state == 'cancel'" edit="false">
                     <field name="order_id" string="Pedido"/>
                     <field name="proveedor_id" string="Proveedor"/>
+                    <field name="partner_ref" string="Ref. Proveedor"/>
                     <field name="product_id" on_change="onchange_product_id(parent.pricelist_id,product_id,0,False,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,False,price_unit,context)"/>
                     <field name="product_qty" on_change="onchange_product_id(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id,parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
+                    <field name="cant_recibida" string="Cant. Recibida"/>
                     <field name="product_uom" groups="product.group_uom" on_change="onchange_product_uom(parent.pricelist_id,product_id,product_qty,product_uom,parent.partner_id, parent.date_order,parent.fiscal_position,date_planned,name,price_unit,context)"/>
                     <field name="date_planned"/>
-                    <field name="price_unit"/>
-                    <field name="price_subtotal" sum="Subtotal"/>
+                    <field name="price_unit" string="Precio unitario"/>
+                    <field name="price_subtotal" string="Subtotal"/>
+                    <field name="divisa" string="Divisa"/>
                     <field name="state"/>
                                         
                     <!--
