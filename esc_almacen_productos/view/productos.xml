@@ -116,6 +116,11 @@
                         <field name="costo_cus_divisa_id" groups="esc_almacen_productos.group_productos_admin" class="oe_inline"/>
                     </div>
                 </xpath>
+                
+                <!-- 15/12/2015 (felix) Ocultar campo "Atributos del producto" -->
+                <xpath expr="//form/sheet/notebook/page[@string='Features']/group[@string='Product Attributes']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                             
             </field>            
         </record>

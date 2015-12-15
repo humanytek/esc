@@ -15,12 +15,15 @@
                 <tree string="Reportes de venta" colors="gray: state == 'done'; blue: state == 'confirmed'; red: state == 'cancel'" edit="false">
                     <field name="order_id" string="Orden de venta"/>
                     <field name="order_partner_id" string="Cliente"/>
+                    <field name="client_order_ref" string="Ref. Cliente"/>
                     <field name="name" string="Producto"/>
-                    <field name="product_uom_qty" string="Cantidad"/>
+                    <field name="product_uom_qty" string="Cant. Pedida"/>
+                    <field name="cant_entregada" string="Cant. Entregada"/>
                     <field name="product_uom" string="Unidad de medida"/>
                     <field name="fecha_pedido" string="Fecha de pedido"/>
-                    <field name="price_unit" string="Precio unitario" sum="Precio unitario"/>
-                    <field name="price_subtotal" string="Subtotal" sum="Subtotal"/>
+                    <field name="price_unit" string="Precio unitario"/>
+                    <field name="price_subtotal" string="Subtotal"/>
+                    <field name="divisa" string="Divisa"/>
                     <field name="state"/>
                     
                     <!--
