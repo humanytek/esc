@@ -69,9 +69,11 @@ class cert_analisis_esc(osv.Model):
     _defaults = {
         'name': _get_codigo
     }
+    """
     _sql_constraints = [
         ('name_uniq', 'unique(name)', 'Este campo debe ser unico')
     ]
+    """
     
 cert_analisis_esc()
 
