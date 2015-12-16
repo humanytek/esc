@@ -21,7 +21,7 @@
     'website' : 'http://www.astiservices.com',
     'license' : 'GPL-3',
     'category' : 'Accounting',
-    'depends' : ['base', 'account', 'account_cancel', 'hesatec_mx_accounting_reports_v7'],
+    'depends' : ['base', 'account', 'account_cancel', 'hesatec_mx_accounting_reports_v7','l10n_mx_facturae'],
     'init_xml' : [],
     'update_xml' : ['eaccount_sat_code_view.xml',
                     'eaccount_journal_type_view.xml',
