@@ -55,6 +55,7 @@ Detalles:
         # Vistas
         'view/pedidos_compra.xml',
         'view/proveedores.xml',
+        'view/fabricantes.xml',
         'view/configuracion.xml',
         'view/pedidos_compra_config.xml',
         

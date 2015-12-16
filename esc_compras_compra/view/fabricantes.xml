@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- 16/12/2015 (felix) Agregar filtro por defecto para fabricantes -->
+        <record id="action_fabricantes" model="ir.actions.act_window">
+            <field name="name">Fabricantes</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field eval="False" name="view_id"/>
+            <field name="domain">[('manufacturer','=',1)]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                Click to create a draft invoice.
+                </p><p>
+                Use this menu to control the invoices to be received from your
+                supplier. OpenERP generates draft invoices from your purchase
+                orders or receptions, according to your settings.
+                </p><p>
+                Once you receive a supplier invoice, you can match it with the
+                draft invoice and validate it.
+                </p>
+            </field>
+        </record>
+        
+        <!-- 16/12/2015 (felix) Agregar menú "Fabricantes"-->
+        <menuitem id="menu_fabricantes" name="Fabricantes" parent="purchase.menu_procurement_management"
+            action="action_fabricantes" sequence="16"/>
+        
+    </data>
+</openerp>
