@@ -183,8 +183,6 @@ class product_import_certificate_esc(osv.Model):
     _columns = {
         'background_country_ids': fields.one2many('product.import.certificate.line', 
             'certificado_id', 'Backgrounds'),
-        #'move_ids': fields.function(_get_move_in, type='one2many',
-        #    obj='stock.move', string='Moves'),
         'move_ids': fields.one2many('stock.move', 'picking_id', 'Moves'),
         'qty_imported': fields.function(_calculate_qty, type='float', 
             string='Quantity Imported', digits=(10,3), 
