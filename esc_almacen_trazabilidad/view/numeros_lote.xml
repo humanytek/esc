@@ -66,5 +66,30 @@
             </field>
         </record>
         
+        <!-- 17/12/2015 (felix) Vista tree Números de serie -->
+        <record id="stock_production_lot_inherit_1" model="ir.ui.view">
+            <field name="name">stock.production.lot.tree.inherit.1</field>
+            <field name="model">stock.production.lot</field>
+            <field name="inherit_id" ref="stock.view_production_lot_tree"/>
+            <field name="priority" eval="200"/>
+            <field name="arch" type="xml">
+            
+                <!-- 17/12/2015 (felix) Ocultar campo "date" de su posición original -->
+                <xpath expr="//field[@name='date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                
+                <!-- 17/12/2015 (felix) Agregar campos:
+                    - Fecha de fabricación
+                    - Fecha de caducidad
+                -->
+                <xpath expr="//field[@name='stock_available']" position="before">
+                    <field name="date" string="Fecha de fabricación"/>
+                    <field name="use_date" string="Fecha de caducidad"/>
+                </xpath>
+                
+            </field>
+        </record>
+        
     </data>
 </openerp>

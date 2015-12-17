@@ -86,7 +86,7 @@
                                 <!-- 14/12/2015 (felix) Agregar campo "Permiso sanitario de importación" -->
                                 <!-- 14/12/2015 (felix) Creación de atributeo domain en "perm_certificate_id" -->
                                 <field name="perm_certificate_id" string="Permiso sanitario de importación"
-                                    domain="[('move_ids.product_id', '=?', product_id)]"/>
+                                    domain="[('product_id', '=?', product_id)]"/>
                                 <field name="aduana_id" string="Aduana" widget="selection"/>
                                 <!-- 14/12/2015 (felix) Agregar campo "Track-lot" -->
                                 <!-- 14/12/2015 (felix) Creación de atributeo domain en "pack_id" -->
