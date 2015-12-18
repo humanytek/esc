@@ -1,8 +1,14 @@
-# -*- coding: utf-8 -*-
-##############################################################################
+# -*- encoding: utf-8 -*-
+###########################################################################
+#    Module Writen to OpenERP, Open Source Management Solution
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2015 Humanytek (<http://humanytek.com>).
+#    Copyright (c) 2011 Vauxoo - http://www.vauxoo.com
+#    All Rights Reserved.
+#    info Vauxoo (info@vauxoo.com)
+############################################################################
+#    Coded by: moylop260 (moylop260@vauxoo.com)
+#    Financed by: http://www.sfsoluciones.com (aef@sfsoluciones.com)
+############################################################################
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,11 +24,5 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import cert_analisis
-import product_import_cert_line
-import product_import_cert
-import import_info
-import product_uom
-#import stock_move
-#import stock_tracking
-#import stock_location
+
+import invoice_facturae_pac_sf_pdf

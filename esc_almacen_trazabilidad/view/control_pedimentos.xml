@@ -71,7 +71,8 @@
                                     <field name="invoice_ids" nolabel="1" domain="[('partner_id.supplier','=',True)]"/>
                                 </page>
                                 <page string="Track Lots">
-                                    <field name="lot_ids" nolabel="1" context="{'form_view_ref': 'l10n_mx_import_info.stock_tracking_form'}"/>
+                                    <!--<field name="lot_ids" nolabel="1" context="{'form_view_ref': 'l10n_mx_import_info.stock_tracking_form'}"/>-->
+                                    <field name="lot_ids" nolabel="1" context="{'form_view_ref': 'l10n_mx_import_info.stock_tracking_lot_form'}"/>
                                     <separator string="Notes for Audit (Save after Analisys)" colspan="4"/>
                                     <field name="audit_note" nolabel="1"/>
                                 </page>
