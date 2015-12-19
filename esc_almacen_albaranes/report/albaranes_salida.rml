@@ -250,7 +250,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ (atributo.codigo_prod) or '' ]] [[ (atributo.name) or '' ]] [[ (atributo.especificacion) or '' ]]</para>
+                                            <para style="terp_default_Tab_6">[[ (atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.name) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion) or '' ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>
@@ -289,7 +289,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ (atributo.codigo_prod) or '' ]] [[ (atributo.name) or '' ]] [[ (atributo.especificacion) or '' ]]</para>
+                                            <para style="terp_default_Tab_6">[[ (atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.name) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion) or '' ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>
