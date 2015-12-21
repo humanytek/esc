@@ -5,8 +5,6 @@
 #                         http://www.NaN-tic.com
 # Copyright (c) 2012 Omar Castiñeira Saavedra <omar@pexego.es>
 #                         Pexego Sistemas Informáticos http://www.pexego.es
-# Copyright (C) 2013 Tadeus Prastowo <tadeus.prastowo@infi-nity.com>
-#                         Vikasa Infinity Anugrah <http://www.infi-nity.com>
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -36,15 +34,7 @@ import csv
 import copy
 import base64
 from xml.dom.minidom import getDOMImplementation
-
-try:
-    import release
-    from osv import orm, osv, fields
-except ImportError:
-    import openerp
-    from openerp import release
-    from openerp.osv import orm, osv, fields
-
+from osv import orm, osv, fields
 import tempfile
 import codecs
 import logging
@@ -65,6 +55,7 @@ class BrowseDataGenerator(AbstractDataGenerator):
         self.imageFiles = {}
         self.temporaryFiles = []
         self.logger = logging.getLogger(__name__)
+        print  model, pool, cr, uid, ids, context,'\n\n\n\n\n\n'
 
     def warning(self, message):
         if self.logger:

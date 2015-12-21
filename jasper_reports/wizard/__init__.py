@@ -1,1 +1,1 @@
-import jasper_create_data_template
+import create_data_template

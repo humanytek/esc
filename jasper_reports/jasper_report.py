@@ -1,10 +1,7 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 # Copyright (c) 2008-2012 NaN Projectes de Programari Lliure, S.L.
 #                         http://www.NaN-tic.com
-# Copyright (C) 2013 Tadeus Prastowo <tadeus.prastowo@infi-nity.com>
-#                         Vikasa Infinity Anugrah <http://www.infi-nity.com>
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -28,31 +25,24 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
-
-try:
-    import release
-    import report
-    import pooler
-    from osv import orm, osv, fields
-    import tools
-    import netsvc
-except ImportError:
-    import openerp
-    from openerp import release
-    from openerp import report
-    from openerp import pooler
-    from openerp.osv import orm, osv, fields
-    from openerp import tools
-    from openerp import netsvc
-
+#
+#Some fix added by Omal for generating reports and subreports from wizard
+#
+##############################################################################
 import os
+import report
+import pooler
+from osv import orm, osv, fields
+import tools
 import tempfile
+import netsvc
+import release
 import logging
 
 from JasperReports import *
 
 # Determines the port where the JasperServer process should listen with its XML-RPC server for incomming calls
-tools.config['jasperport'] = tools.config.get('jasperport', 8090)
+tools.config['jasperport'] = tools.config.get('jasperport', 8096)
 
 # Determines the file name where the process ID of the JasperServer process should be stored
 tools.config['jasperpid'] = tools.config.get('jasperpid', 'openerp-jasper.pid')
@@ -74,6 +64,7 @@ class Report:
         self.report = None
         self.temporaryFiles = []
         self.outputFormat = 'pdf'
+        self.datasource_type='csv' ###Fix added by omal on 22 may 2012
 
     def execute(self):
         """
@@ -91,6 +82,13 @@ class Report:
         # between the two by searching '.jrxml' in report_rml.
         ids = self.pool.get('ir.actions.report.xml').search(self.cr, self.uid, [('report_name', '=', self.name[7:]),('report_rml','ilike','.jrxml')], context=self.context)
         data = self.pool.get('ir.actions.report.xml').read(self.cr, self.uid, ids[0], ['report_rml','jasper_output'])
+        if 'form' in self.data and 'report_type' in self.data['form'] and self.data['form']['report_type']:
+            self.data['report_type']=self.data['form']['report_type']
+
+        if 'report_type' in self.data:
+            data['jasper_output']=self.data['report_type']
+        elif 'form' in self.data and 'report_type' in self.data['form']:
+            data['jasper_output']=self.data['form']['report_type']
         if data['jasper_output']:
             self.outputFormat = data['jasper_output']
         self.reportPath = data['report_rml']
@@ -118,6 +116,15 @@ class Report:
         if self.report.language() == 'xpath':
             if self.data.get('data_source','model') == 'records':
                 generator = CsvRecordDataGenerator(self.report, self.data['records'] )
+################################################################################
+#FIX ADDED BY OMAL ON 21 MAY 2012 for adding sub reports
+################################################################################
+            elif self.data.get('data_source','model') == 'xml_records':
+                generator = XmlRecordDataGenerator(self.report,self.data)
+                self.datasource_type='xml'
+################################################################################
+#FIX DONE
+################################################################################
             else:
                 generator = CsvBrowseDataGenerator( self.report, self.model, self.pool, self.cr, self.uid, self.ids, self.context )
             generator.generate( dataFile )
@@ -142,6 +149,7 @@ class Report:
                     'dataFile': subreportDataFile,
                     'jrxmlFile': subreportInfo['filename'],
                 })
+
                 self.temporaryFiles.append( subreportDataFile )
 
                 if subreport.isHeader():
@@ -151,7 +159,6 @@ class Report:
                 else:
                     generator = CsvBrowseDataGenerator( subreport, self.model, self.pool, self.cr, self.uid, self.ids, self.context )
                 generator.generate( subreportDataFile )
-
 
         # Call the external java application that will generate the PDF file in outputFile
         pages = self.executeReport( dataFile, outputFile, subreportDataFiles )
@@ -173,7 +180,6 @@ class Report:
                 except os.error, e:
                     logger.warning("Could not remove file '%s'." % file )
         self.temporaryFiles = []
-
         if self.context.get('return_pages'):
             return ( data, self.outputFormat, pages )
         else:
@@ -217,12 +223,22 @@ class Report:
         connectionParameters = {
             'output': self.outputFormat,
             #'xml': dataFile,
-            'csv': dataFile,
+            #'csv': dataFile,
             'dsn': self.dsn(),
             'user': self.userName(),
             'password': self.password(),
             'subreports': subreportDataFiles,
         }
+#############################################################
+#Fix Added by omal on 22 may 2012
+#############################################################
+        if self.datasource_type=='xml':
+            connectionParameters['xml'] = dataFile
+        else:
+            connectionParameters['csv'] = dataFile
+#############################################################
+#Fix done
+#############################################################
         parameters = {
             'STANDARD_DIR': self.report.standardDirectory(),
             'REPORT_LOCALE': locale,
@@ -230,10 +246,18 @@ class Report:
         }
         if 'parameters' in self.data:
             parameters.update( self.data['parameters'] )
-
         server = JasperServer( int( tools.config['jasperport'] ) )
         server.setPidFile( tools.config['jasperpid'] )
-        return server.execute( connectionParameters, self.reportPath, outputFile, parameters )
+        #=========================================================================
+        #Added by prajul to pass jasper property from code
+        #=========================================================================
+        properties = {}
+        if 'properties' in self.data:
+            properties.update( self.data['properties'] )
+        #=========================================================================
+        #End
+        #=========================================================================
+        return server.execute( connectionParameters, self.reportPath, outputFile, parameters, properties)
 
 
 class report_jasper(report.interface.report_int):
@@ -265,6 +289,13 @@ class report_jasper(report.interface.report_int):
             # an empty 'records' parameter while still executing using 'records'
             data['data_source'] = d.get( 'data_source', 'model' )
             data['parameters'] = d.get( 'parameters', {} )
+            #================
+            #Added by Prajul
+            #================
+            data['properties'] = d.get('properties', {})
+            #================
+            #END
+            #================
         r = Report( name, cr, uid, ids, data, context )
         #return ( r.execute(), 'pdf' )
         return r.execute()

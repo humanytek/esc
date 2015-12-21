@@ -1,10 +1,7 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 # Copyright (c) 2008-2012 NaN Projectes de Programari Lliure, S.L.
 #                         http://www.NaN-tic.com
-# Copyright (C) 2013 Tadeus Prastowo <tadeus.prastowo@infi-nity.com>
-#                         Vikasa Infinity Anugrah <http://www.infi-nity.com>
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -31,27 +28,22 @@
 
 {
     "name" : "Jasper Reports",
-    "version" : "0.1.1",
+    "version" : "0.1",
     "description" : "This module integrates Jasper Reports with OpenERP.",
     "author" : "NaN·tic",
     "website" : "http://www.nan-tic.com",
-    'images' : [
-        'images/jasper_reports-hover.png',
-        'images/jasper_reports.png'
-    ],
     "depends" : ["base"],
     "category" : "Generic Modules/Jasper Reports",
     "init_xml" : [],
-    "demo_xml" : [
-        'jasper_demo.xml'
+    "demo_xml" : [ 
+        'jasper_demo.xml' 
     ],
     "update_xml" : [
-        'wizard/jasper_create_data_template.xml',
-        'jasper_wizard.xml',
+        'wizard/create_data_template_view.xml',
         'report_xml_view.xml',
         'security/ir.model.access.csv',
     ],
     "active": False,
-    "installable": True,
-    'application': True,
+    "installable": True
 }
+

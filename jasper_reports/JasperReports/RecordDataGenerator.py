@@ -57,7 +57,7 @@ class CsvRecordDataGenerator(AbstractDataGenerator):
                 for field in record:
                     if field not in self.report.fields():
                         if not field in error_reported_fields:
-                            print "FIELD '%s' NOT FOUND IN REPORT." % field 
+                            print "FIELD '%s' NOT FOUND IN REPORT." % field
                             error_reported_fields.append( field )
                         continue
                     value = record.get(field, False)
@@ -76,7 +76,38 @@ class CsvRecordDataGenerator(AbstractDataGenerator):
 
 
 class XmlRecordDataGenerator(AbstractDataGenerator):
+###############################################################
+#Fix by omal on 21 may 2012
+###############################################################
+    def __init__(self, report, data):
+        self.temporaryFiles = []
+        self.data=data
+        self.report = report
 
+    def handle_list_values(self, document, topNode, field_name, values):
+        for record in values:
+            recordNode = document.createElement(field_name)
+            topNode.appendChild( recordNode )
+            for field, value in record.iteritems():
+                if type(value)==type([]):
+                   self.handle_list_values(document, recordNode, field, value)
+                   continue
+
+                fieldNode = document.createElement( field )
+                recordNode.appendChild( fieldNode )
+
+                # The rest of field types must be converted into str
+                if value == False:
+                    value = ''
+                elif isinstance(value, str):
+                    value = unicode(value, 'utf-8')
+                elif not isinstance(value, unicode):
+                    value = unicode(value)
+                valueNode = document.createTextNode( value )
+                fieldNode.appendChild( valueNode )
+###############################################################
+# Fix done
+###############################################################
     # XML file generation using a list of dictionaries provided by the parser function.
     def generate(self, fileName):
         # Once all records have been calculated, create the XML structure itself
@@ -86,6 +117,15 @@ class XmlRecordDataGenerator(AbstractDataGenerator):
             recordNode = self.document.createElement('record')
             topNode.appendChild( recordNode )
             for field, value in record.iteritems():
+#############################################################
+#Fix added by omal on 21 may 2012
+#############################################################
+                if type(value) is list:
+                    self.handle_list_values(self.document, recordNode, field, value)
+                    continue
+#############################################################
+#Fix done
+############################################################
                 fieldNode = self.document.createElement( field )
                 recordNode.appendChild( fieldNode )
                 # The rest of field types must be converted into str

@@ -3,8 +3,6 @@
 #
 # Copyright (c) 2008-2012 NaN Projectes de Programari Lliure, S.L.
 #                         http://www.NaN-tic.com
-# Copyright (C) 2013 Tadeus Prastowo <tadeus.prastowo@infi-nity.com>
-#                         Vikasa Infinity Anugrah <http://www.infi-nity.com>
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -31,20 +29,10 @@
 
 import os
 import base64
-
-try:
-    import release
-    import report
-    from osv import orm, osv, fields
-    import jasper_report
-    from tools.translate import _
-except ImportError:
-    import openerp
-    from openerp import release
-    from openerp import report
-    from openerp.osv import orm, osv, fields
-    from openerp import jasper_report
-    from openerp.tools.translate import _
+import report
+from osv import orm, osv, fields
+import jasper_report
+from tools.translate import _
 
 import unicodedata
 from xml.dom.minidom import getDOMImplementation
@@ -92,6 +80,8 @@ class report_xml(osv.osv):
     }
 
     def create(self, cr, uid, vals, context=None):
+        print "CONTEXT: ", context
+        print "VALS: ", vals
         if context and context.get('jasper_report'):
             vals['model'] = self.pool.get('ir.model').browse(cr, uid, vals['jasper_model_id'], context).model
             vals['type'] = 'ir.actions.report.xml'
@@ -249,18 +239,18 @@ class report_xml(osv.osv):
 
         if depth > 1 and modelName != 'Attachments':
             # Create relation with attachments
-            fieldNode = document.createElement( '%s-Attachments' % self.unaccent(_('Attachments')) )
+            fieldNode = document.createElement( '%s-Attachments' % _('Attachments') )
             parentNode.appendChild( fieldNode )
             self.generate_xml(cr, uid, context, pool, 'ir.attachment', fieldNode, document, depth-1, False)
 
         if first_call:
             # Create relation with user
-            fieldNode = document.createElement( '%s-User' % self.unaccent(_('User')) )
+            fieldNode = document.createElement( '%s-User' % _('User') )
             parentNode.appendChild( fieldNode )
             self.generate_xml(cr, uid, context, pool, 'res.users', fieldNode, document, depth-1, False)
 
             # Create special entries
-            fieldNode = document.createElement( '%s-Special' % self.unaccent(_('Special')) )
+            fieldNode = document.createElement( '%s-Special' % _('Special') )
             parentNode.appendChild( fieldNode )
 
             newNode = document.createElement('copy')

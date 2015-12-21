@@ -1,10 +1,7 @@
-# -*- encoding: utf-8 -*-
 ##############################################################################
 #
 # Copyright (c) 2008-2012 NaN Projectes de Programari Lliure, S.L.
 #                         http://www.NaN-tic.com
-# Copyright (C) 2013 Tadeus Prastowo <tadeus.prastowo@infi-nity.com>
-#                         Vikasa Infinity Anugrah <http://www.infi-nity.com>
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -30,29 +27,21 @@
 ##############################################################################
 
 import os
+from osv import osv
 import glob
 import time
 import socket
 import subprocess
 import xmlrpclib
+from tools.translate import _
 import logging
 
-try:
-    import release
-    from osv import osv
-    from tools.translate import _
-except ImportError:
-    import openerp
-    from openerp import release
-    from openerp.osv import osv
-    from openerp.tools.translate import _
-
 class JasperServer:
-    def __init__(self, port=8090):
+    def __init__(self, port=8096):
         self.port = port
         self.pidfile = None
         url = 'http://localhost:%d' % port
-        self.proxy = xmlrpclib.ServerProxy( url, allow_none = True )
+        self.proxy = xmlrpclib.ServerProxy( url )
         self.logger = logging.getLogger(__name__)
 
     def error(self, message):
@@ -78,14 +67,14 @@ class JasperServer:
         env['CLASSPATH'] = os.path.join( self.path(), '..', 'java' + sep ) + sep.join( glob.glob( libs ) ) + sep + os.path.join( self.path(), '..', 'custom_reports' )
         cwd = os.path.join( self.path(), '..', 'java' )
 
-        # Set headless = True because otherwise, java may use existing X session and if session is
+        # Set headless = True because otherwise, java may use existing X session and if session is 
         # closed JasperServer would start throwing exceptions. So we better avoid using the session at all.
         command = ['java', '-Djava.awt.headless=true', 'com.nantic.jasperreports.JasperServer', unicode(self.port)]
         process = subprocess.Popen(command, env=env, cwd=cwd)
         if self.pidfile:
             f = open( self.pidfile, 'w')
             try:
-                f.write( str( process.pid ) )
+                f.write( str( process.pid ) ) 
             finally:
                 f.close()
 

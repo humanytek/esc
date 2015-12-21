@@ -55,7 +55,11 @@ import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRRtfExporter;
 import net.sf.jasperreports.engine.export.JRCsvExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
-import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
+//Added by Prajul to print docx report
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporterParameter;
+import net.sf.jasperreports.engine.export.ooxml.JRXlsxExporter;
+//End
 import net.sf.jasperreports.engine.export.JRTextExporter;
 import net.sf.jasperreports.engine.export.JRTextExporterParameter;
 import net.sf.jasperreports.engine.export.JRHtmlExporter;
@@ -80,6 +84,7 @@ import java.lang.Class;
 import java.math.BigDecimal;
 import java.io.InputStream;
 import java.util.Locale;
+import java.util.Enumeration;
 
 
 
@@ -116,16 +121,16 @@ public class JasperServer {
         return bundlePath( jrxmlPath ) + ".jasper";
     }
 
-    public int execute( Hashtable connectionParameters, String jrxmlPath, String outputPath, Hashtable parameters) throws java.lang.Exception {
+    public int execute( Hashtable connectionParameters, String jrxmlPath, String outputPath, Hashtable parameters, Hashtable properties) throws java.lang.Exception {
         try {
-            return privateExecute( connectionParameters, jrxmlPath, outputPath, parameters );
+            return privateExecute( connectionParameters, jrxmlPath, outputPath, parameters, properties);
         } catch (Exception exception) {
             //exception.printStackTrace();
             throw exception;
         }
     }
 
-    public int privateExecute( Hashtable connectionParameters, String jrxmlPath, String outputPath, Hashtable parameters) throws java.lang.Exception {
+    public int privateExecute( Hashtable connectionParameters, String jrxmlPath, String outputPath, Hashtable parameters, Hashtable properties) throws java.lang.Exception {
 
         JasperReport report = null;
         byte[] result = null;
@@ -145,7 +150,13 @@ public class JasperServer {
 
         // Declare it outside the parameters loop because we'll use it when we will create the data source.
         Translator translator = null;
-
+        
+        //Added by Prajul to pass properties from python report file
+        Enumeration e = properties.keys();
+        while( e. hasMoreElements() ){
+			String prop_key= (String) e.nextElement();
+			report.setProperty(prop_key, (String)properties.get(prop_key));
+		 }
         // Fill in report parameters
         JRParameter[] reportParameters = report.getParameters();
         for( int j=0; j < reportParameters.length; j++ ){
@@ -247,10 +258,6 @@ public class JasperServer {
             exporter = new JRCsvExporter();
         } else if ( output.equalsIgnoreCase( "xls" ) ) {
             exporter = new JRXlsExporter();
-            exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_ROWS, Boolean.TRUE);
-            exporter.setParameter(JRXlsExporterParameter.IS_REMOVE_EMPTY_SPACE_BETWEEN_COLUMNS,Boolean.TRUE);
-            exporter.setParameter(JRXlsExporterParameter.MAXIMUM_ROWS_PER_SHEET, new Integer(65000));
-            exporter.setParameter(JRXlsExporterParameter.IS_DETECT_CELL_TYPE, Boolean.TRUE);
         } else if ( output.equalsIgnoreCase( "rtf" ) ) {
             exporter = new JRRtfExporter();
         } else if ( output.equalsIgnoreCase( "odt" ) ) {
@@ -261,7 +268,13 @@ public class JasperServer {
             exporter = new JRTextExporter();
             exporter.setParameter(JRTextExporterParameter.PAGE_WIDTH, new Integer(80));
             exporter.setParameter(JRTextExporterParameter.PAGE_HEIGHT, new Integer(150));
-        } else {
+        } else if ( output.equalsIgnoreCase( "docx" ) ){
+        	System.out.println("Printing DOCX File....");
+        	exporter = new JRDocxExporter();
+        } else if ( output.equalsIgnoreCase( "xlsx" ) ){
+        	System.out.println("Printing XLSX File....");
+        	exporter = new JRXlsxExporter();
+		}else {
             exporter = new JRPdfExporter();
         }
         exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
@@ -282,7 +295,7 @@ public class JasperServer {
 
     public static void main (String [] args) {
         try {
-            int port = 8090;
+            int port = 8096;
             if ( args.length > 0 ) {
                 port = java.lang.Integer.parseInt( args[0] );
             }

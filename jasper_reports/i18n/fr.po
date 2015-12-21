@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: OpenERP Server 6.0.3\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
 "POT-Creation-Date: 2010-06-27 14:39+0000\n"
-"PO-Revision-Date: 2012-04-19 08:53+0000\n"
-"Last-Translator: Florent (LSc) <Unknown>\n"
+"PO-Revision-Date: 2012-03-04 04:36+0000\n"
+"Last-Translator: Christophe CRIER <Unknown>\n"
 "Language-Team: French <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-04-20 05:31+0000\n"
-"X-Generator: Launchpad (build 15120)\n"
+"X-Launchpad-Export-Date: 2012-03-05 05:11+0000\n"
+"X-Generator: Launchpad (build 14900)\n"
 
 #. module: jasper_reports
 #: field:ir.actions.report.xml,jasper_report:0
@@ -27,8 +27,6 @@ msgstr "C'est un rapport Jasper Report ?"
 msgid ""
 "The Object name must start with x_ and not contain any special character !"
 msgstr ""
-"Le nom de l'objet doit commencer par x_ et ne doit contenir aucun caractère "
-"spécial !"
 
 #. module: jasper_reports
 #: wizard_button:jasper_create_data_template,init,create:0
@@ -43,7 +41,7 @@ msgstr "Sortie Jasper"
 #. module: jasper_reports
 #: constraint:ir.actions.act_window:0
 msgid "Invalid model name in the action definition."
-msgstr "Nom de modèle non valide dans la définition de l'action."
+msgstr ""
 
 #. module: jasper_reports
 #: selection:ir.actions.report.xml,jasper_output:0
@@ -120,7 +118,7 @@ msgstr "XML"
 #. module: jasper_reports
 #: constraint:ir.ui.view:0
 msgid "Invalid XML for View Architecture!"
-msgstr "XML incorrect pour l'architecture de la vue !"
+msgstr ""
 
 #. module: jasper_reports
 #: model:ir.model,name:jasper_reports.model_ir_actions_report_xml_file
@@ -204,7 +202,7 @@ msgstr "Accepter"
 #. module: jasper_reports
 #: model:ir.module.module,description:jasper_reports.module_meta_information
 msgid "This module integrates Jasper Reports with OpenERP."
-msgstr "Ce module intégre Jasper Reports avec OpenERP"
+msgstr ""
 
 #. module: jasper_reports
 #: field:ir.actions.report.xml.file,file:0
