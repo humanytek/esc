@@ -36,8 +36,7 @@ import openerp
 from report_webkit import webkit_report
 import datetime
 
-class esc_invoice_facturae_html(report_sxw.rml_parse):
-
+class invoice_facturae_html(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context=None):
         if context is None:
             context = {}
@@ -262,10 +261,9 @@ class esc_invoice_facturae_html(report_sxw.rml_parse):
         return text
         
 
-webkit_report.WebKitParser('report.account.invoice.facturae.webkit.esc',
+webkit_report.WebKitParser('report.account.invoice.facturae.webkit',
             'account.invoice',
-            'esc_l10n_mx_facturae_report/report/invoice_facturae_html.mako',
-            parser=esc_invoice_facturae_html)
-            
-# 'addons/l10n_mx_facturae_report/report/invoice_facturae_html.mako',
+            'addons/l10n_mx_facturae_report/report/invoice_facturae_html.mako',
+            parser=invoice_facturae_html)
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

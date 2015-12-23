@@ -2,7 +2,7 @@
 <openerp>
     <data>
         <report auto="False"
-                id="account_invoice_facturae_webkit_esc"
+                id="l10n_mx_facturae_report.account_invoice_facturae_webkit"
                 model="account.invoice"
                 name="account.invoice.facturae.webkit"
                 file="esc_l10n_mx_facturae_report/report/invoice_facturae_html.mako"
@@ -11,12 +11,13 @@
                 attachment_use="1"
                 attachment="(object.state in ('open','paid')) and (object.fname_invoice and (object.fname_invoice + ''))"
                 menu="False"/>
-        
-        <record id="l10n_mx_facturae_report.property_l10n_mx_facturae_report_webkit" model="ir.property">
+        <!--
+        <record id="property_l10n_mx_facturae_report_webkit" model="ir.property">
             <field name="name">webkit_header</field>
             <field name="fields_id" ref="report_webkit.field_ir_act_report_xml_webkit_header"/>
-            <field eval="'ir.header_webkit,'+str(ref('esc_l10n_mx_facturae_report.ir_header_webkit_facturae'))" model="ir.header_webkit" name="value"/>
-            <field eval="'ir.actions.report.xml,'+str(ref('account_invoice_facturae_webkit_esc'))" model="ir.actions.report.xml" name="res_id"/>
+            <field eval="'ir.header_webkit,'+str(ref('l10n_mx_facturae_report.ir_header_webkit_facturae'))" model="ir.header_webkit" name="value"/>
+            <field eval="'ir.actions.report.xml,'+str(ref('l10n_mx_facturae_report.account_invoice_facturae_webkit'))" model="ir.actions.report.xml" name="res_id"/>
         </record>
+        -->
     </data>
 </openerp>

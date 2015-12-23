@@ -45,6 +45,7 @@ class account_invoice_line_esc(osv.Model):
     # 22/12/2015 (felix) Metodo para obtener valores de pedimento
     def _get_pedimento(self, cr, uid, ids, field_name, args, context=None):
         res = {}
+        _logger.warn('Entra al metodo')
         for i in self.browse(cr, uid, ids, context):
             _logger.warn('Entra al for')
             res[i.id] = 0

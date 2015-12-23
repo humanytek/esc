@@ -37,10 +37,10 @@
     "website" : "http://www.vauxoo.com/",
     "license" : "AGPL-3",
     "depends" : ["account", "report_webkit", "l10n_mx_regimen_fiscal",
-        "l10n_mx_notes_invoice", "l10n_mx_facturae_report"],
+        "l10n_mx_notes_invoice"],
     "demo" : [],
     "data" : [
-        "data.xml",
+        #"data.xml",
         "l10n_mx_facturae_report_webkit.xml",
     ],
     "installable" : True,
