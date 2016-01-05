@@ -65,7 +65,7 @@ class account_invoice_line_esc(osv.Model):
     
     _columns = {
         'prod_cli_id': fields.function(_get_prod_cli, type='many2one', 
-            obj='product.cliente', string='Codigo y nombre del producto'),
+            obj='product.cliente', string='Producto cliente'),
         'pedimento_id': fields.function(_get_pedimento, type='many2one',
             obj='import.info', string='Pedimento')
     }

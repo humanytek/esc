@@ -166,18 +166,14 @@ class product_import_certificate_esc(osv.Model):
             res_l.append(r)
         _logger.warn('Valor de res_l %s', res_l)
         """
-        _logger.warn('Valor de ids %s', ids)
         obj_picking = self.pool.get('stock.picking.in')
         src_picking = obj_picking.search(cr, uid, [('certificate_number_id', '=', ids[0]), ('type', '=', 'in'), ('state','=', 'done')])
         if src_picking:
-            _logger.warn('Valor de src_picking %s', src_picking)
             id_picking = obj_picking.browse(cr, uid, src_picking[0], context)['id']
             obj_move = self.pool.get('stock.move')
             src_move = obj_move.search(cr, uid, [('picking_id', '=', id_picking)])
             if src_move:
-                _logger.warn('Valor de src_move %s', src_move)
-                get_move = obj_move.browse(cr, uid, src_move[0], context)
-                _logger.warn('Valor de get_move %s', get_move)                
+                get_move = obj_move.browse(cr, uid, src_move[0], context)     
         return res
     
     _columns = {
