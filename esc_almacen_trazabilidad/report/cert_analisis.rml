@@ -180,7 +180,7 @@
         <td width="100.0"><para style="terp_tblheader_General">Producto / Product</para></td>
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.product_id.name or '' ]]</para></td>
         <td width="100.0"><para style="terp_tblheader_General">Fecha de fabricación / Manufacturing date</para></td>
-        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_fabricacion, date=True) or '' ]]</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ cert_analisis.fecha_fabricacion or '' ]]</para></td>
       </tr>
       <tr>
         <!-- 02/12/2015 cambio de etiqueta "Lote / Lot" a "Lote / Batch" -->
@@ -188,7 +188,7 @@
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.lote or '' ]]</para></td>
         <!-- 02/12/2015 (felix) cambiar etiqueta a "Fecha de reanálisis / Retest date" -->
         <td width="100.0"><para style="terp_tblheader_General">Fecha de reanálisis / Retest date</para></td>
-        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_reanalisis, date=True) or '' ]]</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ cert_analisis.fecha_reanalisis or '' ]]</para></td>
       </tr>
       <tr>
         <!-- 22/04/2015 ocultar por sugerencia del cliente -->
@@ -201,7 +201,7 @@
         <td width="100.0"><para style="terp_default_8">[[ cert_analisis.cant or '' ]] [[ cert_analisis.cant_uom_id.name or '' ]]</para></td>
         <!-- 02/12/2015 (felix) cambiar etiqueta de "Fecha de caducidad / Due date" a "Fecha de caducidad / Expiry date" -->
         <td width="100.0"><para style="terp_tblheader_General">Fecha de caducidad / Expiry date</para></td>
-        <td width="100.0"><para style="terp_default_8">[[ formatLang(cert_analisis.fecha_caducidad, date=True) or '' ]]</para></td>
+        <td width="100.0"><para style="terp_default_8">[[ cert_analisis.fecha_caducidad or '' ]]</para></td>
       </tr>
     </blockTable>
        
@@ -241,8 +241,9 @@
     <!-- 04/12/2015 (felix) ocultar -->
     <!--<para style="terp_default_Centre_6">THIS CERTIFICATE IS A TRANSCRIPTION GIVEN BY THE MANUFACTURER</para>-->
     <para style="terp_default_5cm_Above_Space"><font color="white"> </font></para>
+    <!-- 19/01/2016 (felix) No saldrá impreso por solicitud del cliente
     <para style="terp_default_8"><b>CÓDIGO DE PRODUCTO / PRODUCT CODE:</b> [[ cert_analisis.cod_product or '' ]]</para>
-    <para style="terp_default_8"><b>PEDIDO DE COMPRA / PURCHASE ORDER:</b> [[ cert_analisis.pedido_compra or '' ]]</para>
+    <para style="terp_default_8"><b>PEDIDO DE COMPRA / PURCHASE ORDER:</b> [[ cert_analisis.pedido_compra or '' ]]</para>-->
     
   </pto>
   </story>

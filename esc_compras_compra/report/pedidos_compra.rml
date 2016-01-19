@@ -168,7 +168,9 @@
                     </td>
                     <td>
                         <para style="terp_default_8">[[ (o.partner_id and o.partner_id.title and o.partner_id.title.name) or '' ]] [[ (o.partner_id and o.partner_id.name) or '' ]]</para>
-                        <para style="terp_default_8">[[ o.partner_id and display_address(o.partner_id) ]]</para>
+                        <!-- 19/01/2016 (felix) Cambiar formato de proveedor de cliente por campos aislados de la dirección del proveedor -->
+                        <!--<para style="terp_default_8">[[ display_address(o.partner_id) ]]</para>-->
+                        <para style="terp_default_8">[[ o.partner_id.street or '' ]] [[ o.partner_id.l10n_mx_street3 or '' ]] [[ o.partner_id.l10n_mx_street4 or '' ]] [[ o.partner_id.street2 or '' ]] [[ o.partner_id.city_id.name or '' ]] [[ o.partner_id.state_id.name or '' ]] [[ o.partner_id.zip or '' ]] [[ o.partner_id.l10n_mx_city2 or '' ]] [[ o.partner_id.country_id.name or '' ]]</para>
                         <para style="terp_default_8"><font color="white"> </font></para>
                         <para style="terp_default_8">Tel: [[ (o.partner_id.phone) or removeParentNode('para') ]]</para>
                         <para style="terp_default_8">Fax: [[ (o.partner_id.fax) or removeParentNode('para') ]]</para>
@@ -329,7 +331,8 @@
                 <tr>
                     <td>
                         <para style="terp_default_6"><b>MUESTRAS DE ADUANA</b></para>
-                        <para style="terp_default_6">Para envíos mayores de 30 grs enviar:</para>
+                        <!-- 19/01/2016 (felix) comentar por solicitud del cliente
+                        <para style="terp_default_6">Para envíos mayores de 30 grs enviar:</para>-->
                         <para style="terp_default_6">3 muestras de aduana de 1 gr cada una por lote enviado</para>
                     </td>
                 </tr>

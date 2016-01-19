@@ -75,6 +75,7 @@
                                     <group>
                                         <field name="cod_product" string="Código de producto / Product code"/>
                                         <field name="pedido_compra" string="Pedido de compra / Order purchase"/>
+                                        <field name="chk_validado" string="Validado / Validated"/>
                                     </group>                                    
                                 </group>
                             </page>

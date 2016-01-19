@@ -64,6 +64,7 @@ class cert_analisis_esc(osv.Model):
             'cert_analisis_id', 'Pruebas/Especificaciones'),
         'cant': fields.float('Cantidad', digits=(10,3)),
         'cant_uom_id': fields.many2one('product.uom', 'Unidad de Cantidad'),
+        'chk_validado': fields.boolean('Validado')
     }
     _order = 'fecha_reanalisis desc'
     _defaults = {

@@ -199,28 +199,32 @@
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Fabricante</para></td>
             <td width="100.0"><para style="terp_default_8">[[ picking.fabricante_id.name or '' ]]</para></td>
-            <td width="100.0"><para style="terp_tblheader_General">Aduana</para></td>
-            <td width="100.0"><para style="terp_default_8">([[picking.aduana_id.custom_number or '' ]]) [[picking.aduana_id.custom_name or '' ]]</para></td>
+            <td width="100.0"><para style="terp_tblheader_General">Permiso sanitario de importación</para></td>
+            <td width="100.0"><para style="terp_default_8">[[picking.perm_certificate_id.certificate_number or '' ]]</para></td>
         </tr>
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Proveedor</para></td>
             <td width="100.0"><para style="terp_default_8">[[ picking.proveedor_id.name or '' ]]</para></td>
-            <td width="100.0"><para style="terp_tblheader_General">Lote</para></td>
-            <td width="100.0"><para style="terp_default_8">[[ picking.lote_id.name or '' ]]</para></td>
+            <td width="100.0"><para style="terp_tblheader_General">Aduana</para></td>
+            <td width="100.0"><para style="terp_default_8">([[picking.aduana_id.custom_number or '' ]]) [[picking.aduana_id.custom_name or '' ]]</para></td>
         </tr>
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Ubicación</para></td>
             <td width="100.0"><para style="terp_default_8">[[ picking.almacen_id.name or '' ]]</para></td>
-            <td width="100.0"><para style="terp_tblheader_General">Orden de compra</para></td>
-            <td width="100.0"><para style="terp_default_8">[[ picking.orden_compra_id.name or '' ]]</para></td>
+            <td width="100.0"><para style="terp_tblheader_General">Track-lot</para></td>
+            <td width="100.0"><para style="terp_default_8">[[ picking.pack_id.name or '' ]]</para></td>
         </tr>
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Factura No.</para></td>
             <td width="100.0"><para style="terp_default_8">[[ picking.factura_no or '' ]]</para></td>
+            <td width="100.0"><para style="terp_tblheader_General">Lote</para></td>
+            <td width="100.0"><para style="terp_default_8">[[ picking.lote_id.name or '' ]]</para></td>
         </tr>
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Fecha de ingreso</para></td>
             <td width="100.0"><para style="terp_default_8">[[ formatLang(picking.fecha_ingreso,date = True) or '' ]]</para></td>
+            <td width="100.0"><para style="terp_tblheader_General">Orden de compra</para></td>
+            <td width="100.0"><para style="terp_default_8">[[ picking.orden_compra_id.name or '' ]]</para></td>
         </tr>
         <tr>
             <td width="100.0"><para style="terp_tblheader_General">Fecha de fabricación</para></td>
