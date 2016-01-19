@@ -51,7 +51,7 @@ class cert_analisis_esc(osv.Model):
         'fecha_fabricacion': fields.char('Fecha de fabricacion', size=10),
         'fecha_reanalisis': fields.char('Fecha de reanalisis', size=10),
         'fecha_caducidad': fields.char('Fecha de caducidad', size=10),
-        'lote': fields.char('Lote', size=5000),
+        'lote_id': fields.many2one('stock.production.lot', 'Lote'),
         'certificado': fields.char('Certificado', size=1024),
         'product_id': fields.char('Producto', size=5000),
         'informacion': fields.text('Informacion adicional'),
@@ -59,7 +59,7 @@ class cert_analisis_esc(osv.Model):
         'firma': fields.char('Firma', size=2048),
         'resp_sanitario': fields.char('Resp. Sanitario', size=1024),
         'cod_product': fields.char('Codigo producto', size=5000),
-        'pedido_compra': fields.char('Pedido de compra', size=5000),
+        'pedido_compra_id': fields.many2one('purchase.order', 'Pedido de compra'),
         'cert_line_ids': fields.one2many('cert.analisis.line', 
             'cert_analisis_id', 'Pruebas/Especificaciones'),
         'cant': fields.float('Cantidad', digits=(10,3)),
@@ -75,6 +75,13 @@ class cert_analisis_esc(osv.Model):
         ('name_uniq', 'unique(name)', 'Este campo debe ser unico')
     ]
     """
+    
+    # 19/01/2016 (felix) Metodo para autocompletar datos en certificado de analisis por codigo de producto
+    """
+    def on_change_cod_product(self, cr, uid, ids, cod_product, context=None):
+        if cod_product:
+    """
+            
     
 cert_analisis_esc()
 

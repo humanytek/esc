@@ -18,13 +18,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import cert_analisis
-import product_import_cert_line
-import product_import_cert
-import import_info
-import product_uom
-import purchase_order
-import stock_production_lot
-#import stock_move
-#import stock_tracking
-#import stock_location
+
+from openerp.osv import fields, osv
+from openerp.tools.translate import _
+from datetime import *
+import logging
+_logger = logging.getLogger(__name__)
+
+class purchase_order_esc(osv.Model):
+
+    _inherit = 'purchase.order'
+    _description = 'Creacion modelo Certificados de analisis'
+    _columns = {
+        'pedido_compra_ids': fields.one2many('cert.analisis', 'pedido_compra_id', 
+            'Pedido de compra'),
+    }
+    
+purchase_order_esc()

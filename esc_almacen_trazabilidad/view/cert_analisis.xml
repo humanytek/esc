@@ -10,7 +10,8 @@
                 <tree string="Certificado de análisis" colors="red: fecha_caducidad &lt; current_date">
                     <field name="name" string="Certificado de análisis / Analysis certificate"/>
                     <field name="product_id" string="Producto / Product"/>
-                    <field name="lote" string="Lote / Lot"/>
+                    <!-- 19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente -->
+                    <field name="lote_id" string="Lote / Lot"/>
                     <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date"/>
                     <field name="fecha_reanalisis" string="Fecha de reanálisis / Reanalysis date"/>
                     <field name="fecha_caducidad" string="Fecha de caducidad / Due date"/>
@@ -34,8 +35,11 @@
                         <group col="2">
                             <group>
                                 <field name="product_id" string="Producto / Product" required="1"/>
-                                <!-- 02/12/2015 (felix) cambiar etiqueta de "Lote / Lot" a "Lote / Batch" -->
-                                <field name="lote" string="Lote / Batch"/>
+                                <!-- 
+                                    02/12/2015 (felix) cambiar etiqueta de "Lote / Lot" a "Lote / Batch"
+                                    19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente
+                                -->
+                                <field name="lote_id" string="Lote / Batch" domain="[('product_id.default_code', '=?', cod_product)]"/>
                                 <!-- 22/04/2015 (felix) Ocultar campo
                                 <field name="certificado" string="Certificado"/>
                                 -->
@@ -74,7 +78,9 @@
                                     </group>
                                     <group>
                                         <field name="cod_product" string="Código de producto / Product code"/>
-                                        <field name="pedido_compra" string="Pedido de compra / Order purchase"/>
+                                        <!-- 19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente -->
+                                        <field name="pedido_compra_id" string="Pedido de compra / Order purchase" 
+                                            domain="[('order_line.product_id.default_code', '=?', cod_product)]"/>
                                         <field name="chk_validado" string="Validado / Validated"/>
                                     </group>                                    
                                 </group>
