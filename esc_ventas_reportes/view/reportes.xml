@@ -20,7 +20,7 @@
                     <field name="product_uom_qty" string="Cant. Pedida"/>
                     <field name="cant_entregada" string="Cant. Entregada"/>
                     <field name="product_uom" string="Unidad de medida"/>
-                    <field name="fecha_pedido" string="Fecha de pedido"/>
+                    <field name="fecha_entrega" string="Fecha de entrega"/>
                     <field name="price_unit" string="Precio unitario"/>
                     <field name="price_subtotal" string="Subtotal"/>
                     <field name="divisa" string="Divisa"/>
@@ -41,7 +41,9 @@
             <field name="model">sale.order.line</field>
             <field name="arch" type="xml">
                 <search string="Lista de productos vendidos">
-                    <field name="name" string="Lista de productos vendidos" filter_domain="['|',('name','ilike', self)]"/>
+                    <field name="name" string="Lista de productos vendidos" filter_domain="[('name','ilike', self)]"/>
+                    <field name="order_partner_id" string="Cliente" filter_domain="[('order_partner_id','ilike', self)]"/>
+                    <field name="state" string="Estado" filter_domain="[('state','ilike', self)]"/>
                     <group expand="0" string="Agrupar por:">
                         <filter string="Producto" domain="[]" context="{'group_by':'name'}"/>
                         <filter string="Orden de venta" domain="[]" context="{'group_by':'order_id'}"/>
@@ -54,7 +56,7 @@
                         <filter string="Línea" domain="[]" context="{'group_by':'linea'}"/>
                         <!-- 11/12/2015 (felix) Agregar agrupador por estatus -->
                         <separator />
-                        <filter string="Estatus" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Estado" domain="[]" context="{'group_by':'state'}"/>
                     </group>
                 </search>
             </field>
