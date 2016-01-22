@@ -30,7 +30,7 @@ class purchase_order_line_esc(osv.Model):
     _inherit = 'purchase.order.line'
     _description = 'Personalizacion para lineas de pedidos en ordenes de compra'
     
-    # 15/12/2015 (felix) Metodo para capturar referencia del cliente
+    # 15/12/2015 (felix) Metodo para capturar referencia del proveedor
     def _get_partner_ref(self, cr, uid, ids, field_name, args, context):
         res = {}
         for i in self.browse(cr, uid, ids, context):
@@ -63,6 +63,16 @@ class purchase_order_line_esc(osv.Model):
                         res[i.id] += sm.product_uos_qty
         return res
     
+    # 22/01/2016 (felix) Metodo para capturar id del proveedor
+    def _get_partner_id(self, cr, uid, ids, field_name, args, context):
+        res = {}
+        for i in self.browse(cr, uid, ids, context):
+            res[i.id] = 0
+            if i.order_id.id:
+                if i.order_id.partner_id:
+                    res[i.id] = i.order_id.partner_id.id
+        return res
+    
     _columns = {
         'partner_ref': fields.function(_get_partner_ref, type='char', 
             string='Ref. Proveedor'),
@@ -70,6 +80,8 @@ class purchase_order_line_esc(osv.Model):
             string='Divisa'),
         'cant_recibida': fields.function(_get_cant_recibida, type='float', 
             string='Cant. Recibida', digits=(10,3)),
+        'partner_id': fields.function(_get_partner_id, type='many2one', 
+            obj='res.partner', string='Proveedor'),
     }
     
 purchase_order_line_esc()
