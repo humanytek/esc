@@ -46,14 +46,12 @@ class purchase_order_esc(osv.Model):
         obj_stage = self.pool.get('purchase.stage')
         all_stage = obj_stage.search(cr, uid, [(1, '=', 1)])
         grupos = []
-        
         # Llenado de campos dinamicos
         for i in obj_stage.browse(cr, uid, all_stage, context):
             if i.activa:
                 grupos.append(({'group':{'string': i.name}}))
                 for j in i.campos_ids:
-                    grupos.append(({'field': {'name':j.name,'string':j.field_description}}))
-                
+                    grupos.append(({'field': {'name':j.name,'string':j.field_description}}))                
         # Construccion XML
         arbol = etree.XML(arch)
         page = arbol.find('.//page[@string="Etapas de pedidos de compra"]')
@@ -68,8 +66,7 @@ class purchase_order_esc(osv.Model):
                     campo = etree.SubElement(grupo_tree,j)
                     for l,v in n.items():                        
                         campo.set(l,v)
-        arch = etree.tostring(arbol, encoding="utf-8")
-        
+        arch = etree.tostring(arbol, encoding="utf-8")        
         return arch
     
     # 10/03/2015 (felix) Genera instancia de campos en formulario dinamico

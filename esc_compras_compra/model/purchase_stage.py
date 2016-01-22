@@ -119,9 +119,9 @@ class purchase_stage_line_esc(osv.Model):
     def on_change_name(self, cr, uid, ids, campo, context=None):
         if campo:
             if not re.match('^x_',campo):
-                raise osv.except_osv('Advertencia','El nombre de campo debe llevar un prefjio x_')
+                raise osv.except_osv('Advertencia','El nombre de campo debe llevar un prefjio "x_"')
         else:
-            raise osv.except_osv('Advertencia','El nombre de campo es obligatorio y debe llevar un prefjio x_')
+            raise osv.except_osv('Advertencia','El nombre de campo es obligatorio y debe llevar un prefjio "x_"')
         return {}
     
 purchase_stage_line_esc()
