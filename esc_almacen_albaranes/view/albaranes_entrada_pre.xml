@@ -90,7 +90,7 @@
                                 <field name="aduana_id" string="Aduana" widget="selection"/>
                                 <!-- 14/12/2015 (felix) Agregar campo "Track-lot" -->
                                 <!-- 14/12/2015 (felix) Creación de atributeo domain en "pack_id" -->
-                                <field name="pack_id" string="Track-lot" domain="[('move_ids.product_id', '=?', product_id)]"/>
+                                <field name="pack_id" string="Track-lot" domain="[('import_id', '=?', pedimento_id)]"/>
                                 <!-- 14/12/2015 (felix) Creación de atributeo domain en "lote_id" -->
                                 <field name="lote_id" string="Lote" on_change="on_change_lote(lote_id)"
                                     domain="[('product_id', '=?', product_id)]"/>
