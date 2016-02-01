@@ -81,7 +81,7 @@ class purchase_order_line_esc(osv.Model):
         'cant_recibida': fields.function(_get_cant_recibida, type='float', 
             string='Cant. Recibida', digits=(10,3)),
         'partner_id': fields.function(_get_partner_id, type='many2one', 
-            obj='res.partner', string='Proveedor'),
+            obj='res.partner', string='Proveedor', store=True),
     }
     
 purchase_order_line_esc()
