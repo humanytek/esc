@@ -44,7 +44,7 @@
             <field name="arch" type="xml">
                 <search string="Lista de productos comprados">
                     <!--<field name="name" string="Lista de productos comprados" filter_domain="['|',('name','ilike', self)]"/>-->
-                    <field name="proveedor_id" string="Cliente" filter_domain="[('proveedor_id','ilike', self)]"/>
+                    <field name="partner_id" string="Proveedor" filter_domain="[('partner_id', 'ilike', self)]"/>
                     <field name="product_id" string="Lista de productos comprados" filter_domain="[('product_id', '=', self)]"/>                    
                     <field name="state" string="Estado" filter_domain="[('state','ilike', self)]"/>
                     <group expand="0" string="Agrupar por:">

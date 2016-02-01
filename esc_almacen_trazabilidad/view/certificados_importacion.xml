@@ -70,18 +70,25 @@
                 <xpath expr="//field[@name='certificate_number']" position="attributes">
                     <attribute name="string">Número de permiso</attribute>
                 </xpath>
-                
-                
+                                
             </field>
         </record>
         
         <!-- 17/06/2014 (felix) Modificación del motor de búsqueda original -->
-        <record id="product_import_cert.view_product_certificate_filter" model="ir.ui.view">
+        <!--<record id="view_product_certificate_filter" model="ir.ui.view">
             <field name="name">product.import.certificate.filter</field>
             <field name="model">product.import.certificate</field>
             <field name="arch" type="xml">
                 <search string="Permiso sanitario de importación">
-                    <field name="certificate_number" string="Número de permiso" filter_domain="['|',('certificate_number','ilike',self)]"/>
+                     28/01/2016 (felix) Agregar filtros 
+                        - certificate_number
+                        - product_id
+                        - manufacturer_id
+                    
+                    <field name="name" string="Número de permiso" filter_domain="[('name','ilike',self)]"/>
+                    <field name="certificate_number" string="Número de permiso" filter_domain="[('certificate_number','ilike',self)]"/>
+                    <field name="product_id" string="Producto" filter_domain="[('product_id','ilike',self)]"/>
+                    <field name="manufacturer_id" string="Fabricante" filter_domain="[('manufacturer_id','ilike',self)]"/>
                     <group expand="0" string="Agrupar por...">
                         <filter string="Manufacturer" name="manufacturer" icon="terp-personal" domain="[]" context="{'group_by':'manufacturer_id'}"/>
                         <filter string="Product" name="product" icon="terp-personal" domain="[]" context="{'group_by':'product_id'}"/>
@@ -89,7 +96,7 @@
                     </group>
                </search>
             </field>
-        </record>
+        </record>-->
         
         <!-- 15/06/2014 (felix) Cambiar eiqueta de menú -->
         <record id="product_import_cert.action_import_product_certificate" model="ir.actions.act_window">
@@ -97,8 +104,10 @@
             <field name="res_model">product.import.certificate</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <!--<field name="search_view_id" ref="product_import_cert.view_product_certificate_filter"/>-->
-            <field name="context">{"search_default_manufacturer":1}</field>
+            
+            <!--<field name="search_view_id" ref="view_product_certificate_filter"/>
+            
+            <field name="context">{"search_default_manufacturer":1}</field>-->
             <field name="view_id" ref="product_import_cert.view_product_certificate_tree"></field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">

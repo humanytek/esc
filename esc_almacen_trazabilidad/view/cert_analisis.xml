@@ -39,7 +39,7 @@
                                     02/12/2015 (felix) cambiar etiqueta de "Lote / Lot" a "Lote / Batch"
                                     19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente
                                 -->
-                                <field name="lote_id" string="Lote / Batch" domain="[('product_id.default_code', '=?', cod_product)]"/>
+                                <field name="lote_id" string="Lote / Batch" domain="[('product_id.id', '=?', cod_product_id)]"/>
                                 <!-- 22/04/2015 (felix) Ocultar campo
                                 <field name="certificado" string="Certificado"/>
                                 -->
@@ -75,12 +75,13 @@
                                     <group>
                                         <field name="firma" string="Persona firmante / Sign"/>
                                         <field name="resp_sanitario" string="Resp. sanitario / Sanitary responsable"/>
+                                        <field name="fecha_doc" string="Fecha del documento / Document date"/>
                                     </group>
                                     <group>
-                                        <field name="cod_product" string="Código de producto / Product code"/>
+                                        <field name="cod_product_id" string="Código de producto / Product code"/>
                                         <!-- 19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente -->
                                         <field name="pedido_compra_id" string="Pedido de compra / Order purchase" 
-                                            domain="[('order_line.product_id.default_code', '=?', cod_product)]"/>
+                                            domain="[('order_line.product_id.id', '=?', cod_product_id)]"/>
                                         <field name="chk_validado" string="Validado / Validated"/>
                                     </group>                                    
                                 </group>
@@ -97,7 +98,7 @@
             <field name="model">cert.analisis</field>
             <field name="arch" type="xml">
                 <search string="Lista certificados de análisis">
-                    <field name="name" string="Lista certificados de análisis / Analysis certificate list" filter_domain="['|',('name','ilike', self)]"/>
+                    <field name="name" string="Lista certificados de análisis / Analysis certificate list" filter_domain="[('name','ilike', self)]"/>
                     <group expand="0" string="Agrupar por / Group by:">
                         <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Lote" domain="[]" context="{'group_by':'lote'}"/>

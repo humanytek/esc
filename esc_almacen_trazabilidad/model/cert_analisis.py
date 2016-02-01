@@ -58,13 +58,14 @@ class cert_analisis_esc(osv.Model):
         'informacion_1': fields.text('Informacion adicional'),
         'firma': fields.char('Firma', size=2048),
         'resp_sanitario': fields.char('Resp. Sanitario', size=1024),
-        'cod_product': fields.char('Codigo producto', size=5000),
+        'cod_product_id': fields.many2one('product.product', 'Codigo producto'),
         'pedido_compra_id': fields.many2one('purchase.order', 'Pedido de compra'),
         'cert_line_ids': fields.one2many('cert.analisis.line', 
             'cert_analisis_id', 'Pruebas/Especificaciones'),
         'cant': fields.float('Cantidad', digits=(10,3)),
         'cant_uom_id': fields.many2one('product.uom', 'Unidad de Cantidad'),
-        'chk_validado': fields.boolean('Validado')
+        'chk_validado': fields.boolean('Validado'),
+        'fecha_doc': fields.date('Fecha del documento')
     }
     _order = 'fecha_reanalisis desc'
     _defaults = {

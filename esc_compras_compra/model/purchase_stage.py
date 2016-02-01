@@ -108,11 +108,13 @@ class purchase_stage_line_esc(osv.Model):
         'on_delete': fields.selection([('set null','Establecer a NULL')], 
             'Al eliminar')
     }
+    _rec_name='field_description'
     _defaults = {
         'name': 'x_',
-        'state': 'manual',
+        'state': lambda self,cr,uid,ctx=None: (ctx and ctx.get('manual',False)) and 'manual' or 'base',
         'select_level': '0',
-        'on_delete': 'set null'
+        'on_delete': 'set null',
+        'field_description': '',
     }
     
     # 06/03/2015 (felix) Validacion para que el campo siempre lleve prefijo: x_

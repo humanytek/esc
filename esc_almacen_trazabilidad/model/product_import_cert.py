@@ -143,11 +143,12 @@ class product_import_certificate_esc(osv.Model):
         return res
         
     # 20/08/2015 (felix) Captura de datos para lista de productos por numero de permiso de importacion
+    """
     def _get_move_in(self, cr, uid, ids, field_name, arg=None, context=None):
         res = {}
         if not ids:
             return res
-        """
+        
         for id in ids:
             res.setdefault(id, [])
         cr.execute('''SELECT DISTINCT ON (1) t3.* FROM product_import_certificate t1 \n'''
@@ -165,7 +166,7 @@ class product_import_certificate_esc(osv.Model):
             _logger.warn('Valor de get_move %s', get_move)
             res_l.append(r)
         _logger.warn('Valor de res_l %s', res_l)
-        """
+        
         obj_picking = self.pool.get('stock.picking.in')
         src_picking = obj_picking.search(cr, uid, [('certificate_number_id', '=', ids[0]), ('type', '=', 'in'), ('state','=', 'done')])
         if src_picking:
@@ -175,6 +176,7 @@ class product_import_certificate_esc(osv.Model):
             if src_move:
                 get_move = obj_move.browse(cr, uid, src_move[0], context)     
         return res
+    """
     
     _columns = {
         'background_country_ids': fields.one2many('product.import.certificate.line', 
@@ -186,6 +188,7 @@ class product_import_certificate_esc(osv.Model):
         'qty': fields.float('Quantity', digits=(10,3), 
             states={'not_extend':[('readonly',True)]}),
     }
+    _rec_name = 'certificate_number'
         
     
 product_import_certificate_esc()
