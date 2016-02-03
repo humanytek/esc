@@ -47,10 +47,10 @@ class cert_analisis_esc(osv.Model):
     
     _columns = {
         'name': fields.char('Certificado de analisis', size=250),
-        'fecha_expedicion': fields.char('Fecha de expedicion', size=10),
-        'fecha_fabricacion': fields.char('Fecha de fabricacion', size=10),
-        'fecha_reanalisis': fields.char('Fecha de reanalisis', size=10),
-        'fecha_caducidad': fields.char('Fecha de caducidad', size=10),
+        'fecha_expedicion': fields.char('Fecha de expedicion', size=1024),
+        'fecha_fabricacion': fields.char('Fecha de fabricacion', size=1024),
+        'fecha_reanalisis': fields.char('Fecha de reanalisis', size=1024),
+        'fecha_caducidad': fields.char('Fecha de caducidad', size=1024),
         'lote_id': fields.many2one('stock.production.lot', 'Lote'),
         'certificado': fields.char('Certificado', size=1024),
         'product_id': fields.char('Producto', size=5000),
