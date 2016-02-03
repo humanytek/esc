@@ -9,7 +9,9 @@
             <field name="arch" type="xml">
                 <tree string="Certificado de análisis" colors="red: fecha_caducidad &lt; current_date">
                     <field name="name" string="Certificado de análisis / Analysis certificate"/>
-                    <field name="product_id" string="Producto / Product"/>
+                    <!-- 03/02/2016 (felix) cambiar campo de búsqueda de producto por código de producto en vista tree por solicitud del cliente -->
+                    <!-- <field name="product_id" string="Producto / Product"/> -->
+                    <field name="cod_product_id" string="Código de producto / Product code"/>
                     <!-- 19/01/2016 (felix) cambiar tipo de campo por solicitud del cliente -->
                     <field name="lote_id" string="Lote / Lot"/>
                     <field name="fecha_fabricacion" string="Fecha de fabricación / Manufacturing date"/>
@@ -99,6 +101,7 @@
             <field name="arch" type="xml">
                 <search string="Lista certificados de análisis">
                     <field name="name" string="Lista certificados de análisis / Analysis certificate list" filter_domain="[('name','ilike', self)]"/>
+                    <field name="cod_product_id" string="Código de producto / Product code" filter_domain="[('cod_product_id','ilike', self)]"/>
                     <group expand="0" string="Agrupar por / Group by:">
                         <filter string="Producto" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Lote" domain="[]" context="{'group_by':'lote'}"/>

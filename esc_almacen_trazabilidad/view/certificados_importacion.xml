@@ -75,16 +75,16 @@
         </record>
         
         <!-- 17/06/2014 (felix) Modificación del motor de búsqueda original -->
-        <!--<record id="view_product_certificate_filter" model="ir.ui.view">
+        <record id="product_import_cert.view_product_certificate_filter" model="ir.ui.view">
             <field name="name">product.import.certificate.filter</field>
             <field name="model">product.import.certificate</field>
             <field name="arch" type="xml">
                 <search string="Permiso sanitario de importación">
-                     28/01/2016 (felix) Agregar filtros 
+                    <!-- 28/01/2016 (felix) Agregar filtros 
                         - certificate_number
                         - product_id
                         - manufacturer_id
-                    
+                    -->
                     <field name="name" string="Número de permiso" filter_domain="[('name','ilike',self)]"/>
                     <field name="certificate_number" string="Número de permiso" filter_domain="[('certificate_number','ilike',self)]"/>
                     <field name="product_id" string="Producto" filter_domain="[('product_id','ilike',self)]"/>
@@ -96,25 +96,26 @@
                     </group>
                </search>
             </field>
-        </record>-->
+        </record>
         
         <!-- 15/06/2014 (felix) Cambiar eiqueta de menú -->
+        <!--
         <record id="product_import_cert.action_import_product_certificate" model="ir.actions.act_window">
             <field name="name">Permiso sanitario de importación</field>
             <field name="res_model">product.import.certificate</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             
-            <!--<field name="search_view_id" ref="view_product_certificate_filter"/>
+            <field name="search_view_id" ref="view_product_certificate_filter"/>
             
-            <field name="context">{"search_default_manufacturer":1}</field>-->
+            <field name="context">{"search_default_manufacturer":1}</field>
             <field name="view_id" ref="product_import_cert.view_product_certificate_tree"></field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">
                 Click to create a new product import certificate.
               </p>
             </field>
-        </record>
+        </record>-->
         
         <!-- 15/06/2014 (felix) Cambiar eiqueta de menú -->
         <menuitem id="product_import_cert.menu_import_certificate" name="Permiso sanitario de importación" parent="stock.menu_traceability" 
