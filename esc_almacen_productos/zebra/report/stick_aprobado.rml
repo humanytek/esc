@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(104mm,61mm)" title="Test" author="Martin Simon" allowSplitting="10">
+    <pageTemplate id="first">
+      <frame id="first" x1="1mm" y1="1mm" width="101mm" height="57mm"/>
+    </pageTemplate>
+  </template>
+      <story>
+        <pto>
+            <para style="terp_default_6">[[repeatIn(objects,'sticker')]]</para>
+                
+            <blockTable style="Header_Order_Reference_Tbl">
+                <tr>
+                    <td width="100.0"><para style="terp_default_Bold_6">Producto</para></td>
+                    <td width="100.0"><para style="terp_default_6">[[ sticker.product_id.name or '' ]]</para></td>
+                </tr>
+                <tr>
+                    <td width="100.0"><para style="terp_default_Bold_6">Lote</para></td>
+                    <td width="100.0"><para style="terp_default_6">[[ sticker.lote or '' ]]</para></td>
+                </tr>
+                <tr>
+                    <td width="100.0"><para style="terp_default_Bold_6">Fecha de fabricación</para></td>
+                    <td width="100.0"><para style="terp_default_6">[[ formatLang(sticker.fecha_fabricacion,date = True) or '' ]]</para></td>
+                </tr>
+                <tr>
+                    <td width="100.0"><para style="terp_default_Bold_6">Fecha de caducidad</para></td>
+                    <td width="100.0"><para style="terp_default_6">[[ formatLang(sticker.fecha_caducidad,date = True) or '' ]]</para></td>
+                </tr>
+                <tr>
+                    <td width="100.0"><para style="terp_default_Bold_6">Cantidad por envases</para></td>
+                    <td width="100.0">
+                        <para style="terp_default_6">[[ sticker.peso_neto or '' ]] Peso neto (kg)</para>
+                        <para style="terp_default_6">[[ sticker.peso_tara or '' ]] Peso tara (kg)</para>
+                        <para style="terp_default_6">[[ sticker.peso_bruto or '' ]] Peso bruto (kg)</para>
+                    </td>
+                </tr>
+            </blockTable>
+
+        </pto>
+    </story>
+</document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <record id="view_print_zebra_memory_wizard_report_form" model="ir.ui.view">
+            <field name="name">view.print.zebra.memory.wizard.report.form</field>
+            <field name="model">print.zebra.memory.wizard.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                    <field name="label.zpl"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_print_zebra_memory_wizard" model="ir.ui.view">
+            <field name="name">view.print.zebra.memory.wizard</field>
+            <field name="model">print.zebra.memory.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Zebra wizard">
+                    <field name="company_id"/>
+                    <newline/>
+<!--
+                    <field name="supplier_id" context="{'search_default_supplier':1}"/>
+                    <newline/>
+-->
+
+                    <field name="product_info_ids">
+                        <tree string="Zebra wizard lines" editable="bottom">
+                            <field name="product_id" on_change="onchange_product_id(product_id, product_uom_id)"/>
+                            <field name="product_qty"/>
+                            <field name="import_info_id"/>
+                            <field name="product_uom_id"/>
+                            <field name="supplier_id" context="{'search_default_supplier':1}"/>
+                        </tree>
+                        <form string="Zebra wizard lines">
+                            <field name="product_id"/>
+                            <field name="product_qty"/>
+                            <field name="import_info_id"/>
+                            <field name="product_uom_id"/>
+                            <field name="supplier_id" context="{'search_default_supplier':1}"/>
+                        </form>
+                    </field>
+                    <!--<newline/>
+                    <field name="label.zpl"/>
+                    <newline/>-->
+                    <separator colspan="4"/>
+                    <group colspan="4" col="6">
+                        <button special="cancel" string="_Cancel" icon="gtk-cancel"/>
+                        <button name="check_report" type="object" string="_Generar Reporte" icon="gtk-ok"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="action_wizard_print_zebra_memory" model="ir.actions.act_window">
+            <field name="name">Impresion zebra lineas</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">print.zebra.memory.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_print_zebra_memory_wizard"/>
+            <field name="target">new</field>
+            <field name="nodestroy" eval="True"/>
+        </record>
+
+
+        <menuitem
+            id="menu_wizard_zebra_lines"
+            name="Zebra lineas"
+            parent='stock.menu_stock_product'
+            action='action_wizard_print_zebra_memory'
+        />
+
+    </data>
+</openerp>

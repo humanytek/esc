@@ -410,3 +410,14 @@ msgstr "Activado"
 #: view:product.import.certificate:0
 msgid "Name"
 msgstr "Número sanitario de importación"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+#: field:product.import.certificate,state:0
+msgid "Status"
+msgstr "Estado"
+
+#. module: product_import_cert
+#: view:product.import.certificate:0
+msgid "Certificate Number"
+msgstr "Número de permiso"

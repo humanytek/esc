@@ -234,7 +234,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ atributo.codigo_prod ]] [[ (atributo.cliente_id.id == o.partner_id.id and atributo.name) ]] [[ (atributo.cliente_id.id == o.partner_id.id) and atributo.especificacion ]]</para>
+                                            <para style="terp_default_Tab_6">[[ (atributo.cliente_id.id == o.partner_id.id and atributo.codigo_prod) ]] [[ (atributo.cliente_id.id == o.partner_id.id and atributo.name) ]] [[ (atributo.cliente_id.id == o.partner_id.id and atributo.especificacion) ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>

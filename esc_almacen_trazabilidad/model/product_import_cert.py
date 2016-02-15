@@ -64,10 +64,6 @@ class product_import_certificate_esc(osv.Model):
             states={'not_extend':[('readonly',True)]}),
         'qty': fields.float('Quantity', digits=(10,3), 
             states={'not_extend':[('readonly',True)]}),
-        'certificate_number': fields.char('Certificate Number', size=64, 
-            states={'not_extend':[('readonly',True)]}, required=True),
     }
-    _rec_name = 'certificate_number'
-        
     
 product_import_certificate_esc()

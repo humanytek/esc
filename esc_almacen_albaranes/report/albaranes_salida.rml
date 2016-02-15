@@ -182,7 +182,7 @@
                         <para style="terp_default_Bold_9">Dirección de facturación: [[ (picking.type == 'out' or removeParentNode('para')) and '' ]]</para>
                         <para style="terp_default_Bold_9">Dirección de almacén: [[ (picking.type == 'internal' or removeParentNode('para')) and '' ]]</para>
                         <para style="terp_default_9">[[ (picking.partner_id and picking.partner_id.id and picking.partner_id.title.name) or '' ]] [[ picking.partner_id and picking.partner_id.id and picking.partner_id.name ]]</para>
-                        <para style="terp_default_9">[[ picking.partner_id and display_address(picking.partner_id) ]]</para>
+                        <para style="terp_default_9">[[ picking.partner_id.parent_id and display_address(picking.partner_id.parent_id) or picking.partner_id and display_address(picking.partner_id) or '']]</para>
                         <para style="terp_default_9">[[ picking.partner_id.phone or picking.partner_id.email or removeParentNode('para')]]</para>
                     </td>
                     <td width="269.0">
@@ -244,13 +244,19 @@
                 <blockTable style="Move_Line_Contect_Assign_State">
                     <tr>
                         <td width="300.0">
+                            <!-- 12/02/2016 (felix) Comentado por solicitud del cliente -->
+                            <!--
                             <para style="terp_default_9">[[ move_lines.product_id.default_code ]] [[ move_lines.product_id.name ]]</para>
+                            -->
+                            <!-- 12/02/2016 (felix) El cliente ahora quiere el producto tal como viene del sistema desde descripción venta -->
+                            <para>[[ repeatIn(picking.sale_id.order_line,'sale_line') ]]</para>
+                            <para style="terp_default_9">[[ sale_line.name ]]</para>
                             <section>
                                 <para>[[ repeatIn(move_lines.product_id.producto_cliente_ids,'atributo') ]]</para>
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ (atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.name) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion) or '' ]]</para>
+                                            <para style="terp_default_Tab_6">[[ atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.codigo_prod ]] [[ atributo.cliente_id.id == picking.partner_id.id and atributo.name or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.name ]] [[ atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.especificacion ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>
@@ -260,9 +266,9 @@
                             <para style="terp_default_Tab_6"><b>Aduana</b>: [[ move_lines.pedimento_id.customs.custom_number and move_lines.pedimento_id.customs.custom_name ]]</para>
                         </td>
                         <td width="58.0"><para style="terp_default_Centre_9">[[ (move_lines.prodlot_id and move_lines.prodlot_id.name) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date_time = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date_time = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date = True) or '' ]]</para></td>
                         <td width="58.0">
                             <para style="terp_default_Centre_9">Waiting Availability[[ move_lines.state == 'confirmed' and ' ' or removeParentNode('para') ]]</para>
                             <para style="terp_default_Centre_9">Done[[ move_lines.state == 'done' and ' ' or removeParentNode('para') ]]</para>
@@ -289,7 +295,7 @@
                                 <blockTable>
                                     <tr>
                                         <td>
-                                            <para style="terp_default_Tab_6">[[ (atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.name) or '' ]] [[ (atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion) or '' ]]</para>
+                                            <para style="terp_default_Tab_6">[[ atributo.cliente_id.id == picking.partner_id.id and atributo.codigo_prod or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.codigo_prod ]] [[ atributo.cliente_id.id == picking.partner_id.id and atributo.name or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.name ]] [[ atributo.cliente_id.id == picking.partner_id.id and atributo.especificacion or atributo.cliente_id.id == picking.partner_id.parent_id.id and atributo.especificacion ]]</para>
                                         </td>
                                     </tr>
                                 </blockTable>
@@ -299,9 +305,9 @@
                             <para style="terp_default_Tab_6"><b>Aduana</b>: [[ move_lines.pedimento_id.customs.custom_number and move_lines.pedimento_id.customs.custom_name ]]</para>
                         </td>
                         <td width="58.0"><para style="terp_default_Centre_9">[[ (move_lines.prodlot_id and move_lines.prodlot_id.name) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date_time = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date_time = True) or '' ]]</para></td>
-                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date_time = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.date,date = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.use_date,date = True) or '' ]]</para></td>
+                        <td width="56.0"><para style="terp_default_Centre_9">[[ formatLang(move_lines.prodlot_id.alert_date,date = True) or '' ]]</para></td>
                         <td width="58.0">
                             <para style="terp_default_Centre_9">[[ (picking.type == 'in' or removeParentNode('para')) and '' ]][[ move_lines.state == 'done' and 'Received' or move_lines.state]]</para>
                             <para style="terp_default_Centre_9">[[ (picking.type == 'out' or removeParentNode('para')) and '']][[ move_lines.state == 'done' and 'Delivered' or move_lines.state]]</para>
@@ -340,6 +346,25 @@
                 </blockTable>
             </section>
             <para style="terp_default_2"><font color="white"> </font></para>
+            
+            <!-- 15/02/2016 (felix) Agregar pie parecido al de pre-entrada -->
+            <para style="terp_default_5cm_Above_Space"><font color="white"> </font></para>
+            <para style="terp_default_5cm_Above_Space"><font color="white"> </font></para>
+            
+            <blockTable style="Header_Order_Reference_Tbl">
+                <tr>
+                    <td width="25%"><para style="terp_default_Right_8">DICTAMEN DE ENTREGA:</para></td>
+                    <td width="25%"><para style="terp_default_8">APROBADO (  )</para></td>
+                    <td width="25%"><para style="terp_default_Right_8">EFECTÚA INSPECCIÓN:</para></td>
+                    <td width="25%"><para style="terp_default_8">Nombre</para></td>
+                </tr>
+                <tr>
+                    <td width="25%"><para style="terp_default_8"></para></td>
+                    <td width="25%"><para style="terp_default_8">NO APROBADO (  )</para></td>
+                    <td width="25%"><para style="terp_default_8"></para></td>            
+                    <td width="25%"><para style="terp_default_8">Firma</para></td>
+                </tr>
+            </blockTable>
             
         </pto>
     </story>

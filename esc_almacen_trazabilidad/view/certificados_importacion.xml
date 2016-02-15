@@ -90,8 +90,8 @@
                     <field name="product_id" string="Producto" filter_domain="[('product_id','ilike',self)]"/>
                     <field name="manufacturer_id" string="Fabricante" filter_domain="[('manufacturer_id','ilike',self)]"/>
                     <group expand="0" string="Agrupar por...">
-                        <filter string="Manufacturer" domain="[]" context="{'group_by':'manufacturer_id'}"/>
-                        <filter string="Product" domain="[]" context="{'group_by':'product_id'}"/>
+                        <filter string="Manufacturer" name="manufacturer" domain="[]" context="{'group_by':'manufacturer_id'}"/>
+                        <filter string="Product" name="product" domain="[]" context="{'group_by':'product_id'}"/>
                         <filter string="Status" domain="[]" context="{'group_by':'state'}"/>
                     </group>
                </search>
@@ -104,12 +104,10 @@
             <field name="res_model">product.import.certificate</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            
             <!--
             <field name="search_view_id" ref="view_product_certificate_filter"/>
-            -->
-            
             <field name="context">{'group_by':'manufacturer_id'}</field>
+            -->
             <field name="view_id" ref="product_import_cert.view_product_certificate_tree"></field>
             <field name="help" type="html">
               <p class="oe_view_nocontent_create">

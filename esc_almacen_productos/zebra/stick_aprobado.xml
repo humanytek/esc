@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <report id="report_zebra_stick_aprobado"
+            name="report.stick.aprobado"
+            string="Etiquetas de aprobado"
+            model="stick.aprobado"
+            header="False"
+            rml="esc_almacen_productos/zebra/report/stick_aprobado.rml"
+            report_type="txt"
+            auto="False"
+        />
+        
+    </data>
+</openerp>

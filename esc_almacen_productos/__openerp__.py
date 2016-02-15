@@ -44,6 +44,7 @@ Detalles:
         'product',
         'product_manufacturer',
         'hmtk_esic_product_info',
+        'l10n_mx_import_info'
     ],
     'data': [
         # Seguridad y grupos
@@ -59,8 +60,9 @@ Detalles:
         'view/product_tarrif_fraction_form.xml',
         'view/therapeutic_action_form.xml',
         
-        # Reportes
-        'report/stick_aprobado.xml'
+        # Stick con Zebra
+        #'zebra/wizard/wizard_print_zebra_memory_view.xml',
+        'zebra/stick_aprobado.xml'
     ],
     'demo_xml': [],
     'installable': True,

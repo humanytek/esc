@@ -1,0 +1,15 @@
+=== modified file 'bin/widget/view/form_gtk/binary.py' (properties changed: -x to +x)
+--- bin/widget/view/form_gtk/binary.py	2010-07-16 06:36:54 +0000
++++ bin/widget/view/form_gtk/binary.py	2011-09-14 20:55:08 +0000
+@@ -83,7 +83,9 @@
+ 
+         self.but_save_as = binButton('gtk-save-as', _('Save As'), True)
+         self.but_save_as.connect('clicked', self.sig_save_as)
+-        self.widget.pack_start(self.but_save_as, expand=False, fill=False)
++
++        if not attrs['name'].endswith('.zpl'):
++            self.widget.pack_start(self.but_save_as, expand=False, fill=False)
+ 
+         self.but_remove = binButton('gtk-clear', _('Clear'), True)
+         self.but_remove.connect('clicked', self.sig_remove)
+

@@ -35,31 +35,33 @@
                                 <field name="product_id" string="Producto"/>
                                 <field name="lote_id" string="Lote"/>
                                 <field name="fecha_fabricacion" string="Fecha de fabricación" required="1"/>
+                                <field name="fecha_retest" string="Fecha de retest" required="1"/>
                                 <field name="fecha_caducidad" string="Fecha de caducidad" required="1"/>
                             </group>
-                            <group>
-                                <label for="peso_bruto" string="Cantidad por envases"/>
+                            <group string="Cantidad por envases">
+                                <label for="peso_neto" string="Peso neto" class="oe_inline"/>
                                 <div>
-                                    <div>
-                                        <field name="peso_neto" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
-                                        <!-- 03/12/2015 (felix) Agregar campo de unidad -->
-                                        <field name="peso_neto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
-                                        <label for="peso_neto" string="Peso neto" class="oe_inline"/>
-                                    </div>
-                                    <div>
-                                        <field name="peso_tara" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
-                                        <!-- 03/12/2015 (felix) Agregar campo de unidad -->
-                                        <field name="peso_tara_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
-                                        <label for="peso_tara" string="Tara" class="oe_inline"/>
-                                    </div>
-                                    <div>
-                                        <field name="peso_bruto" class="oe_inline"/>
-                                        <!-- 03/12/2015 (felix) Agregar campo de unidad -->
-                                        <field name="peso_bruto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
-                                        <label for="peso_bruto" string="Peso bruto" class="oe_inline"/>
-                                    </div>
+                                    <field name="peso_neto" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
+                                    <!-- 03/12/2015 (felix) Agregar campo de unidad -->
+                                    <field name="peso_neto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                </div>
+                                <label for="peso_tara" string="Tara" class="oe_inline"/>
+                                <div>
+                                    <field name="peso_tara" class="oe_inline" on_change="on_change_peso(peso_neto,peso_tara)"/>
+                                    <!-- 03/12/2015 (felix) Agregar campo de unidad -->
+                                    <field name="peso_tara_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
+                                </div>
+                                <label for="peso_bruto" string="Peso bruto" class="oe_inline"/>
+                                <div>
+                                    <field name="peso_bruto" class="oe_inline"/>
+                                    <!-- 03/12/2015 (felix) Agregar campo de unidad -->
+                                    <field name="peso_bruto_uom_id" class="oe_inline" domain="[('category_id.name', '=', 'Peso')]"/>
                                 </div>
                             </group>
+                            <group>
+                                <field name="nota" string="Nota"/>
+                            </group>
+                            <group />
                         </group>
                     </sheet>
                 </form>

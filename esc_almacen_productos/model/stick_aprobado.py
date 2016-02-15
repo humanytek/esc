@@ -50,6 +50,7 @@ class stick_aprobado_esc(osv.Model):
         'name': fields.char('Referencia etiqueta aprobado', size=250),
         'fecha_fabricacion': fields.char('Fecha de fabricacion'),
         'fecha_caducidad': fields.char('Fecha de caducidad'),
+        'fecha_retest': fields.char('Fecha de retest'),
         'product_id': fields.many2one('product.product', 'Producto'),
         'lote_id': fields.many2one('stock.production.lot', 'Lote'),
         'peso_neto': fields.float('Peso neto', digits=(10,3)),
@@ -58,6 +59,7 @@ class stick_aprobado_esc(osv.Model):
         'peso_bruto_uom_id': fields.many2one('product.uom', 'Unidad peso bruto'),
         'peso_tara': fields.float('Tara', digits=(10,3)),
         'peso_tara_uom_id': fields.many2one('product.uom', 'Unidad peso tara'),
+        'nota': fields.text('Nota')
     }
     _defaults = {
         'name': _get_ref
