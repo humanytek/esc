@@ -59,7 +59,10 @@ class stick_aprobado_esc(osv.Model):
         'peso_bruto_uom_id': fields.many2one('product.uom', 'Unidad peso bruto'),
         'peso_tara': fields.float('Tara', digits=(10,3)),
         'peso_tara_uom_id': fields.many2one('product.uom', 'Unidad peso tara'),
-        'nota': fields.text('Nota')
+        'nota': fields.text('Nota'),
+        'product_text': fields.char('Producto', size=2048),
+        'estatus': fields.selection([('cuarentena', 'Cuarentena'), 
+            ('aprobado', 'Aprobado'), ('rechazado', 'Rechazado')], 'Estatus'),
     }
     _defaults = {
         'name': _get_ref
@@ -73,6 +76,71 @@ class stick_aprobado_esc(osv.Model):
         res = {}
         peso_bruto = peso_neto + peso_tara
         res = {'peso_bruto': peso_bruto}
+        return {'value':res}
+        
+    # 16/02/2016 (felix) Relacion mes numerico y literal
+    def _rel_mes(self, mes):
+        mes_lit = ''
+        if mes == '01':
+            mes_lit = 'Ene'
+        elif mes == '02':
+            mes_lit = 'Feb'
+        elif mes == '03':
+            mes_lit = 'Mar'
+        elif mes == '04':
+            mes_lit = 'Abr'
+        elif mes == '05':
+            mes_lit = 'May'
+        elif mes == '06':
+            mes_lit = 'Jun'
+        elif mes == '07':
+            mes_lit = 'Jul'
+        elif mes == '08':
+            mes_lit = 'Ago'
+        elif mes == '09':
+            mes_lit = 'Sep'
+        elif mes == '10':
+            mes_lit = 'Oct'
+        elif mes == '11':
+            mes_lit = 'Nov'
+        elif mes == '12':
+            mes_lit = 'Dic'
+        return mes_lit
+        
+    # 16/02/2016 (felix) Captura de fechas de lote para cambiar sus respectivos formatos
+    def on_change_lote(self, cr, uid, ids, lote_id, context=None):
+        res = {}
+        obj_stock_prod_lot = self.pool.get('stock.production.lot')
+        if lote_id:
+            get_lote = obj_stock_prod_lot.search(cr, uid, [('id', '=', lote_id)])
+            for i in obj_stock_prod_lot.browse(cr, uid, get_lote, context):
+                if i.date:
+                    fabricacion_mes = self._rel_mes(i.date[5:7])
+                    fabricacion_ano = i.date[:4]
+                else:
+                    fabricacion_mes = ''
+                    fabricacion_ano = ''
+                
+                if i.use_date:
+                    caducidad_mes = self._rel_mes(i.use_date[5:7])
+                    caducidad_ano = i.use_date[:4]
+                else:
+                    caducidad_mes = ''
+                    caducidad_ano = ''
+                
+                if i.alert_date:
+                    retest_mes = self._rel_mes(i.alert_date[5:7])
+                    retest_ano = i.alert_date[:4]
+                else:
+                    retest_mes = ''
+                    retest_ano = ''
+                
+                res = {
+                    'fecha_fabricacion': fabricacion_mes+' '+fabricacion_ano,
+                    'fecha_caducidad': caducidad_mes+' '+caducidad_ano,
+                    'fecha_retest': retest_mes+' '+retest_ano,
+                }
+                
         return {'value':res}
     
 stick_aprobado_esc()

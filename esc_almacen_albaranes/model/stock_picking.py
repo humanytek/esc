@@ -29,6 +29,20 @@ class stock_picking_esc(osv.Model):
 
     _inherit = 'stock.picking'
     _description = 'Cambios en campos y modelos para Stock Picking'
+        
+    # 15/02/2016 (felix) Metodo para relacionar referencia cliente con referencia cliente de ventas
+    def _get_ref_cliente(self, cr, uid, ids, fields_name, args, context=None):
+        res = {}
+        obj_sale = self.pool.get('sale.order')
+        for i in self.browse(cr, uid, ids, context):
+            res[i.id] = ''
+            if i.sale_id:
+                _logger.warn('Valor de sale_id %s', i.sale_id.id)
+                get_sale = obj_sale.search(cr, uid, [('id', '=', i.sale_id.id)])
+                if get_sale:
+                    res[i.id] = obj_sale.browse(cr, uid, get_sale[0], context)['client_order_ref']
+        return res
+    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'perfiles_ids': fields.related('partner_id', 'answers_ids', 
@@ -36,7 +50,8 @@ class stock_picking_esc(osv.Model):
             string='Perfiles'),
         'preentrada_id': fields.many2one('stock.picking.pre', 
             'Codigo de pre-entrada'),
-        'cliente_ref': fields.char('Referencia cliente', size=1024),
+        'cliente_ref': fields.function(_get_ref_cliente, type='char', 
+            string='Referencia cliente', store=True),
         'efectua_id': fields.many2one('res.users', 'Efectua'),
         'operaciones': fields.selection([('linea','Operaciones de linea'), 
             ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
@@ -50,7 +65,7 @@ stock_picking_esc()
 class stock_picking_in_esc(osv.Model):
 
     _inherit = 'stock.picking.in'
-    _description = 'Cambios en campos y modelos para Stock Picking In'
+    _description = 'Cambios en campos y modelos para Stock Picking In'    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'preentrada_id': fields.many2one('stock.picking.pre', 
@@ -67,7 +82,21 @@ stock_picking_in_esc()
 class stock_picking_out_esc(osv.Model):
 
     _inherit = 'stock.picking.out'
-    _description = 'Cambios en campos y modelos para Stock Picking Out'    
+    _description = 'Cambios en campos y modelos para Stock Picking Out'
+        
+    # 15/02/2016 (felix) Metodo para relacionar referencia cliente con referencia cliente de ventas
+    def _get_ref_cliente(self, cr, uid, ids, fields_name, args, context=None):
+        res = {}
+        obj_sale = self.pool.get('sale.order')
+        for i in self.browse(cr, uid, ids, context):
+            res[i.id] = ''
+            if i.sale_id:
+                _logger.warn('Valor de sale_id %s', i.sale_id.id)
+                get_sale = obj_sale.search(cr, uid, [('id', '=', i.sale_id.id)])
+                if get_sale:
+                    res[i.id] = obj_sale.browse(cr, uid, get_sale[0], context)['client_order_ref']
+        return res
+    
     _columns = {
         'pedimento_id': fields.many2one('import.info', 'Pedimento'),
         'perfiles_ids': fields.related('partner_id', 'answers_ids', 
@@ -75,7 +104,8 @@ class stock_picking_out_esc(osv.Model):
             string='Perfiles'),
         'preentrada_id': fields.many2one('stock.picking.pre', 
             'Codigo de pre-entrada'),
-        'cliente_ref': fields.char('Referencia cliente', size=1024),
+        'cliente_ref': fields.function(_get_ref_cliente, type='char', 
+            string='Referencia cliente', store=True),
         'efectua_id': fields.many2one('res.users', 'Efectua'),
         'operaciones': fields.selection([('linea','Operaciones de linea'), 
             ('desarrollo','Operaciones de desarrollo')], string='Operacion'),
